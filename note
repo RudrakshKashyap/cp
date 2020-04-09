@@ -1,0 +1,205 @@
+__builtin_popcount(x);
+strchr(str,'a'); used for finding occurrence of a character in a string.
+str = to_string(a);
+a = stoi(str);
+it=itreatrator of map---- it->first,it->second
+vec.size(); vec.capacity(); vec.reserve(1000);
+deque<int> dq; dq.push_front(5);
+queue<int>qu; print(qu);
+stack<int> stk;
+priority_queue<int> q; min max heap
+p/q mod m = (p*(q^m-2))%m
+
+struct event {
+	ll x, t, i;
+	bool operator<(const event &o) const {
+		return make_pair(x, t)<make_pair(o.x, o.t);
+	}
+};
+for(event e : ev)
+{}
+
+vector<int> g[100000];
+int par[100000];
+int depth[100000];
+
+void dfs(int v, int p, int d)
+{
+    depth[v] = d;
+    par[v] = p;
+    for(int c: g[v])
+        if(c != p) dfs(c, v, d + 1);
+}
+dfs(0, -1, 0);
+vector<int> getpath(int a, int b)
+{
+    vector<int> ans, path1, path2;
+    path1.push_back(a);
+    path2.push_back(b);
+    while(a != b)
+    {
+        if(depth[a] < depth[b]) path2.push_back(b = par[b]);
+        else if(depth[a] > depth[b]) path1.push_back(a = par[a]);
+        else if(depth[a] == depth[b]) path1.push_back(a = par[a]), path2.push_back(b = par[b]);
+    }
+    reverse(path2.begin(), path2.end());
+    path2.erase(path2.begin());
+    path1.insert(path1.end(), path2.begin(), path2.end());
+    return ans = path1;
+}
+
+int ar[10001];
+int maxn = 10001;
+
+void sieve()
+{
+    repa(i,1,maxn+1) ar[i]= -1;
+
+    repa(i,2,maxn+1)
+        if(ar[i]==-1)
+            for(int j=i;j<=maxn; j+=i)
+                if(ar[j]==-1)
+                    ar[j]=i;
+}
+
+
+binary lifting
+
+int f[maxn][logN], depth[maxn];
+
+//this code for dfs is only for tree, you should use bool visited array for graph
+void dfs(int v, int p, int d)
+{
+    depth[v]=d;
+    for (int i = 1; i < logN; i++)
+        p[v][i] = p[p[v][i - 1]][i - 1];
+    for(int c: g[v])
+        if(c != p) {
+            p[c][0] = v;
+            dfs(c,v,d+1,val);
+        }
+}
+int LCA (int u, int v) {
+    if (depth[u] < depth[v]) swap(u, v);
+
+    for (int i = logN - 1; i >= 0; i--)
+        if (depth[p[u][i]] >= depth[v]) {
+            u = p[u][i];
+        }
+    // int d = depth[u]-depth[v];
+    // while(d>0)
+    // {
+    //     int i=log2(d);
+    //     u=p[u][i];
+    //     d -= (1<<i);
+    // }
+
+    if (u == v) return u;
+
+    for (int i = logN - 1; i >= 0; i--)
+        if (p[u][i] != p[v][i]) {
+            u = p[u][i];
+            v = p[v][i];
+        }
+    // while(p[u][0]!=p[v][0])
+    // {
+    //     u=p[u][0];
+    //     v=p[v][0];
+    // }
+
+    return p[u][0];
+}
+
+
+
+//bfs
+vector<vector<int>> adj;  // adjacency list representation
+int n; // number of nodes
+int s; // source vertex
+
+queue<int> q;
+vector<bool> used(n);
+vector<int> d(n), p(n);
+
+q.push(s);
+used[s] = true;
+p[s] = -1;
+while (!q.empty()) {
+    int v = q.front();
+    q.pop();
+    for (int u : adj[v]) {
+        if (!used[u]) {
+            used[u] = true;
+            q.push(u);
+            d[u] = d[v] + 1;
+            p[u] = v;
+        }
+    }
+}
+
+
+//sparse table
+
+void buildSparseTable(int M[MAXN][LOGMAXN], int A[MAXN], int N)
+{
+
+    int i, j;
+
+    //initialize M for the intervals with length 1
+    for (i = 0; i < N; i++) M[i][0] = i;
+
+    //compute values from smaller to bigger intervals
+    for (j = 1; 1 << j <= N; j++)
+        for (i = 0; i + (1 << j) - 1 < N; i++)
+            if (A[M[i][j - 1]] < A[M[i + (1 << (j - 1))][j - 1]])
+                M[i][j] = M[i][j - 1];
+            else
+                M[i][j] = M[i + (1 << (j - 1))][j - 1];
+}
+
+class SparseTable {
+private:
+	int **M, N, LOGN, *A;
+public:
+	SparseTable(int N_, int A_[]) {
+		N = N_, A = A_, LOGN = ceil(log2(N));
+		M = new int*[N];
+		REP(i, 0, N-1) {
+			M[i] = new int[LOGN];
+			memset(M[i], 0, LOGN * sizeof(int));
+		}
+		REP(i, 0, N-1) { M[i][0] = i; }
+		for (int j = 1; 1 << j <= N; j++) {
+		    for (int i = 0; i + (1 << j) - 1 < N; i++) {
+		        if (A[M[i][j - 1]] < A[M[i + (1 << (j - 1))][j - 1]]) {
+		            M[i][j] = M[i][j - 1];
+		        } else {
+		            M[i][j] = M[i + (1 << (j - 1))][j - 1];
+		        }
+		    }
+		}
+	}
+    int query(int i, int j) {
+        int k = log2(j - i + 1);
+        if(A[ M[i][k] ] <= A[ M[j - (1<<k) + 1][k] ]) { return M[i][k]; }
+        else { return M[j - (1<<k) + 1][k]; }
+    }
+};
+
+SparseTable ST(2*N, L);
+
+
+/*
+#define PROD //clocking off
+
+#ifndef PROD
+clock_t stop_s,start_s;
+start_s=clock();
+#endif
+
+#ifndef PROD
+stop_s=clock();
+cout << "time: " << (stop_s-start_s)/double(CLOCKS_PER_SEC)*1000 << endl;
+#endif
+
+*/
