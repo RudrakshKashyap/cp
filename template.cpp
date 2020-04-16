@@ -9,9 +9,10 @@ typedef vector<int> VI;
 typedef vector<ll> VL;
 typedef pair<int,int> PI;
 typedef pair<ll,ll> PL;
-// typedef map<int,int> mi;
+typedef map<int,int> MI;
+typedef vector<vector<int,int>> VII;
+typedef pair<int,pair<int,int>> PII;
 
-//#define endl '\n'
 #define pb push_back
 #define eb emplace_back
 #define F first
@@ -37,6 +38,17 @@ ll power(ll a,ll b,ll p)
     if(b%2==0) return (c*c)%p;
     else return (((c*c)%p)*a)%p;
 }
+ll inv(ll n, ll p){ return power(n,p-2, p); }
+bool isPrime(ll n) {
+    if (n <= 1)  return false;
+    if (n <= 3)  return true;
+    if (n%2 == 0 || n%3 == 0) return false;
+    for (ll i=5; i*i<=n; i=i+6)
+        if (n%i == 0 || n%(i+2) == 0)
+            return false;
+    return true;
+}
+
 
 int main()
 {
