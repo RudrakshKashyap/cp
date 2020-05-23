@@ -1,7 +1,7 @@
 ctrl shift h for adding header not working lol
 oeis.org
 file-header/lib/templates i did this command mv C.tmpl C.tmpl_original
-__builtin_popcount(x);
+__builtin_popcount(x); __builtin_popcountll(x);
 __builtin_clz(x)
 __builtin_ctz(x)
 cpp produce negitive modulo but python doesnt ((x % 5) + 5) % 5
@@ -12,6 +12,19 @@ fixed	// 0.100
 scientific // 1.000e-001
 cout.precision(17);
 round(x);
+int a = std::numeric_limits<int>::max();
+priority_queue<int,vector<int>,greater<int>> pq ; min heap
+
+//it also works for array,vectors ,list etc
+string s="123"
+do {
+	cout<<s<<'\n';
+} while(next_permutation(s.begin(),s.end()));
+//123
+//132
+//213
+.. till //321 after that it will return false
+
 
 strchr(str,'a'); used for finding occurrence of a character in a string.
 str = to_string(a);
@@ -339,11 +352,90 @@ for(i=2 ; i<=599999 ; i++)
 }
 
 
+int fib(int n) {
+  double phi = (1 + sqrt(5)) / 2;
+  return round(pow(phi, n) / sqrt(5));
+}
 
 
+//pi function and kmp algo
+vector<int> prefix_function(string s) {
+    int n = (int)s.length();
+    vector<int> pi(n);
+    for (int i = 1; i < n; i++) {
+        int j = pi[i-1];
+        while (j > 0 && s[i] != s[j])
+            j = pi[j-1];
+        if (s[i] == s[j])
+            j++;
+        pi[i] = j;
+    }
+    return pi;
+}
+
+int kmp(string p,string t)
+{
+    int ans=0;
+    int M=SZ(p);
+    int N=SZ(t);
+    VI lps=prefix_function(p);
+    int i=0; //idx for txt
+    int j=0; //idx for pat
+    while(i<N)
+    {
+        if(p[j]==t[i]) i++,j++;
+        if(j==M) //found pat at idx i-j
+        {
+            j=lps[j-1];
+            ans++;
+        }
+        else if(i<N && p[j]!=t[i])
+        {
+            if(j==0) i++;
+            else j=lps[j-1];
+        }
+    }
+    return ans;
+}
 
 
+//fenwick or BIT code https://www.topcoder.com/community/competitive-programming/tutorials/binary-indexed-trees/
+int read(int tree[], int idx)
+{
+  int sum = 0;
+  while (idx > 0)
+  {
+    sum += tree[idx];
+    idx -= (idx & -idx);
+  }
+  return sum;
+}
 
+void update(int tree[], int MaxIdx, int idx, int val)
+{
+  while (idx <= MaxIdx)
+  {
+    tree[idx] += val;
+    idx += (idx & -idx);
+  }
+}
+
+int readSingle(int tree[], int idx)
+{
+	int sum = tree[idx]; // this sum will be decreased
+	if (idx > 0)
+	{ // the special case
+		int z = idx - (idx & -idx);
+		idx--; // idx is not important anymore, so instead y, you can use idx
+		while (idx != z)
+		{ // at some iteration idx (y) will become z
+			sum -= tree[idx];
+			// substruct tree frequency which is between y and "the same path"
+			idx -= (idx & -idx);
+		}
+	}
+  return sum;
+}
 
 
 
@@ -354,7 +446,6 @@ https://codeforces.com/contest/723/problem/E
 #define fc first
 #define sc second
 #define all(x) x.begin(), x.end()
-#define bit(x) __builtin_popcount(x)
 #define pb push_back
 #define popb pop_back
 #define ll long long
