@@ -1,7 +1,7 @@
 /**         (buri nazar wale tera muh kala 😑)
  *
  * @Author   : rudraksh
- * @Created  : Monday, May 25th 2020, 2:39:54 pm
+ * @Created  : Monday, May 25th 2020, 3:50:53 pm
  * @Email    : rudrakshk@iitbhilai.ac.in
  *
  *  WARNING  : Don't look at my code, i write shit.
@@ -65,20 +65,22 @@ bool isPrime(ll n) {
     return true;
 }
 
-void build(int tree[], int node, int start, int end, int A[])   //build(tree,1,0,n-1,a);
+int tree[40005];
+
+void build(int node, int start, int end, int A[])   //build(1,0,n-1,a);
 {
     if(start == end) tree[node] = A[start];
     else
     {
         int mid = (start + end) / 2;
-        build(tree, 2*node, start, mid, A);
-        build(tree, 2*node+1, mid+1, end, A);
+        build(2*node, start, mid, A);
+        build(2*node+1, mid+1, end, A);
 
         tree[node] = tree[2*node] + tree[2*node+1];
     }
 }
 
-void update(int tree[], int node, int start, int end, int idx, int val, int A[])
+void update(int node, int start, int end, int idx, int val, int A[])
 {
     if(start == end)
     {
@@ -90,15 +92,15 @@ void update(int tree[], int node, int start, int end, int idx, int val, int A[])
     {
         int mid = (start + end) / 2;
         if(start <= idx and idx <= mid)
-            update(tree, 2*node, start, mid, idx, val, A);
+            update(2*node, start, mid, idx, val, A);
         else
-            update(tree, 2*node+1, mid+1, end, idx, val, A);
+            update(2*node+1, mid+1, end, idx, val, A);
         // Internal node will have the sum of both of its children
         tree[node] = tree[2*node] + tree[2*node+1];
     }
 }
 
-int query(int tree[], int node, int start, int end, int l, int r)
+int query(int node, int start, int end, int l, int r)
 {
     if(r < start or end < l)
     {
@@ -112,8 +114,8 @@ int query(int tree[], int node, int start, int end, int l, int r)
     }
     // range represented by a node is partially inside and partially outside the given range
     int mid = (start + end) / 2;
-    int p1 = query(tree, 2*node, start, mid, l, r);
-    int p2 = query(tree, 2*node+1, mid+1, end, l, r);
+    int p1 = query(2*node, start, mid, l, r);
+    int p2 = query(2*node+1, mid+1, end, l, r);
     return (p1 + p2);
 }
 
