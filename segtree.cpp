@@ -10,7 +10,7 @@
  */
 
  //https://www.hackerearth.com/zh/practice/data-structures/advanced-data-structures/segment-trees/tutorial/
- //https://www.youtube.com/watch?v=BuoG-1KC4qs
+ //https://www.youtube.com/watch?v=BuoG-1KC4qs --- laoduchand 
 //for lazy - https://www.youtube.com/watch?v=wQSnKUs93DU&list=PL2q4fbVm1Ik6v2-emg_JGcC9v2v2YTbvq&index=8
 
 #include<bits/stdc++.h>
