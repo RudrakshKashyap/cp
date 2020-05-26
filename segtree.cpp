@@ -65,7 +65,8 @@ bool isPrime(ll n) {
     return true;
 }
 
-int tree[40005];
+const int maxN = 100001;
+int tree[4*maxN] , lazy[4*maxN];
 
 void build(int node, int start, int end, int A[])   //build(1,0,n-1,a);
 {
@@ -80,8 +81,43 @@ void build(int node, int start, int end, int A[])   //build(1,0,n-1,a);
     }
 }
 
-void update(int node, int start, int end, int idx, int val, int A[])
+//for lazy update
+void update(int node , int start , int end , int l , int r , int val)
 {
+	if(lazy[node] != 0)
+	{
+		int dx = lazy[node];
+		lazy[node] = 0;
+		st[node] += dx * (end - start + 1);
+		
+		if(start != end)
+		lazy[2*node] += dx , lazy[2*node+1] += dx;
+	}
+	
+	if(r < start || end < l) return;
+	
+	if(l<=start && end <= r)
+	{
+		int dx = (end - start + 1) * val;
+		st[node] += dx;
+		
+		if(start != end)
+		lazy[2*node] += val , lazy[2*node+1] += val;
+		return;
+	}
+	
+	int mid = (start + end) / 2;
+	update(2*node , start , mid , l , r , val);
+	update(2*node+1 , mid+1 , end , l , r , val);
+	
+	tree[node] = tree[2*node] + tree[2*node+1];
+}
+
+
+
+
+void update(int node, int start, int end, int idx, int val, int A[])
+{	
     if(start == end)
     {
         // Leaf node
@@ -102,6 +138,16 @@ void update(int node, int start, int end, int idx, int val, int A[])
 
 int query(int node, int start, int end, int l, int r)
 {
+    if(lazy[node] != 0)
+    {
+        int dx = lazy[node];
+        lazy[node] = 0;
+        tree[node] += dx * (end-start + 1);
+
+        if(start != end)
+        lazy[2*node] += dx , lazy[2*node+1] += dx;
+    }
+ 
     if(r < start or end < l)
     {
         // range represented by a node is completely outside the given range
