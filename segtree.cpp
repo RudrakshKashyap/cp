@@ -89,7 +89,7 @@ void update(int node , int start , int end , int l , int r , int val)
 	{
 		int dx = lazy[node];
 		lazy[node] = 0;
-		st[node] += dx * (end - start + 1);
+		tree[node] += dx * (end - start + 1);
 		
 		if(start != end)
 		lazy[2*node] += dx , lazy[2*node+1] += dx;
@@ -100,7 +100,7 @@ void update(int node , int start , int end , int l , int r , int val)
 	if(l<=start && end <= r)
 	{
 		int dx = (end - start + 1) * val;
-		st[node] += dx;
+		tree[node] += dx;
 		
 		if(start != end)
 		lazy[2*node] += val , lazy[2*node+1] += val;
