@@ -36,9 +36,6 @@ void topsort(int cur,stack<int>& stack)
 
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-
     int n;
     cin>>n;
     string s[n];
@@ -71,3 +68,15 @@ int main()
 
     return 0;
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/ ------- khan's algo for topsort
+in this we add vertix with indegree=0 to queue and then we decrease their neighbour degree by 1 and again we add vertix
+with indegree=0 to queue.
+
+https://www.geeksforgeeks.org/lexicographically-smallest-topological-ordering/?ref=rp
+use set instead of queue for lexicographical topsort
+
+///////// i have not read this yet
+https://www.geeksforgeeks.org/all-topological-sorts-of-a-directed-acyclic-graph/
