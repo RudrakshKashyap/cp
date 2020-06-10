@@ -1,4 +1,5 @@
-__builtin_popcount(x); __builtin_popcountll(x);
+__builtin_popcount(x);
+__builtin_popcountll(x);
 __builtin_clz(x)
 __builtin_ctz(x)
 cpp produce negitive modulo but python doesnt ((x % 5) + 5) % 5
