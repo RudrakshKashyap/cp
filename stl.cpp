@@ -38,3 +38,35 @@ stack<int> stk;
 priority_queue<int> q; min max heap
 p/q mod m = (p*(q^m-2))%m
 ~(-1)=0
+
+
+	
+
+v = { 1, 1, 3, 3, 3, 10, 1, 3, 3, 7, 7, 8 }
+vec.resize(unique(all(vec)) - vec.begin());
+1 3 10 1 3 7 8 //3 apper twice thats why sort before resizing
+
+// Using copy_n() to copy contents
+    copy_n(ar, 6, ar1);
+
+// Initailising starting value as 100
+    int st = 100;
+
+    std::iota(numbers, numbers + 10, st);
+Elements are : 100 101 102 103 104 105 106 107 108 109
+
+// A quick way to swap a and b
+a ^= b;
+b ^= a;
+a ^= b;
+
+if (num & 1)
+   cout << "ODD";
+else
+   cout << "EVEN";
+
+ Use of strlen() can be avoided by:
+for (i=0; s[i]; i++)
+{
+}
+loop breaks when the character array ends.
