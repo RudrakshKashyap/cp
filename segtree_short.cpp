@@ -115,7 +115,7 @@ For example: if need increment a[4..7] to 5. There only increment t[3] to 5*4, a
 #define N 100008
 
 int t[N+N];
-int d[N+N];
+int d[N+N]; //actually we can just take d[N];
 //int ch[N+N]; // number of children .
 int n;
 
