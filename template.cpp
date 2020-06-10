@@ -1,5 +1,17 @@
+/**         (buri nazar wale tera muh kala 😑)
+ *
+ * @Author   : rudraksh
+ * @Created  : Friday, May 29th 2020, 1:54:11 pm
+ * @Email    : rudrakshk@iitbhilai.ac.in
+ *
+ *  WARNING  : Don't look at my code, i write shit.
+ *             You won't be able to understand anything and may end up wasting time.
+ *
+ */
+
+
 #include<bits/stdc++.h>
-#include<unistd.h>
+// #include<unistd.h>
 using namespace std;
 
 typedef long long int ll;
@@ -10,8 +22,8 @@ typedef vector<ll> VL;
 typedef pair<int,int> PI;
 typedef pair<ll,ll> PL;
 typedef map<int,int> MI;
-typedef vector<vector<int,int>> VII;
-typedef pair<int,pair<int,int>> PII;
+typedef vector<VI> VVI;
+typedef pair<int,PI> PIP;
 
 #define pb push_back
 #define eb emplace_back
@@ -22,16 +34,33 @@ typedef pair<int,pair<int,int>> PII;
 #define rep(i,n) for(ll i=0;i<n;i++)
 #define pera(i,a,n) for(ll i=a;i>=n;i--)
 #define per(i,n) for(ll i=n;i>=0;i--)
+#define loop(it,x) for(auto it=x.begin();it!=x.end();it++)
 #define all(x) (x).begin(),(x).end()
 #define MS0(x) memset((x), 0, sizeof((x)))
 #define MS1(x) memset((x), -1, sizeof((x)))
-#define MEM(a, b) memset(a, b, sizeof(a))
+#define CP(dst,src) memcpy(dst, src, sizeof(src));
 #define SZ(x) ((ll)(x).size())
+#define watch(x) cout << (#x) << " is " << (x) << "\n"
 #define TIME    cerr << "\nTime elapsed: " << setprecision(5) <<1000.0 * clock() / CLOCKS_PER_SEC << "ms\n";
 
 const ll mod=1e9+7;
+const double pi=acos(-1);
+
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a; }
-ll power(ll a,ll b,ll p)
+// ll power(ll a,ll b,ll p) //log(y)
+// {
+//     ll res=1;
+//     a%=p;
+//     if(a==0) return 0;
+//     while(b>0)
+//     {
+//         if(b&1) res=(res*a)%p;
+//         b=b>>1;
+//         a=(a*a)%p;
+//     }
+//     return res;
+// }
+ll power(ll a,ll b,ll p) //log(b)
 {
     if(b==0) return 1;
     ll c = power(a,b/2,p);
@@ -55,7 +84,7 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(0);
 
-    ll t;
+    int t;
     cin>>t;
     while(t--)
     {
