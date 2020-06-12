@@ -1,5 +1,5 @@
 https://codeforces.com/blog/entry/55782?#comment-395139
-//dont know if this code is correct, its just for an idea
+
 intt trie[maxx][26], finish[maxx];
 intt nxt = 1;
 void Add (string s){
@@ -12,7 +12,7 @@ void Add (string s){
             node = trie[node][s[i] - 'a'];
         }
     }
-    finish[nxt - 1] = 1;
+    finish[node - 1] = 1;   //finish[nxt - 1] = 1;
 }
 
 intt Find (string s) {
