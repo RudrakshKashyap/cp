@@ -1,3 +1,4 @@
+watch https://www.youtube.com/watch?v=GiN3jRdgxU4 from 28:10
 all the implementation below are nice
 https://www.geeksforgeeks.org/ford-fulkerson-algorithm-for-maximum-flow-problem/
 https://cp-algorithms.com/graph/edmonds_karp.html
