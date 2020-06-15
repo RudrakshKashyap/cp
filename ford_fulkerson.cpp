@@ -4,9 +4,9 @@ watch https://www.youtube.com/watch?v=GiN3jRdgxU4 from 28:10
 				  |--- this edge is critical
 				  V
 	s----o-----1-----2-----o-----t
-	 \			 \ /		   /
-	   \ 		 / \		 /
-	   	 o-----o     o-----o
+     \		     \ /           /
+       \         / \         /
+         o-----o     o-----o
 	
 all the implementation below are nice
 https://www.geeksforgeeks.org/ford-fulkerson-algorithm-for-maximum-flow-problem/
