@@ -1,4 +1,13 @@
 watch https://www.youtube.com/watch?v=GiN3jRdgxU4 from 28:10
+2nd time when this edge become critical(backward flow 1) then when we reach node 2, we cant't go to node 1 because node
+1 was already visited bc its dist is 2 from s and node 2 dist is 3 from s.
+				  |--- this edge is critical
+				  V
+	s----o-----1-----2-----o-----t
+	 \			 \ /		   /
+	   \ 		 / \		 /
+	   	 o-----o     o-----o
+	
 all the implementation below are nice
 https://www.geeksforgeeks.org/ford-fulkerson-algorithm-for-maximum-flow-problem/
 https://cp-algorithms.com/graph/edmonds_karp.html
