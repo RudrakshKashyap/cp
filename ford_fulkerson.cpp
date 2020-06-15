@@ -2,6 +2,10 @@ all the implementation below are nice
 https://www.geeksforgeeks.org/ford-fulkerson-algorithm-for-maximum-flow-problem/
 https://cp-algorithms.com/graph/edmonds_karp.html
 https://paste.ubuntu.com/7194906/
+When BFS is used, the worst case time complexity can be reduced to O(VE2).
+The above implementations uses adjacency matrix representation(array representation of graph)
+though where BFS takes O(V2) time,
+the time complexity of the above implementation is O(EV3)
 #include <bits/stdc++.h>
 
 using namespace std;
