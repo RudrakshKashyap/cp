@@ -1,4 +1,6 @@
-watch https://www.youtube.com/watch?v=GiN3jRdgxU4 from 28:10
+watch https://www.youtube.com/watch?v=GiN3jRdgxU4 from 28:10 for time complexity.....i got the intuition but not exectly
+how that time complexity came
+
 2nd time when this edge become critical(backward flow 1) then when we reach node 2, we cant't go to node 1 because node
 1 was already visited bc its dist is 2 from s and node 2 dist is 3 from s.
 				  |--- this edge is critical
@@ -11,6 +13,8 @@ watch https://www.youtube.com/watch?v=GiN3jRdgxU4 from 28:10
 all the implementation below are nice
 https://www.geeksforgeeks.org/ford-fulkerson-algorithm-for-maximum-flow-problem/
 https://cp-algorithms.com/graph/edmonds_karp.html
+in above implementations --- add both forward and backward edges to graph,initialize cap array=0 and only add forward capacity;
+
 https://paste.ubuntu.com/7194906/
 When BFS is used, the worst case time complexity can be reduced to O(VE2).
 The above implementations uses adjacency matrix representation(array representation of graph)
