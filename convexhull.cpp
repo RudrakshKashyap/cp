@@ -84,3 +84,18 @@ int main()
 
     return 0;
 }
+
+//O(logn)--https://www.youtube.com/watch?v=aoxOPx2BIHE
+//point inside polygon in O(n)
+ bool PIP(point p)
+    {
+        int n=(int)vertices.size();
+        bool ans=true;
+        for(int i=0; i<n; i++)
+            ans&=ccw(vertices[i], vertices[(i+1)%n], p);
+        return ans;
+    }
+
+
+
+
