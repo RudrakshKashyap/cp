@@ -1,3 +1,7 @@
+https://codeforces.com/blog/entry/48868
+https://www.geeksforgeeks.org/convex-hull-set-2-graham-scan/
+https://cp-algorithms.com/geometry/grahams-scan-convex-hull.html
+
 template <class F>
 struct Point
 {
