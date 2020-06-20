@@ -1,3 +1,10 @@
+template <class F>
+struct Point {
+  F x, y;
+  Point() : x(0), y(0) {}
+  Point(F x,F y) : x(x), y(y) {}
+};
+
 template <class F> using Polygon = vector<Point<F>>;
 inline int prev(int i, int n) { return i == 0 ? n-1 : i-1; }
 inline int next(int i, int n) { return i == n-1 ? 0 : i+1; }
@@ -9,6 +16,14 @@ F area(const Polygon<F>& poly) {
   for (int i = 0; i < n; ++i)
     area += poly[i].x * (poly[next(i, n)].y - poly[prev(i, n)].y);
   return area;
+}
+
+bool cw(pt a, pt b, pt c) {
+    return a.x*(b.y-c.y)+b.x*(c.y-a.y)+c.x*(a.y-b.y) < 0;
+}
+
+bool ccw(pt a, pt b, pt c) {
+    return a.x*(b.y-c.y)+b.x*(c.y-a.y)+c.x*(a.y-b.y) > 0;
 }
 
 template <class F>
