@@ -20,8 +20,9 @@ F area(const Polygon<F>& poly)
     F area = F(0);
     for (int i = 0; i < n; ++i)
         area += poly[i].x * (poly[next(i, n)].y - poly[prev(i, n)].y);
-    return area;
+    return abs(area)/2; // area can be -ve depending on the orientation
 }
+//Oriented means that it's positive if polygon vertices are listed in counter-clockwise (ccw) order and negative otherwise.
 
 // template <class F>
 // bool cw(Point<F> a, Point<F> b, Point<F> c) {
@@ -53,7 +54,7 @@ Polygon<F> convexHull(Polygon<F> points)
         reverse(begin(points), end(points));
     }
     if (hull.size() == 2 && (hull[0].x == hull[1].x) && (hull[0].y == hull[1].y)) hull.pop_back();
-    return hull;
+    return hull; //return clockwise hull
 }
 
 int main()
@@ -64,13 +65,17 @@ int main()
     Polygon<int> p;
     repa(i,1,5)
     {
-        repa(j,1,5) p.eb(i,j);
+        repa(j,1,5)
+        {
+            p.eb(i,j);
+        }
     }
     p=convexHull(p);
     rep(i,SZ(p))
     {
         cout<<p[i].x<<' '<<p[i].y<<'\n';
     }
+    cout<<area(p)<<'\n';
 
     return 0;
 }
