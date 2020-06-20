@@ -59,6 +59,7 @@ Polygon<F> convexHull(Polygon<F> points)
     }
     if (hull.size() == 2 && (hull[0].x == hull[1].x) && (hull[0].y == hull[1].y)) hull.pop_back();
     return hull; //return clockwise hull
+    return reverse(all(hull)); //return ccw hull
 }
 
 int main()
