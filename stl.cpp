@@ -15,7 +15,6 @@ round(x);
 rotate(vec.begin(), vec.begin() + k, vec.end()); //cyclic left shift of k
 int a = std::numeric_limits<int>::max();
 priority_queue<int,vector<int>,greater<int>> pq ; min heap
-If you want to print, say, last 20 bits of a numbercout << bitset<20>(n) << "\n";
 string rev = string(str.rbegin(),str.rend());
 
 //it also works for array,vectors ,list etc
@@ -32,11 +31,11 @@ do {
 strchr(str,'a'); used for finding occurrence of a character in a string.
 str = to_string(a);
 a = stoi(str);
-it=itreatrator of map---- it->first,it->second
+
 vec.size(); vec.capacity(); vec.reserve(1000);
-deque<int> dq; dq.push_front(5);
+
 queue<int>qu; print(qu);
-stack<int> stk;
+
 priority_queue<int> q; min max heap
 p/q mod m = (p*(q^m-2))%m
 ~(-1)=0
@@ -72,3 +71,16 @@ for (i=0; s[i]; i++)
 {
 }
 loop breaks when the character array ends.
+
+    
+If you want to print, say, last 20 bits of a numbercout << bitset<20>(n) << "\n";
+#include <bitset>
+int main()
+{
+    std::string binary = std::bitset<8>(128).to_string(); //to binary
+    std::cout<<binary<<"\n";
+
+    unsigned long decimal = std::bitset<8>(binary).to_ulong();
+    std::cout<<decimal<<"\n";
+    return 0;
+}
