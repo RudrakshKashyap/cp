@@ -29,7 +29,7 @@ F area(const Polygon<F>& poly)
 //Oriented means that it's positive if polygon vertices are listed in counter-clockwise (ccw) order and negative otherwise.
 
 // template <class F>
-// bool cw(Point<F> a, Point<F> b, Point<F> c) {
+// bool cw(Point<F> a, Point<F> b, Poi  nt<F> c) {
 //     return a.x*(b.y-c.y)+b.x*(c.y-a.y)+c.x*(a.y-b.y) < 0;
 // }
 
@@ -85,7 +85,6 @@ int main()
     return 0;
 }
 
-//O(logn)--https://www.youtube.com/watch?v=aoxOPx2BIHE
 //point inside polygon in O(n)
  bool PIP(point p)
     {
@@ -98,4 +97,59 @@ int main()
 
 
 
+//O(logn)--https://www.youtube.com/watch?v=aoxOPx2BIHE
+//another nice approach is in that codeforces blog
+long long cross_product(Point<ll> a, Point<ll> b){
+    return a.x*b.y-b.x*a.y;
+}
 
+long long sq_dist(Point<ll> a, Point<ll> b){
+    return (a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y);
+}
+
+bool is_inside(Point<ll> p, Polygon<ll>& points){
+    Point<ll> p1 = {points[points.size()-1].x-points[0].x, points[points.size()-1].y-points[0].y};
+    Point<ll> p2 = {points[1].x-points[0].x, points[1].y-points[0].y};
+    Point<ll> pq = {p.x-points[0].x, p.y-points[0].y};
+
+    if(!(cross_product(p1, pq)<=0 && cross_product(p2,pq)>=0)) return false;
+
+    int l = 0, r = points.size();
+    while (r - l > 1) {
+        int mid = (l + r) / 2;
+        Point<ll> cur = {points[mid].x-points[0].x, points[mid].y-points[0].y};
+        if (cross_product(cur, pq)<0) {
+            r = mid;
+        } else {
+            l = mid;
+        }
+    }
+    int f=points.size()-1;
+    if(l == f){
+        return sq_dist(points[0], {p.x,p.y}) <= sq_dist(points[0], points[l]); //lie on the last edge
+    }else{
+        Point<ll> l_l1 = {points[l+1].x-points[l].x, points[l+1].y-points[l].y};
+        Point<ll> lq = {p.x-points[l].x, p.y-points[l].y};
+        return (cross_product(l_l1,lq) >=0);
+    }
+}
+
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+
+    int q;
+    cin>>q;
+    Polygon<ll> poly; //assuming poly is ccw
+    while(q--)
+    {
+
+        long long x,y;
+        cin>>x>>y;
+        cout <<  (is_inside(Point<ll>(x,y), poly) ? "YES\n" : "NO\n");
+    }
+
+    return 0;
+}
