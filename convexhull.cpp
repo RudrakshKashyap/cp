@@ -107,6 +107,7 @@ long long sq_dist(Point<ll> a, Point<ll> b){
     return (a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y);
 }
 
+// remove '=' if you consider a point on the edge outside
 bool is_inside(Point<ll> p, Polygon<ll>& points){
     Point<ll> p1 = {points[points.size()-1].x-points[0].x, points[points.size()-1].y-points[0].y};
     Point<ll> p2 = {points[1].x-points[0].x, points[1].y-points[0].y};
