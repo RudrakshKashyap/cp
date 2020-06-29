@@ -1,10 +1,11 @@
 https://codeforces.com/blog/entry/55782?#comment-395139
 
-intt trie[maxx][26], finish[maxx];
-intt nxt = 1;
+const int maxx=100005;
+int trie[maxx][26], finish[maxx];
+int nxt = 1;
 void Add (string s){
-    intt node = 0;
-    for (intt i = 0; s[i] != '\0'; i++) {
+    int node = 0;
+    for (int i = 0; s[i] != '\0'; i++) {
         if(trie[node][s[i] - 'a'] == 0) {
             node = trie[node][s[i] - 'a'] = nxt;
             nxt++;
@@ -15,9 +16,10 @@ void Add (string s){
     finish[node - 1] = 1;   //finish[nxt - 1] = 1;
 }
 
-intt Find (string s) {
-    intt idx = 0;
-    for (intt i = 0; i < s.size(); i++)
+int Find (string s) {
+    int idx = 0;
+    int sz=s.size();
+    for (int i = 0; i < sz; i++)
         if (trie[idx][s[i] - 'a'] == 0)
             return 0;
         else
