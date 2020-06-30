@@ -13,7 +13,7 @@ void Add (string s){
             node = trie[node][s[i] - 'a'];
         }
     }
-    finish[node - 1] = 1;   //finish[nxt - 1] = 1;
+    finish[node - 1] = 1;
 }
 
 int Find (string s) {
