@@ -12,3 +12,4 @@ for(int j=x;j<=y;j++)
 
 //radix sort
 https://codeforces.com/edu/course/2/lesson/2/2
+in suffix arrays we can perform radix sort on pairs (just like we do with digits)
