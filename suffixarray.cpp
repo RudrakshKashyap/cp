@@ -1,4 +1,4 @@
-https://leetcode.com/problems/longest-duplicate-substring/discuss/695143/C%2B%2Bsuffix-array(100-efficient)
+https://codeforces.com/blog/entry/12796?#comment-175287
 https://www.geeksforgeeks.org/%C2%AD%C2%ADkasais-algorithm-for-construction-of-lcp-array-from-suffix-array/
 
 // Below codes will give n+1 SA of n+1 indecies including $ sign----------------------------------------------
