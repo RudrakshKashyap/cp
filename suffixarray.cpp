@@ -1,4 +1,3 @@
-https://codeforces.com/blog/entry/12796?#comment-175287
 https://www.geeksforgeeks.org/%C2%AD%C2%ADkasais-algorithm-for-construction-of-lcp-array-from-suffix-array/
 
 // Below codes will give n+1 SA of n+1 indecies including $ sign----------------------------------------------
@@ -148,6 +147,18 @@ vector<int> sa(string s)
     }
 
     // for(int i=0;i<n;i++) cout<<p[i]<<' ';
+    
+    vector<int> lcp(n-1); // n is string size including $
+    int k=0;
+    for(int i=0;i<n-1;i++)
+    {
+        int pi = c[i];  // pi is position of suffix starting from index 'i' in suffix array
+        int j = p[pi-1];
+
+        while(s[i+k]==s[j+k]) k++;
+        lcp[pi]=k;
+        if(k>0) k=k-1;
+    }
 
     return p;
 }
@@ -169,3 +180,22 @@ some other suffix
 some other suffix
 suffix of index j+1 --- this have k-1 char common
 
+https://codeforces.com/blog/entry/12796?#comment-175287
+vector<int> kasai(string s, vector<int> sa)
+{
+    int n=s.size(),k=0;
+    vector<int> lcp(n,0);
+    vector<int> rank(n,0);
+
+    for(int i=0; i<n; i++) rank[sa[i]]=i;
+
+    for(int i=0; i<n; i++)
+    {
+        if(rank[i]==n-1) {k=0; continue;}
+        int j=sa[rank[i]+1];
+        while(i+k<n && j+k<n && s[i+k]==s[j+k]) k++;
+        lcp[rank[i]]=k;
+        if(k>0) k=k-1;
+    }
+    return lcp;
+}
