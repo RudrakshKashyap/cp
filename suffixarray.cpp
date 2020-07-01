@@ -165,7 +165,14 @@ vector<int> sa(string s)
 
 
 // kasai algo
-Let's look at two adjacent suffixes in the sorted order (order of the suffix array). Let their starting positions be i and j and their lcp equal to k>0. If we remove the first letter of both suffixes - i.e. we take the suffixes i+1 and j+1 - then it should be obvious that the lcp of these two is k−1. However we cannot use this value and write it in the lcp array, because these two suffixes might not be next to each other in the sorted order. The suffix i+1 will of course be smaller than the suffix j+1, but there might be some suffixes between them. However, since we know that the LCP between two suffixes is the minimum value of all transitions, we also know that the LCP between any two pairs in that interval has to be at least k−1, especially also between i+1 and the next suffix. And possibly it can be bigger.
+Let's look at two adjacent suffixes in the sorted order (order of the suffix array).
+Let their starting positions be i and j and their lcp equal to k>0.
+If we remove the first letter of both suffixes - i.e. we take the suffixes i+1 and j+1 - then it should be obvious that the lcp of these two is k−1.
+However we cannot use this value and write it in the lcp array, because these two suffixes might not be next to each other in the sorted order.
+The suffix i+1 will of course be smaller than the suffix j+1, but there might be some suffixes between them.
+However, since we know that the LCP between two suffixes is the minimum value of all transitions, 
+we also know that the LCP between any two pairs in that interval has to be at least k−1,
+especially also between i+1 and the next suffix. And possibly it can be bigger.
 
 
      
