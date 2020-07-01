@@ -1,7 +1,7 @@
 https://leetcode.com/problems/longest-duplicate-substring/discuss/695143/C%2B%2Bsuffix-array(100-efficient)
 https://www.geeksforgeeks.org/%C2%AD%C2%ADkasais-algorithm-for-construction-of-lcp-array-from-suffix-array/
 
-
+// Below codes will give n+1 SA of n+1 indecies including $ sign----------------------------------------------
 
 https://codeforces.com/edu/course/2
 void radix_sort(vector<pair<pair<int,int>,int>>& a) //just counting sort on both element of pairs
