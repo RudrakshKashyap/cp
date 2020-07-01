@@ -94,7 +94,7 @@ void count_sort(vector<int>& p, vector<int>& c)
     {
         int n=p.size();
         vector<int> cnt(n);
-        for(auto x: p) cnt[x]++;
+        for(auto x: c) cnt[x]++;
         vector<int> p_new(n);
         vector<int> pos(n);
         pos[0]=0;
@@ -141,9 +141,10 @@ vector<int> sa(string s)
         {
             pair<int,int> prev = {c[p[i-1]],c[(p[i-1] + (1<<k))%n]};
             pair<int,int> now = {c[p[i]],c[(p[i] + (1<<k))%n]};
-            if(now == prev) c_new[p[i]] = c[p[i-1]];
-            else c_new[p[i]] = c[p[i-1]] + 1;
+            if(now == prev) c_new[p[i]] = c_new[p[i-1]];
+            else c_new[p[i]] = c_new[p[i-1]] + 1;
         }
+        c = c_new;
     }
 
     // for(int i=0;i<n;i++) cout<<p[i]<<' ';
