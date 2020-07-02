@@ -1,4 +1,6 @@
 https://www.geeksforgeeks.org/%C2%AD%C2%ADkasais-algorithm-for-construction-of-lcp-array-from-suffix-array/
+https://codeforces.com/contest/471/submission/85740575 check this for binary search
+
 
 // Below codes will give n+1 SA of n+1 indecies including $ sign----------------------------------------------
 
