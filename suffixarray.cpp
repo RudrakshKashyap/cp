@@ -50,7 +50,7 @@ vector<int> sa(string s)
     vector<int> p(n), c(n);
     {
         // k = 0
-        vector<pair<char,int>> a(n);
+        vector<pair<char,int>> a(n);    //change char to int if s is vector
         for(int i=0;i<n;i++) a[i] = {s[i], i};
         sort(a.begin(),a.end());
 
@@ -116,7 +116,7 @@ vector<int> sa(string s)
     vector<int> p(n), c(n);
     {
         // k = 0
-        vector<pair<char,int>> a(n);
+        vector<pair<char,int>> a(n);    //change char to int if s is vector
         for(int i=0;i<n;i++) a[i] = {s[i], i};
         sort(a.begin(),a.end());
 
@@ -149,7 +149,7 @@ vector<int> sa(string s)
 
     // for(int i=0;i<n;i++) cout<<p[i]<<' ';
     
-    vector<int> lcp(n-1); // n is string size including $
+    vector<int> lcp(n); // n is string size including $
     int k=0;
     for(int i=0;i<n-1;i++)
     {
@@ -160,6 +160,7 @@ vector<int> sa(string s)
         lcp[pi]=k;
         if(k>0) k=k-1;
     }
+    // repa(i,1,n) cout<<lcp[i]<<' ';
 
     return p;
 }
