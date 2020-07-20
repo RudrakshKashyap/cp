@@ -1,3 +1,12 @@
+https://www.youtube.com/watch?v=o1EvPhz6UNE
+https://www.youtube.com/watch?v=9D8uPKDffdI
+https://www.geeksforgeeks.org/variadic-function-templates-c/
+
+
+
+
+
+
 /**         (buri nazar wale tera muh kala 😑)
  *
  * @Author   : rudraksh
@@ -45,6 +54,16 @@ typedef pair<int,PI> PIP;
 
 const ll mod=1e9+7;
 const double pi=acos(-1);
+
+void print() { cout<<'\n'; }
+
+template <typename T, typename... Params>
+void print(const T& var1, const Params&... var2)
+{
+//     cout<<__PRETTY_FUNCTION__<<'\n';
+    cout<<var1<<' ';
+    print(var2...);
+}
 
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a; }
 // ll power(ll a,ll b,ll p) //log(y)
