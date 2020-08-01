@@ -340,6 +340,7 @@ lcm=a*b/__gcd(a,b);
 
 
 // nCr
+//proof at https://cp-algorithms.com/algebra/module-inverse.html
 ll facinv[600000];
 ll inv[600000];
 ll fac[600000];
@@ -351,6 +352,7 @@ for(i=2 ; i<=599999 ; i++)
 	inv[i]=((mod-mod/i)*inv[mod%i])%mod;
 	facinv[i]=(facinv[i-1]*inv[i])%mod;
 }
+//lucas theom proof https://cp-algorithms.com/algebra/factorial-modulo.html
 
 
 int fib(int n) {
