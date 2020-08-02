@@ -28,3 +28,19 @@ int getMax(int l, int r)    //these l and r are inclusive [l,r]
     int curlog = numlog[r - l + 1];
     return max(table[l][curlog], table[r - (1 << curlog) + 1][curlog]);
 }
+
+long long query(int L, int R) 
+{ 
+    // boundaries of next query, 0-indexed 
+    long long answer = 0; 
+    for (int j = numlog[n]; j >= 0; j--) { 
+        if (L + (1 << j) - 1 <= R) { 
+            answer = answer + table[L][j]; 
+  
+            // instead of having L', we 
+            // increment L directly 
+            L += 1 << j; 
+        } 
+    } 
+    return answer; 
+} 
