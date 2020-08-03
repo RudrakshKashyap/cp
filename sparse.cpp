@@ -4,7 +4,7 @@ const int N = 1e5;  //maxn
 int n;
 long long table[N][k + 1]; // k + 1 because we need to access table[r][MAXLOG]
 int Arr[N];
-int numlog[N];
+int numlog[N+1];
 
 
 void build()
