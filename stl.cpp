@@ -2,6 +2,7 @@ __builtin_popcount(x);
 __builtin_popcountll(x);
 __builtin_clz(x)
 __builtin_ctz(x)
+#define mod0 19260817233333333
 #define mod1 2047483517
 #define mod2 2147483647
 cpp produce negitive modulo but python doesnt ((x % 5) + 5) % 5
