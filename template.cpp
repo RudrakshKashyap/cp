@@ -35,6 +35,9 @@ typedef vector<VI> VVI;
 typedef pair<int,PI> PIP;
 
 #define pb push_back
+#define pf push_front
+#define popb pob_back
+#define popf pop_front
 #define eb emplace_back
 #define F first
 #define S second
@@ -58,9 +61,26 @@ const double pi=acos(-1);
 void print() { cout<<'\n'; }
 
 template <typename T, typename... Params>
+void print(const T& var1, const Params&... var2);
+
+template <typename T, size_t N, typename... Params>
+void print(T (&a)[N], const Params&... var2)
+{
+    for(auto c:a) cout<<c<<' ';
+    print(var2...);
+}
+
+template <typename T, typename... Params>
+void print(const T& vec,size_t N,const Params&... var2)
+{
+    for(auto c:vec) cout<<c<<' ';
+    print(var2...);
+}
+
+template <typename T, typename... Params>
 void print(const T& var1, const Params&... var2)
 {
-//     cout<<__PRETTY_FUNCTION__<<'\n';
+    // cout<<__PRETTY_FUNCTION__<<'\n';
     cout<<var1<<' ';
     print(var2...);
 }
