@@ -18,6 +18,8 @@ int a = std::numeric_limits<int>::max();
 priority_queue<int,vector<int>,greater<int>> pq ; min heap
 string rev = string(str.rbegin(),str.rend());
 
+fill_n((int*)dp, sizeof(dp)/sizeof(int), -(int)1e9);
+
 //it also works for array,vectors ,list etc
 string s="123"
 do {
