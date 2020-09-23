@@ -26,3 +26,45 @@ int Find (string s) {
             idx = trie[idx][s[i] - 'a'];
     return finish[idx];
 }
+
+
+////////////////////////////////////////////////////////////////// with delete
+const int maxx=100005;
+int trie[maxx][26], finish[maxx], freq[maxx];
+int nxt = 1;
+void Add (string s){
+    int node = 0;
+    for (int i = 0; s[i] != '\0'; i++) {
+        if(trie[node][s[i] - 'a'] == 0) {
+            node = trie[node][s[i] - 'a'] = nxt;
+            freq[node]++;
+            nxt++;
+        } else {
+            node = trie[node][s[i] - 'a'];
+            freq[node]++;
+        }
+    }
+    finish[node - 1]++;
+}
+
+int Find (string s) {
+    int idx = 0;
+    int sz=s.size();
+    for (int i = 0; i < sz; i++)
+        if (trie[idx][s[i] - 'a'] == 0 || freq[trie[idx][s[i]-'a']] <= 0)
+            return 0;
+        else
+            idx = trie[idx][s[i] - 'a'];
+    return finish[idx - 1];
+}
+
+void Delete(string s)
+{
+    int node = 0;
+    for (int i = 0; s[i] != '\0'; i++)
+    {
+        node = trie[node][s[i] - 'a'];
+        freq[node]--;
+    }
+    finish[node - 1]--;
+}
