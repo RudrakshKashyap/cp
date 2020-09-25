@@ -30,22 +30,17 @@ do {
 strchr(str,'a'); used for finding occurrence of a character in a string.
 str = to_string(a);
 a = stoi(str);
-it=itreatrator of map---- it->first,it->second
-vec.size(); vec.capacity(); vec.reserve(1000);
-deque<int> dq; dq.push_front(5);
+
+vec.capacity(); vec.reserve(1000);
+
 queue<int>qu; print(qu);
-stack<int> stk;
+
 priority_queue<int> q; min max heap
-p/q mod m = (p*(q^m-2))%m
+
 ~(-1)=0
 lower_bound(arr,arr+n,35)-arr;
 
-struct event {
-	ll x, t, i;
-	bool operator<(const event &o) const {
-		return make_pair(x, t)<make_pair(o.x, o.t);
-	}
-};
+
 return 1 if a<b;
 
 // Compare 3 characters from 3rd position
@@ -57,8 +52,6 @@ else
    cout<<"Not equal";
 
 
-for(event e : ev)
-{}
 
 vector<int> g[100000];
 int par[100000];
@@ -89,19 +82,7 @@ vector<int> getpath(int a, int b)
     return ans = path1;
 }
 
-int ar[10001];
-int maxn = 10001;
 
-void sieve()
-{
-    repa(i,1,maxn+1) ar[i]= -1;
-
-    repa(i,2,maxn+1)
-        if(ar[i]==-1)
-            for(int j=i;j<=maxn; j+=i)
-                if(ar[j]==-1)
-                    ar[j]=i;
-}
 
 
 binary lifting
@@ -339,20 +320,6 @@ lcm=a*b/__gcd(a,b);
 
 
 
-// nCr
-//proof at https://cp-algorithms.com/algebra/module-inverse.html
-ll facinv[600000];
-ll inv[600000];
-ll fac[600000];
-fac[0]=1; facinv[0]=1;
-inv[1]=1; fac[1]=1; facinv[1]=1;
-for(i=2 ; i<=599999 ; i++)
-{
-	fac[i]=(i*fac[i-1])%mod;
-	inv[i]=((mod-mod/i)*inv[mod%i])%mod;
-	facinv[i]=(facinv[i-1]*inv[i])%mod;
-}
-//lucas theom proof https://cp-algorithms.com/algebra/factorial-modulo.html
 
 
 int fib(int n) {
@@ -361,84 +328,8 @@ int fib(int n) {
 }
 
 
-//pi function and kmp algo
-vector<int> prefix_function(string s) {
-    int n = (int)s.length();
-    vector<int> pi(n);
-    for (int i = 1; i < n; i++) {
-        int j = pi[i-1];
-        while (j > 0 && s[i] != s[j])
-            j = pi[j-1];
-        if (s[i] == s[j])
-            j++;
-        pi[i] = j;
-    }
-    return pi;
-}
-
-int kmp(string p,string t)
-{
-    int ans=0;
-    int M=SZ(p);
-    int N=SZ(t);
-    VI lps=prefix_function(p);
-    int i=0; //idx for txt
-    int j=0; //idx for pat
-    while(i<N)
-    {
-        if(p[j]==t[i]) i++,j++;
-        if(j==M) //found pat at idx i-j
-        {
-            j=lps[j-1];
-            ans++;
-        }
-        else if(i<N && p[j]!=t[i])
-        {
-            if(j==0) i++;
-            else j=lps[j-1];
-        }
-    }
-    return ans;
-}
 
 
-//fenwick or BIT code https://www.topcoder.com/community/competitive-programming/tutorials/binary-indexed-trees/
-int read(int tree[], int idx)
-{
-  int sum = 0;
-  while (idx > 0)
-  {
-    sum += tree[idx];
-    idx -= (idx & -idx);
-  }
-  return sum;
-}
-
-void update(int tree[], int MaxIdx, int idx, int val)
-{
-  while (idx <= MaxIdx)
-  {
-    tree[idx] += val;
-    idx += (idx & -idx);
-  }
-}
-
-int readSingle(int tree[], int idx)
-{
-	int sum = tree[idx]; // this sum will be decreased
-	if (idx > 0)
-	{ // the special case
-		int z = idx - (idx & -idx);
-		idx--; // idx is not important anymore, so instead y, you can use idx
-		while (idx != z)
-		{ // at some iteration idx (y) will become z
-			sum -= tree[idx];
-			// substruct tree frequency which is between y and "the same path"
-			idx -= (idx & -idx);
-		}
-	}
-  return sum;
-}
 
 
 
