@@ -1,6 +1,7 @@
 ctrl shift h for adding header not working lol
 factor command on linux
 oeis.org
+https://www.desmos.com/
 file-header/lib/templates i did this command mv C.tmpl C.tmpl_original
 __builtin_popcount(x); __builtin_popcountll(x);
 __builtin_clz(x)
