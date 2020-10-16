@@ -59,4 +59,6 @@ string manacher(string s) {
 
     cout << maxPalindrome << "\n";
     return s.substr( (centerIndex - 1 - maxPalindrome) / 2, maxPalindrome);
+    //total palindormes = sum of all (P[i]+1)/2  .... 
+    //abcdedcba is a palindrome with center e, radius 4: but e, ded, cdedc, bcdedcb, and abcdedcba are all palindromes.
 }
