@@ -12,7 +12,7 @@ int main()
     {
         int a;
         cin>>a;
-        int p=lower_bound(v.begin(),v.end(),a)-v.begin(); //pos of a in vector
+        int p=lower_bound(v.begin(),v.end(),a)-v.begin(); //pos of a in vector  //use upperbound for longest non decreasing subseq
         if(p<SZ(v)) v[p]=a;
         else v.pb(a);
     }
