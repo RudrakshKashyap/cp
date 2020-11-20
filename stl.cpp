@@ -87,3 +87,9 @@ int main()
     std::cout<<decimal<<"\n";
     return 0;
 }
+
+
+for(i = 1; i <= n; i++)
+    for(j = 1; j <= m; j++)
+        cout << a[i][j] << " \n"[j == m];
+And here is the reason: " \n" is a char*, " \n"[0] is ' ' and " \n"[1] is '\n'.
