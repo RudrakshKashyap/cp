@@ -30,3 +30,25 @@ rep(i,m)
     int p=fi(x),q=fi(y);
     T[p]=q;
 }
+
+
+int dsu[maxn]; //initialize with -1
+int components = n;
+int find(int x)
+{
+    // When dsu[x] < 0, x is a root and -dsu[x] is its tree size. When dsu[x] >= 0, dsu[x] is x's parent.
+    return dsu[x] < 0 ? x : dsu[x] = find(dsu[x]);
+}
+int get_size(int x)
+{
+    return -dsu[find(x)];
+}
+bool join(int x, int y)
+{
+    int p = find(x), q = find(y);
+    if(p == q) return;
+    if (-dsu[p] < -dsu[q]) swap(p, q);
+    dsu[p] += dsu[q];  //merging small set into bigger set
+    dsu[q] = p; //making p as q's parent
+    //components--;
+}
