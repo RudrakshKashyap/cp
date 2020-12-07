@@ -1,3 +1,4 @@
+http://www.numbertheory.org/php/squareroot.html
 __builtin_popcount(x);
 __builtin_popcountll(x);
 __builtin_clz(x)
