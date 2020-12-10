@@ -1,8 +1,8 @@
 binary lifting
 
 const int maxn = 1e5 + 5;
-int f[maxn][logN], depth[maxn];
 const int logN = 20;
+int p[maxn][logN], depth[maxn];
 
 //this code for dfs is only for tree, you should use bool visited array for graph
 void dfs(int v, int par, int d)
