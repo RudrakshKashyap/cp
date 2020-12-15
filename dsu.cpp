@@ -46,9 +46,10 @@ int get_size(int x)
 bool join(int x, int y)
 {
     int p = find(x), q = find(y);
-    if(p == q) return;
+    if(p == q) return 0;
     if (-dsu[p] < -dsu[q]) swap(p, q);
     dsu[p] += dsu[q];  //merging small set into bigger set
     dsu[q] = p; //making p as q's parent
     //components--;
+    return 1;
 }
