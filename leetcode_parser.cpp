@@ -1,7 +1,7 @@
 vector<vector<int>> vec2d(string s)
 {
     // s = [[1,2,3],[44,5,62]]
-    cin >> s;
+    // cin >> s;
     vector<string> v;
     vector<vector<int>> mat;
     stringstream ss(s);
