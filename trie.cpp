@@ -125,3 +125,9 @@ public:
  * bool param_2 = obj->search(word);
  * bool param_3 = obj->startsWith(prefix);
  */
+
+
+////////////////////////////
+https://codeforces.com/blog/entry/11080 - check 5th useful link
+http://www.opensource.apple.com/source/llvmgcc42/llvmgcc42-2336.9/libstdc++-v3/testsuite/ext/pb_ds/example/trie_prefix_search.cc
+
