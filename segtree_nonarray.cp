@@ -75,7 +75,7 @@ const int maxn = 1e9 + 2;
  
 struct node
 {
-    int val;
+    ll val;
     struct node *left;
     struct node *right;
     node() : val(0), left(NULL), right(NULL){};
@@ -90,7 +90,7 @@ void update(node* n, int start, int end, int l, int r, int val)
         return;
     }
     int mid = (start + end)/2;
-    int p1 = 0, p2 = 0;
+    ll p1 = 0, p2 = 0;
     if(r <= mid)
     {
         if(n->left == NULL) n->left = new node();
@@ -114,12 +114,12 @@ void update(node* n, int start, int end, int l, int r, int val)
     return;
 }
  
-int query(node* n, int start, int end, int l, int r)
+ll query(node* n, int start, int end, int l, int r)
 {
     if(n == NULL or r < start or end < l) return 0;
     if(l <= start and end <= r) return n->val;
     int mid = (start + end)/2;
-    int p1 = query(n->left, start, mid, l, r);
-    int p2 = query(n->right, mid+1, end, l, r);
+    ll p1 = query(n->left, start, mid, l, r);
+    ll p2 = query(n->right, mid+1, end, l, r);
     return p1+p2;
 }
