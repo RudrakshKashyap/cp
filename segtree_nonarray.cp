@@ -53,6 +53,19 @@ void update(node* n, int i, int val)
     }
 }
 
+ll query(node* n, int l, int r)
+{
+    if(r < n->l || n->r < l) return 0;
+    if(l <= n->l && n->r <= r) return n->freq;
+
+    node* left = n->left;
+    node* right = n->right;
+
+    ll p1 = query(left, l, r);
+    ll p2 = query(right, l, r);
+    return (p1+p2);
+}
+
 node* root = newNode(0, n-1);
 print(root->odmax);
 update(root,idx, val); //update(root,l,A[r]);
