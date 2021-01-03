@@ -5,7 +5,7 @@
 
 
 const int maxN = 100001;
-int tree[4*maxN] , lazy[4*maxN];
+int st[4*maxN] , lazy[4*maxN];
 
 void build(int node, int start, int end, int A[])   //build(1,0,n-1,a);
 {
@@ -95,7 +95,7 @@ int query(int node, int start, int end, int l, int r)
     if(l <= start and end <= r)
     {
         // range represented by a node is completely inside the given range
-        return tree[node];
+        return st[node];
     }
     // range represented by a node is partially inside and partially outside the given range
     int mid = (start + end) / 2;
