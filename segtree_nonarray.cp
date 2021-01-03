@@ -75,10 +75,10 @@ const int maxn = 1e9 + 2;
  
 struct node
 {
-    ll val;
+    ll val, lazy;
     struct node *left;
     struct node *right;
-    node() : val(0), left(NULL), right(NULL){};
+    node() : val(0), lazy(0), left(NULL), right(NULL){};
 };
  
 void update(node* n, int start, int end, int l, int r, int val)
@@ -115,11 +115,83 @@ void update(node* n, int start, int end, int l, int r, int val)
 }
  
 ll query(node* n, int start, int end, int l, int r)
-{
+{   
     if(n == NULL or r < start or end < l) return 0;
+    
+    if(n->lazy != 0)
+    {
+        ll dx = n->lazy;
+        n->lazy = 0;
+		n->val += dx * (end - start + 1);
+        // n->val += dx;
+ 
+		if(start != end)
+        {
+            if(n->left == NULL) n->left = new node();
+            if(n->right == NULL) n->right = new node();
+            n->left->lazy += dx, n->right->lazy += dx;
+        }
+    }
     if(l <= start and end <= r) return n->val;
     int mid = (start + end)/2;
     ll p1 = query(n->left, start, mid, l, r);
     ll p2 = query(n->right, mid+1, end, l, r);
     return p1+p2;
+}
+
+/*with lazy update*/
+void update(node* n, int start, int end, int l, int r, int val)
+{
+    if(n->lazy != 0)
+    {
+        ll dx = n->lazy;
+        n->lazy = 0;
+		n->val += dx * (end - start + 1);
+        // n->val += dx;
+ 
+		if(start != end)
+        {
+            if(n->left == NULL) n->left = new node();
+            if(n->right == NULL) n->right = new node();
+            n->left->lazy += dx, n->right->lazy += dx;
+        }
+    }
+ 
+    if(r < start or end < l) return;
+    if(l <= start and end <= r)
+    {
+        n->val += val;
+        if(start != end)
+        {
+            if(n->left == NULL) n->left = new node();
+            if(n->right == NULL) n->right = new node();
+            n->left->lazy += val;
+            n->right->lazy += val;
+        }
+        return;
+    }
+ 
+    int mid = (start + end)/2;
+    ll p1 = 0, p2 = 0; //initialize with 1e9 if returning min
+    if(r <= mid)
+    {
+        if(n->left == NULL) n->left = new node();
+        update(n->left, start, mid, l, r, val);
+    }
+    else if(mid < l)
+    {
+        if(n->right == NULL) n->right = new node();
+        update(n->right, mid+1, end, l, r, val);
+    }
+    else
+    {
+        if(n->left == NULL) n->left = new node();
+        update(n->left, start, mid, l, r, val);
+        if(n->right == NULL) n->right = new node();
+        update(n->right, mid+1, end, l, r, val);
+    }
+    if(n->left) p1 = n->left->val;
+    if(n->right) p2 = n->right->val;
+    n->val = p1 + p2;
+    return;
 }
