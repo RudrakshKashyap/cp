@@ -8,6 +8,8 @@ struct node
  
 void update(node* n, int start, int end, int l, int r, int val)
 {
+    if(r < start or end < l) return;
+    
     if(n->left == NULL) n->left = new node();
     if(n->right == NULL) n->right = new node();
  
@@ -16,11 +18,9 @@ void update(node* n, int start, int end, int l, int r, int val)
 //         ll dx = n->lazy;
 //         n->lazy = 0;
 //         n->val += dx;
- 
-// 	if(start != end) n->left->lazy += dx, n->right->lazy += dx;
+//         if(start != end) n->left->lazy += dx, n->right->lazy += dx;
 //     }
  
-    if(r < start or end < l) return;
     if(l <= start and end <= r)
     {
         n->val += val;
@@ -45,7 +45,7 @@ ll query(node* n, int start, int end, int l, int r)
 //         n->lazy = 0;
 //         n->val += dx;
  
-// 	if(start != end) n->left->lazy += dx, n->right->lazy += dx;
+//         if(start != end) n->left->lazy += dx, n->right->lazy += dx;
 //     }
  
     if(l <= start and end <= r) return n->val;
