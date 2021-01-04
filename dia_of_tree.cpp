@@ -45,3 +45,36 @@ int main()
 	
 	return 0;
 }
+
+/////////////////////////////////////////////////////
+
+const int maxn = 2e5;
+VI g[maxn];
+int far, far_dist, dist[maxn];
+
+void dfs(int u, int p, int d)
+{
+    amax(dist[u], d);
+    if(amax(far_dist, d)) far = u;  //calculating farthest node form root
+    for(int v : g[u])
+    {
+        if(v == p) continue;
+        dfs(v, u, d+1);
+    }
+}
+
+    int n;
+    cin >> n;
+    rep(i,n-1)
+    {
+        int a, b;
+        cin >> a >> b;
+        a--, b--;
+        g[a].eb(b);
+        g[b].eb(a);
+    }
+    dfs(0, -1, 0);
+    dfs(far, -1, 0); //fartherst node or first end point of diam
+    dfs(far, -1, 0); //2nd end point of diam
+    cout << far_dist << ' ';
+    // rep(i, n) cout << dist[i] << ' ';
