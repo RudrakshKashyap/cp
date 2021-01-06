@@ -11,3 +11,23 @@ void sieve()
                 if(ar[j]==-1)
                     ar[j]=i;
 }
+
+/////////////////////////////
+const int maxn = 1e6;
+int se[maxn+1];
+
+void sieve()
+{
+    se[0] = 1, se[1] = 1;
+    for(int i = 2; i <= maxn; i++)
+    {
+        if(!se[i])
+        {
+            for(int j = i; j <= maxn; j += i)
+            {
+                if(!se[j])
+                    se[j] = i;
+            }
+        }
+    }
+}
