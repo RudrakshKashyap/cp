@@ -1,8 +1,7 @@
-ctrl shift h for adding header not working lol
 factor command on linux
 oeis.org
 https://www.desmos.com/
-file-header/lib/templates i did this command mv C.tmpl C.tmpl_original
+
 
 
 int a = std::numeric_limits<int>::max();
