@@ -14,7 +14,7 @@ vector<int> prefix_function(string s) {
 }
 
 
-int kmp(string p,string t)
+int kmp(string p, string t)
 {
     int ans = 0;
     int M = SZ(p);
@@ -25,7 +25,7 @@ int kmp(string p,string t)
     while(i < N)
     {
         if(p[j] == t[i]) i++, j++;
-        if(j == M) //found pat at idx i-j
+        if(j == M) //found pat at idx i-j (1 based index)
         {
             j = lps[j-1];
             ans++;
