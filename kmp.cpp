@@ -13,26 +13,27 @@ vector<int> prefix_function(string s) {
     return pi;
 }
 
+
 int kmp(string p,string t)
 {
-    int ans=0;
-    int M=SZ(p);
-    int N=SZ(t);
-    VI lps=prefix_function(p);
-    int i=0; //idx for txt
-    int j=0; //idx for pat
-    while(i<N)
+    int ans = 0;
+    int M = SZ(p);
+    int N = SZ(t);
+    VI lps = prefix_function(p);
+    int i = 0; //idx for txt
+    int j = 0; //idx for pat
+    while(i < N)
     {
-        if(p[j]==t[i]) i++,j++;
-        if(j==M) //found pat at idx i-j
+        if(p[j] == t[i]) i++, j++;
+        if(j == M) //found pat at idx i-j
         {
-            j=lps[j-1];
+            j = lps[j-1];
             ans++;
         }
-        else if(i<N && p[j]!=t[i])
+        else if(i < N && p[j] != t[i])
         {
-            if(j==0) i++;
-            else j=lps[j-1];
+            if(j == 0) i++;
+            else j = lps[j-1];
         }
     }
     return ans;
