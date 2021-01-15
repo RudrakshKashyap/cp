@@ -97,3 +97,11 @@ And here is the reason: " \n" is a char*, " \n"[0] is ' ' and " \n"[1] is '\n'.
 	
 ll ceil_div(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b != 0); } --> (a^b) focus on their 32th bit,
 it's written to handel -ve numbers, ceil_div(-5, 2) will give -1 as ans without it
+	
+
+bool ok = any_of(a.begin(), a.end(), [](int x) { return x == 9; });
+bool ok = all_of(a.begin(), a.end(), [](int x) { return x == 9; });
+bool ok = none_of(a.begin(), a.end(), [](int x) { return x == 9; });
+int cnt = count(a.begin(), a.end(), x); //count elements equal to x
+int idx = find(a.begin(), a.end(), x) - a.begin(); //returns the first iterator that compares equal to val, will return a.end() if element not present
+int count_x = count_if(v.begin(), v.end(), [](int a) { return (a >= x); });
