@@ -16,3 +16,67 @@
 	
 	we notice that we now have useless copy of {'101', 4}... in our queue, and when we pop it we will again itreate over neighbours of 4
 	to dilute them, which are already diluted by {'3', 4}
+
+
+
+const int maxn = 5e5;
+vector<PI> g[maxn]; // vertex weight
+ll d[maxn];
+int p[maxn];
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+
+    int n, m;
+    cin >> n >> m;
+    rep(i, m)
+    {
+        int x, y, w;
+        cin >> x >> y >> w;
+        g[x].eb(y, w);
+        // g[y].eb(x, w);
+    }
+
+    fill(&d[0], &d[0] + sizeof(d)/sizeof(ll), 1e18);
+    MS1(p);
+    minpq<pair<ll, int>> q; // dist vertex
+    q.push({d[s] = 0, s});
+    while(!q.empty())
+    {
+        int v = q.top().S;
+        ll d_v = q.top().F;
+        q.pop();
+        if(d_v != d[v]) continue; // to prevent duplicates
+
+        for(auto [to, wei] : g[v])
+        {
+            if(d[v] + (ll) wei < d[to]) // wei is int but adding it to long long
+            {
+                d[to] = d[v] + wei;
+                p[to] = v;
+                q.push({d[to], to});
+            }
+        }
+    }
+
+    if(d[t] == 1e18) print(-1);
+    else
+    {
+        VI path;
+        path.eb(t);
+        int x = t;	//below we have to print d[t]
+        while(p[x] != s)
+		{
+            path.eb(p[x]);
+            x = p[x];
+        }
+        path.eb(s);
+        reverse(all(path));
+        cout << d[t] << ' ' << SZ(path)-1<<'\n';
+        rep(i, SZ(path)-1) print(path[i], path[i+1]);
+    }
+
+    return 0;
+}
