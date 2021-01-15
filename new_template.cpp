@@ -52,6 +52,7 @@ const double pi = acos(-1);
 template<typename T> using minpq = priority_queue<T, vector<T>, greater<T>>;
 
 // oset.insert({x, id++}); for multiset. Better than less_equal<T>,erase won't work & lb work as ub and vice versa
+// https://codeforces.com/blog/entry/11080?#comment-348205
 template<typename T, typename Comp = less<T> >
 using oset = tree<T, null_type, Comp, rb_tree_tag, tree_order_statistics_node_update>;
 
