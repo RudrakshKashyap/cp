@@ -16,7 +16,7 @@ cout.precision(17);
 round(x);
 rotate(vec.begin(), vec.begin() + k, vec.end()); //cyclic left shift of k
 int a = std::numeric_limits<int>::max();
-priority_queue<int,vector<int>,greater<int>> pq ; min heap
+
 string rev = string(str.rbegin(),str.rend());
 
 fill_n((int*)dp, sizeof(dp)/sizeof(int), -(int)1e9);
@@ -65,10 +65,6 @@ a ^= b;
 b ^= a;
 a ^= b;
 
-if (num & 1)
-   cout << "ODD";
-else
-   cout << "EVEN";
 
  Use of strlen() can be avoided by:
 for (i=0; s[i]; i++)
