@@ -7,7 +7,33 @@ function<void(int)> dfs = [&](int u)    // [&] means passing by reference
             dfs(v);
 };
 
+correct
+auto dfs = [&](int u)
+{
+    print(__PRETTY_FUNCTION__);
+    return u;
+};
 
+correct
+                       // return type
+auto dfs = [&](int u) -> int
+{
+    print(__PRETTY_FUNCTION__);
+    return u;
+};
+
+
+wrong
+auto dfs = [&](int u)
+{
+    mark[u] = true;
+    for (auto v : adj[u])
+        if (!mark[v])
+            dfs(v);     //use of dfs before deduction of auto error
+};
+
+
+//https://www.youtube.com/watch?v=9T8A89jgeTI&ab_channel=Computerphile
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0200r0.html
 template<class Fun>
 class y_combinator_result {
