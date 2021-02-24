@@ -101,3 +101,8 @@ bool ok = none_of(a.begin(), a.end(), [](int x) { return x == 9; });
 int cnt = count(a.begin(), a.end(), x); //count elements equal to x
 int idx = find(a.begin(), a.end(), x) - a.begin(); //returns the first iterator that compares equal to val, will return a.end() if element not present
 int count_x = count_if(v.begin(), v.end(), [](int a) { return (a >= x); });
+
+
+vector<int> res(min(v1.size(), v2.size());
+auto lst = set_intersection(all(v1), all(v2), res.begin()); // linear time
+cout << lst - res.begin();
