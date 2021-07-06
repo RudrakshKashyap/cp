@@ -69,12 +69,14 @@ vector<pair<ll, int>> prime_factorize(ll n)
 
         if (n % p == 0)
         {
-            result.emplace_back(p, 0);
+            int exponent = 0;
 
             do {
                 n /= p;
-                result.back().second++;
+                exponent++;
             } while (n % p == 0);
+            
+            result.emplace_back(p, exponent);
         }
     }
 
