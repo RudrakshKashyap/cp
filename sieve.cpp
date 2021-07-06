@@ -15,14 +15,19 @@ void sieve()
 /////////////////////////////
 const int maxn = 1e6;
 int se[maxn+1];
+vector<int> primes;
 
 void sieve()
 {
     se[0] = 1, se[1] = 1;
+    primes = {};
+
     for(int i = 2; i <= maxn; i++)
     {
         if(!se[i])
         {
+            primes.emplace_back(i);
+
             for(int j = i; j <= maxn; j += i)
             {
                 if(!se[j])
@@ -30,4 +35,51 @@ void sieve()
             }
         }
     }
+}
+
+// Prime factorizes n in worst case O(sqrt n / log n). Requires having run `sieve` up to at least sqrt(n).
+// If we've run `sieve` up to at least n, takes O(log n) time.
+vector<pair<ll, int>> prime_factorize(ll n)
+{
+    assert(1 <= n && n <= (ll)maxn * maxn);
+
+    vector<pair<ll,int>> result;
+
+    if (n <= maxn)
+    {
+        while (n != 1)
+        {
+            ll p = se[n];
+            int exponent = 0;
+
+            do {
+                n /= p;
+                exponent++;
+            } while (n % p == 0);
+
+            result.emplace_back(p, exponent);
+        }
+
+        return result;
+    }
+
+    for (ll p : primes)
+    {
+        if (p * p > n) break;
+
+        if (n % p == 0)
+        {
+            result.emplace_back(p, 0);
+
+            do {
+                n /= p;
+                result.back().second++;
+            } while (n % p == 0);
+        }
+    }
+
+    if (n > 1)
+        result.emplace_back(n, 1);
+
+    return result;
 }
