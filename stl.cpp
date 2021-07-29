@@ -103,6 +103,11 @@ int idx = find(a.begin(), a.end(), x) - a.begin(); //returns the first iterator 
 int count_x = count_if(v.begin(), v.end(), [](int a) { return (a >= x); });
 
 
+class player : public Entity	//will enherit from enitity class, whatever is public in there
+{
+};
+
+
 vector<int> res(min(v1.size(), v2.size());
 auto lst = set_intersection(all(v1), all(v2), res.begin()); // linear time
 cout << lst - res.begin();
