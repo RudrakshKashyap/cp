@@ -146,7 +146,7 @@ class Employee:
         self.first = first
         self.last = last
 
-    @property           #now you can call email by print(emp.email) like an attribute, otherwith you would write like this print(emp.email())
+    @property           #now you can call email by print(emp.email) like an attribute, otherwith you would write like this print(emp.email()), which could've be a problem if otherpeople already using the class, then they have to change thier code for printing
     def email(self):
         return '{}.{}@email.com'.format(self.first, self.last)
 
