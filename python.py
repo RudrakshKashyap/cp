@@ -138,6 +138,47 @@ mgr_1.print_emps()
 
 
 
+
+#property decorators, Getters, Setters, and Deleters
+class Employee:
+
+    def __init__(self, first, last):
+        self.first = first
+        self.last = last
+
+    @property           #now you can call email by print(emp.email) like an attribute, otherwith you would write like this print(emp.email())
+    def email(self):
+        return '{}.{}@email.com'.format(self.first, self.last)
+
+    @property
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+    
+    @fullname.setter        # so that you can write like  emp.fullname = 'blah blah' , notice you are not passing, you are setting
+    def fullname(self, name):
+        first, last = name.split(' ')
+        self.first = first
+        self.last = last
+        
+        
+    @fullname.deleter
+    def fullname(self):
+        print('Delete Name!')
+        self.first = None
+        self.last = None
+
+
+emp_1 = Employee('John', 'Smith')
+emp_1.fullname = "Corey Schafer"
+
+print(emp_1.first)
+print(emp_1.email)
+print(emp_1.fullname)
+
+del emp_1.fullname
+
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
