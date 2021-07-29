@@ -41,16 +41,29 @@ class Employee:
     def set_raise_amt(cls, amount):
         cls.raise_amt = amount
 
-    @classmethod
+    @classmethod                                #method of class, takes cls as first argument
     def from_string(cls, emp_str):
         first, last, pay = emp_str.split('-')
         return cls(first, last, pay)
 
-    @staticmethod
+    @staticmethod                               #doesnt care about class
     def is_workday(day):
         if day.weekday() == 5 or day.weekday() == 6:
             return False
         return True
+    
+    
+    def __repr__(self): #special method of representation, useful when we print(emp_1), otherwite it would print <__main__ Emloy object at 483902x832>
+        return "Employee('{}', '{}', {})".format(self.first, self.last, self.pay)
+
+    def __str__(self): #for ease of read for end user, same as repr
+        return '{} - {}'.format(self.fullname(), self.email)
+
+    def __add__(self, other):   #arthmetic special operators, there are many like this
+        return self.pay + other.pay
+
+    def __len__(self):
+        return len(self.fullname())
 
 
 emp_1 = Employee('Corey', 'Schafer', 50000)
