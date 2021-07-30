@@ -180,6 +180,41 @@ del emp_1.fullname
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+shallow copy # only copy 1 level deep
 
+        l1                  l2
+        0 --->['a', 'b']<--- 0
+        0 --->['a', 'b']<--- 0
+        0 --->['a', 'b']<--- 0
+        0 --->['a', 'b']<--- 0
+        0 --->['a', 'b']<--- 0
 
-
+after performin l2[1] = ['c', 'd']
+        
+        l1                  l2
+        0 --->['a', 'b']<--- 0
+        0 --->['a', 'b']     0 --->['c', 'd']
+        0 --->['a', 'b']<--- 0
+        0 --->['a', 'b']<--- 0
+        0 --->['a', 'b']<--- 0
+        
+ but if we perform l2[1][1] (accesing 2 level deep) then it will follow the pointer and change both list
+        l1                  l2
+        0 --->['a', 'b']<--- 0
+        0 --->['a', 'c']<--- 0
+        0 --->['a', 'b']<--- 0
+        0 --->['a', 'b']<--- 0
+        0 --->['a', 'b']<--- 0
+        
+# importing copy module
+import copy
+  
+# initializing list 1 
+li1 = [1, 2, [3,5], 4]
+  
+  
+# using copy for shallow copy  
+li2 = copy.copy(li1)         li2 = li1.copy()       lst2 = lst1[:]
+  
+# using deepcopy for deepcopy  
+li3 = copy.deepcopy(li1) 
