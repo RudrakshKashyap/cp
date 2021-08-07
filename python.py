@@ -6,6 +6,9 @@ a = list( map( int, input("\nEnter the numbers : ").strip().split()  ) ) [:n]
 
 lst1 = [int(item) for item in input("Enter the list items : ").split()]
 
+for x, y in thisdict.items():
+  print(x, y)
+
 
 dir() is a powerful inbuilt function in Python3, which returns list of the attributes and methods of any object (say functions , modules, strings, lists, dictionaries etc.)
 dir(object)
