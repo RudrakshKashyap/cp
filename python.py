@@ -8,6 +8,9 @@ lst1 = [int(item) for item in input("Enter the list items : ").split()]
 
 for x, y in thisdict.items():
   print(x, y)
+  
+for num1, num2 in zip(sorted(n, reverse = True), sorted(n)):
+        new_n += str(ord(num1) - ord(num2))
 
 
 dir() is a powerful inbuilt function in Python3, which returns list of the attributes and methods of any object (say functions , modules, strings, lists, dictionaries etc.)
