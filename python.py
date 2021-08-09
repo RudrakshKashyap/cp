@@ -5,6 +5,7 @@ n = int(input("Enter number of elements : "))
 a = list( map( int, input("\nEnter the numbers : ").strip().split()  ) ) [:n]   
 
 lst1 = [int(item) for item in input("Enter the list items : ").split()]
+list(map(int.__sub__, a, b))
 
 for x, y in thisdict.items():
   print(x, y)
