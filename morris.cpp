@@ -30,3 +30,11 @@ while(cur)
         cur = cur->right;
     }
 }
+
+
+
+// post order
+https://stackoverflow.com/questions/36384599/can-we-use-morris-traversal-for-postorder
+
+//pre order
+https://www.geeksforgeeks.org/morris-traversal-for-preorder/
