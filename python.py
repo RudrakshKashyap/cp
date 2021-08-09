@@ -17,6 +17,9 @@ dir() is a powerful inbuilt function in Python3, which returns list of the attri
 dir(object)
 help(object)
 
+global x
+nonlocal x
+
 
 // xrange, genreators
 
