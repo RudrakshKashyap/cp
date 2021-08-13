@@ -1,3 +1,26 @@
+#include <iostream>
+#include <utility>
+#include <boost/multiprecision/cpp_int.hpp>
+ 
+using boost::multiprecision::cpp_int;
+using namespace std;
+int main()
+{
+    cpp_int a,sum;
+    cin >> a;
+    sum=0;
+    while(a>0){
+        sum+=a%10;
+        a/=10;        
+    }
+    cout << sum;
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////
+
+
 int64_t floor_div(int64_t a, int64_t b) {
     return a / b - ((a ^ b) < 0 && a % b != 0);
 }
