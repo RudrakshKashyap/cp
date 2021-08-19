@@ -14,6 +14,10 @@ for x, y in thisdict.items():
   
 for num1, num2 in zip(sorted(n, reverse = True), sorted(n)):
         new_n += str(ord(num1) - ord(num2))
+  
+  
+# sorting string -- sorted fucnction return sorted list
+s = ''.join(sorted(str, key, reverse = True))  #key is custom comp function
 
 
 dir() is a powerful inbuilt function in Python3, which returns list of the attributes and methods of any object (say functions , modules, strings, lists, dictionaries etc.)
