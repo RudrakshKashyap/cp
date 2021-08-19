@@ -1,5 +1,9 @@
  chr(number) : : This function converts number to its corresponding ASCII character.
  ord('X') //will give ascii value
+ 
+ for idx, val in enumerate(ints):
+    print(idx, val)
+   
 # number of elements
 n = int(input("Enter number of elements : "))
 
