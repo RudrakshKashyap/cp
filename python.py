@@ -227,6 +227,8 @@ after performin l2[1] = ['c', 'd']
         0 --->['a', 'b']<--- 0
         0 --->['a', 'b']<--- 0
         
+print(l1[0] is l2[0]) #to check if both refer to same object
+        
 # importing copy module
 import copy
   
