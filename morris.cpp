@@ -1,5 +1,7 @@
 //inorder    left root right
 
+https://www.youtube.com/watch?v=9ChGER8A3Ps&t=343s
+
 Tree* cur = root;
 
 while(cur)
