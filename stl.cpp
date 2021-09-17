@@ -111,3 +111,7 @@ class player : public Entity	//will enherit from enitity class, whatever is publ
 vector<int> res(min(v1.size(), v2.size());
 auto lst = set_intersection(all(v1), all(v2), res.begin()); // linear time
 cout << lst - res.begin();
+		
+
+int &a = b; //setting a address to b address, here type of a is an integer so basically we have 2 variable names for same meomory address
+int *a = &b; // here the type of a is pointer
