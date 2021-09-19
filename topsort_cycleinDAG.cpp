@@ -1,3 +1,6 @@
+Time Complexity: O(V+E).
+Auxiliary Space: O(V). 
+
 VI g[27];
 bool v[27];
 bool restack[27];
@@ -74,30 +77,29 @@ int main()
 https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/ ------- khan's algo for topsort
 in this we add vertix with indegree=0 to queue and then we decrease their neighbour degree by 1 and again we add vertix
 with indegree=0 to queue.
-    
-this one is better than dfs, we can also detect cycle using this method
 
-    queue<int> q;
-    for(int i = 0; i < n; i++) if(in[i] == 0) q.push(i);
 
-    int cnt = 0;        // count of visited vertices
-    vector<int> top;
-    while(q.size())
+queue<int> q;
+for(int i = 0; i < n; i++) if(in[i] == 0) q.push(i);
+
+int cnt = 0;        // count of visited vertices
+vector<int> top;
+while(q.size())
+{
+    int v = q.front();
+    q.pop();
+    top.pb(v);
+
+    for(auto x : g[v])
     {
-        int v = q.front();
-        q.pop();
-        top.pb(v);
-
-        for(auto x : g[v])
-        {
-            in[x]--;
-            if(in[x] == 0) q.push(x);
-        }
-
-        cnt++;
+        in[x]--;
+        if(in[x] == 0) q.push(x);
     }
 
-    if(cnt != n) cout < "is cyclic" << '\n';
+    cnt++;
+}
+
+if(cnt != n) cout < "is cyclic" << '\n';
     
     
     
