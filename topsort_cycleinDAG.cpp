@@ -74,6 +74,12 @@ int main()
 https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/ ------- khan's algo for topsort
 in this we add vertix with indegree=0 to queue and then we decrease their neighbour degree by 1 and again we add vertix
 with indegree=0 to queue.
+    
+this one is better than dfs, we can also detect cycle using this method
+    
+    
+    
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 https://www.geeksforgeeks.org/lexicographically-smallest-topological-ordering/?ref=rp
 use set instead of queue for lexicographical topsort
