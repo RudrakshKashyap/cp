@@ -108,5 +108,10 @@ if(cnt != n) cout < "is cyclic" << '\n';
 https://www.geeksforgeeks.org/lexicographically-smallest-topological-ordering/?ref=rp
 use set instead of queue for lexicographical topsort
 
+int v = *s.begin();
+s.erase(s.begin());
+
+
+
 ///////// i have not read this yet
 https://www.geeksforgeeks.org/all-topological-sorts-of-a-directed-acyclic-graph/
