@@ -1,5 +1,5 @@
 vector<bool> mark(Alp);
-function<void(int)> dfs = [&](int u)    // [&] means passing by reference
+function<void(int)> dfs = [&](int u)    // [&] means capturing by reference
 {
     mark[u] = true;
     for (auto v : adj[u])
@@ -10,7 +10,7 @@ function<void(int)> dfs = [&](int u)    // [&] means passing by reference
 Note that mark is a vector, because if we want to use array like int mark[len] then len should be given before compiling. we cant use variable size
 
 A lambda with empty capture clause [ ] can access only those variable which are local to it, i.e. you cant access mark[u] array in dfs or other variable which are declared in main
-[=] means passing by value
+[=] means capturing by value
 [a, &b] : capture a by value and b by reference
 
 
