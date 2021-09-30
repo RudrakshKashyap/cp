@@ -31,7 +31,7 @@ do {
 //213
 .. till //321 after that it will return false
 
-
+//https://www.geeksforgeeks.org/stdstringerase-in-cpp/
 strchr(str,'a'); used for finding occurrence of a character in a string.
 str = to_string(a);
 a = stoi(str);
@@ -73,6 +73,7 @@ for (i=0; s[i]; i++)
 loop breaks when the character array ends.
 
 
+bitset size must be declare at compile time
 bitset<5> x ("11000");
 bitset<5> y = stoi("11000");
 If you want to print, say, last 20 bits of a numbercout << bitset<20>(n) << "\n";
