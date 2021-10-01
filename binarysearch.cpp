@@ -9,6 +9,8 @@ while(r - l > 1)
     if(condition) l = mid;
     else r = mid;
 }
+here l always satisfy condition while r does not
+You can easily prove that l = k and r = k + 1 by the end of the while loop. In this case no worries about whether to increase m by 1 or not.
 
 
 
