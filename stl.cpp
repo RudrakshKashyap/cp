@@ -118,3 +118,27 @@ cout << lst - res.begin();
 
 int &a = b; //setting a address to b address, here type of a is an integer so basically we have 2 variable names for same meomory address
 int *a = &b; // here the type of a is pointer
+                
+
+                
+                
+                
+A destructor is a special member function that is called when the lifetime of an object ends. The purpose of the destructor is to free the resources that the object may have acquired during its lifetime.
+                
+struct GpuTimer
+{
+      cudaEvent_t start;
+      cudaEvent_t stop;
+ 
+      GpuTimer()    //constructor
+      {
+            cudaEventCreate(&start);
+            cudaEventCreate(&stop);
+      }
+ 
+      ~GpuTimer()       //destructor    --> helpful to free memory if declared using maloc
+      {
+            cudaEventDestroy(start);
+            cudaEventDestroy(stop);
+      }
+};
