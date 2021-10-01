@@ -1,3 +1,17 @@
+//https://codeforces.com/blog/entry/9901?#comment-153756
+Well, imagine you an array [0..n - 1] and let us have an invariant:
+some function F which returns True for every a[i] as an argument for any i from [0..k] and False for every a[j] for j from [k + 1..n - 1].
+Then my binary search which actually finds the border between these two parts of the array looks the following way:
+int l = -1, r = n, mid;
+while(r - l > 1)
+{
+    mid = (l + r) / 2;
+    if(condition) l = mid;
+    else r = mid;
+}
+
+
+
 int l=0,r=n-1;
 while(l<=r)
 {
