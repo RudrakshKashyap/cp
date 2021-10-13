@@ -118,6 +118,13 @@ cout << lst - res.begin();
 
 int &a = b; //setting a address to b address, here type of a is an integer so basically we have 2 variable names for same meomory address
 int *a = &b; // here the type of a is pointer
+		
+vector.pop_back()
+vector.pop_front()
+vector.erase(position)
+// or
+vector.erase(left,right) // *([left,right))*
+remove(v.begin(),v.end(),val) // return itreator to the new end of vector
                 
 
                 
