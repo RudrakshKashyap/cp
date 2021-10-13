@@ -25,7 +25,8 @@ fill_n((int*)dp, sizeof(dp)/sizeof(int), -(int)1e9);
 string s="123"
 do {
 	cout<<s<<'\n';
-} while(next_permutation(s.begin(),s.end()));
+} while(next_permutation(s.begin(),s.end()));	//only increasing permutation
+while(prev_permutation(s.begin(),s.end()));
 //123
 //132
 //213
