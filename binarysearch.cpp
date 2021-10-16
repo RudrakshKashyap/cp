@@ -5,7 +5,7 @@ Then my binary search which actually finds the border between these two parts of
 int l = -1, r = n, mid;
 while(r - l > 1)
 {
-    mid = (l + r) / 2;
+    mid = l + (r - l)/2;
     if(condition) l = mid;
     else r = mid;
 }
