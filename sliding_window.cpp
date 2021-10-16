@@ -29,7 +29,7 @@ rep(i, n)
     sum += a[i];
     while(sum >= k)
     {
-        if(sum == k) ans++;
+        if(sum == k) ans = i - l + 1;
         sum -= a[l++];
     }
 }
