@@ -18,3 +18,18 @@ while(r <= n)
         l++;
     }
 }
+
+
+
+
+//////////////////////////////
+int l = 0;
+rep(i, n)
+{
+    sum += a[i];
+    while(sum >= k)
+    {
+        if(sum == k) ans++;
+        sum -= a[l++];
+    }
+}
