@@ -1,6 +1,42 @@
 // __int128 for big integers with c++ 17 (64) (upto 10^35 or something)
+__int128 read() {
+    __int128 x = 0, f = 1;
+    char ch = getchar();
+    while (ch < '0' || ch > '9') {
+        if (ch == '-') f = -1;
+        ch = getchar();
+    }
+    while (ch >= '0' && ch <= '9') {
+        x = x * 10 + ch - '0';
+        ch = getchar();
+    }
+    return x * f;
+}
+void print(__int128 x) {
+    if (x < 0) {
+        putchar('-');
+        x = -x;
+    }
+    if (x > 9) print(x / 10);
+    putchar(x % 10 + '0');
+}
+https://codeforces.com/blog/entry/75044#comment-747732
+ __int128 isn't handled by cin and cout by default. But you can make your own << operator for I/O streams (although I don't have any resources regarding how to do that).
 
+istream& operator >> (istream& in, __int128& num) {
+  // Construct the answer in num, the same as read(num) from the blog, but using 
+  // istream::get, istream::peek
+  return in;
+}
 
+ostream& operator << (ostream& out, __int128 num) {
+  // print the answer by either:
+  //   - char-by-char using ostream::put
+  //   - converting num to string and doing out << res_string
+  return out;
+}
+	 
+	 
 #include <iostream>
 #include <utility>
 #include <boost/multiprecision/cpp_int.hpp>
