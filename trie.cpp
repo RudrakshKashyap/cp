@@ -1,7 +1,7 @@
 https://codeforces.com/blog/entry/55782?#comment-395139
 
 const int maxx=100005;
-int trie[maxx][26], finish[maxx];
+int trie[maxx+1][26], finish[maxx];
 int nxt = 1;
 void Add (string s){
     int node = 0;
@@ -30,7 +30,7 @@ int Find (string s) {
 
 ////////////////////////////////////////////////////////////////// with delete
 const int maxx=100005;
-int trie[maxx][26], finish[maxx], freq[maxx];
+int trie[maxx+1][26], finish[maxx], freq[maxx+1];
 int nxt = 1;
 void Add (string s){
     int node = 0;
