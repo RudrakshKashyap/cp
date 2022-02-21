@@ -15,3 +15,9 @@ while(getline(t, s))
 {
     cout << s << endl;
 }
+
+
+
+
+getline takes input "till" new line, -- not including new line
+if it's written "untill" instead of "till" i.e. -- including new line
