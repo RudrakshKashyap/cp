@@ -42,43 +42,6 @@ auto dfs = [&](int u)
 
 
 
-////custom comp for pq
-
-bool Compare(Node a, Node b);
-                                             //passing the type         //passing the actual function
-std::priority_queue<Node, std::vector<Node>, decltype(&Compare)> openSet(Compare);
-
-struct My_less
-{
-    auto operator()( int const a, int const b ) const
-        -> bool
-    { return a < b; }
-};
-
-std::priority_queue< int, std::vector<int>, My_less > pq;
-
-
-
-
-//can use struct also
-class comp{
-public:
-    int* b;
-    comp(vector<int>& a)
-    {
-        b = &a[0];
-    }
-    bool operator()(ar<int,2> o1, ar<int,2> o2)
-    {
-        return b[o1[0]]*b[o2[1]] > b[o2[0]]*b[o1[1]];
-    }
-};
-
-priority_queue<ar<int,2>, vector<ar<int,2>>, comp> pq(arr);
-
-
-
-
 
 
 
