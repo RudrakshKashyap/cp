@@ -1,3 +1,5 @@
+http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3424.pdf
+
 vector<bool> mark(Alp);
 function<void(int)> dfs = [&](int u)    // [&] means capturing by reference
 {
