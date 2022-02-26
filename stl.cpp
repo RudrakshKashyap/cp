@@ -127,7 +127,7 @@ vector.erase(position)
 vector.erase(left,right) // *([left,right))*
 remove(v.begin(),v.end(),val) // return itreator to the new end of vector
                 
-
+stl list c++ https://www.geeksforgeeks.org/list-cpp-stl/
                 
                 
                 
