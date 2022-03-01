@@ -15,6 +15,15 @@ std::priority_queue< int, std::vector<int>, My_less > pq;
 
 
 
+0 1 2 3 4 ----> will be arraage like(from bottom to top in priority queue)
+				      4		
+				  2     3
+				0   1
+
+
+
+
+
 
 //can use struct also
 class comp{
