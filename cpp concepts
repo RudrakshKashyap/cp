@@ -1,0 +1,2 @@
+1. adding 1 in a binary string= 10011 + 1= setting first 0 from last as 1 and then setting trailing 1's as 0 = 10100
+2. subtracting 1 in a binary string = 10100 - 1 = setting first 1 from last as 0 and then setting trailing 0's as 1 = 10011
