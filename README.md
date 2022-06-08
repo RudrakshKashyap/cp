@@ -1,1 +1,1 @@
-# cp sucks pls dont do it
+# Why are we still here, just to suffer!
