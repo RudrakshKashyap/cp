@@ -11,6 +11,7 @@ setw(5) ____1 //mimimum width 5
 setfill('f') ffff1
 setprecision(10)
 fixed	// 0.100
+cout.setf(ios::fixed);
 scientific // 1.000e-001
 cout.precision(17);
 round(x);
