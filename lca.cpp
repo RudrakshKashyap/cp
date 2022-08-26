@@ -1,4 +1,5 @@
 binary lifting
+//https://youtu.be/oib-XsjFa-M?t=331
 
 const int maxn = 1e5 + 5;
 const int logN = 20;
