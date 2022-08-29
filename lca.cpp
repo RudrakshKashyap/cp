@@ -94,7 +94,7 @@ int query(int l, int r)    //these l and r are inclusive [l,r]
 
 void dfs(int v, int p, int d)
 {
-    tin[v] = tim;  //visiting node v at time tim or FAI
+    tin[v] = tim;  //visiting node v at time tim or FAI (first appearing index)
     dep[tim] = d;   //depth array corrosponding to the euler array
     euler.eb(v);
     tim++;
