@@ -55,7 +55,7 @@ int LCA (int u, int v) {
 const int k = ;   //log2 floor of 2*maxn-1
 const int maxn = 2e5;  //maxn
 
-int n;  //size of arr  == 2*maxn - 1
+int N;  //size of arr  == 2*maxn - 1
 long long table[2*maxn - 1][k + 1]; // k + 1 because we need to access table[r][MAXLOG]
 // 2*maxn because we need exactly 2*maxn - 1 elements to store euler tour
 int numlog[2*maxn];
@@ -69,15 +69,15 @@ VI g[maxn];
 void build()
 {
     numlog[1] = 0;
-    for (int i = 2; i <= n; i++)
+    for (int i = 2; i <= N; i++)
         numlog[i] = numlog[i / 2] + 1;
 
     // build Sparse Table
-    for(int i = 0; i < n; i++)
+    for(int i = 0; i < N; i++)
         table[i][0] = i;
-    for(int j = 1; j <= numlog[n]; j++)
+    for(int j = 1; j <= numlog[N]; j++)
     {
-        for(int i = 0; i <= n - (1 << j); i++)
+        for(int i = 0; i <= N - (1 << j); i++)
         {
             if(dep[table[i][j - 1]] > dep[ table[i + (1 << (j - 1))][j - 1] ]) table[i][j] = table[i + (1 << (j - 1))][j - 1];
             else table[i][j] = table[i][j - 1];
