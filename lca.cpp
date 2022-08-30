@@ -55,7 +55,7 @@ int LCA (int u, int v) {
 const int k = ;   //log2 floor of 2*maxn-1
 const int maxn = 2e5;  //maxn
 
-int N;  //size of arr  == 2*maxn - 1
+int N;  //size of arr  == 2*n - 1
 long long table[2*maxn - 1][k + 1]; // k + 1 because we need to access table[r][MAXLOG]
 // 2*maxn because we need exactly 2*maxn - 1 elements to store euler tour
 int numlog[2*maxn];
