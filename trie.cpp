@@ -131,3 +131,60 @@ public:
 https://codeforces.com/blog/entry/11080 - check 5th useful link
 http://www.opensource.apple.com/source/llvmgcc42/llvmgcc42-2336.9/libstdc++-v3/testsuite/ext/pb_ds/example/trie_prefix_search.cc
 
+
+
+
+/////////////////////////////////////////////////// ---not tested
+class Trie {
+    struct Trienode
+    {
+        Trienode* next[26];
+        bool is_word = false;
+        int freq = 0;
+    };
+public:
+    Trienode *root;
+
+
+    /** Initialize your data structure here. */
+    Trie() {
+        root = new Trienode();
+        root -> freq = 1;
+    }
+
+    /** Inserts a word into the trie. */
+    void insert(string s, int d) {
+        Trienode* p = root;
+        for(int i = 0; i < s.size(); i++)
+        {
+            if(p -> next[s[i] - 'a'] == NULL)
+                p -> next[s[i] - 'a'] = new Trienode();
+
+            p = p -> next[s[i] - 'a'];
+            p -> freq += d;
+        }
+        p -> is_word = true;
+    }
+
+    /** Returns if the word is in the trie. */
+    bool search(string word) {
+        Trienode* p = root;
+        for(int i = 0; i < word.size() && p != NULL; i++)
+        {
+            if(p -> next[word[i] - 'a'] != NULL && p -> next[word[i] - 'a'] -> freq > 0)
+                p = p -> next[word[i] - 'a'];
+            else return false;
+        }
+
+        return p != NULL && p -> is_word;
+    }
+
+    /** Returns if there is any word in the trie that starts with the given prefix. */
+    bool startsWith(string word) {
+        Trienode* p = root;
+        for(int i = 0; i < word.size() && p != NULL && p -> freq > 0; i++)
+                p = p -> next[word[i] - 'a'];
+
+        return p != NULL && p -> freq > 0;
+    }
+};
