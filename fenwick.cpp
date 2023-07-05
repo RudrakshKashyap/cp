@@ -5,7 +5,7 @@ The algorithms for BIT require extracting the last bit of a number, so we need a
 
 Integer -num is equal to (a1b)¯ + 1 = a¯0b¯ + 1. b consists of all zeroes, so b¯ consists of all ones. Finally we have
 
--num = (a1b)¯ + 1 = a¯0b¯ + 1 = a¯0(0…0)¯ + 1 = ¯0(1…1) + 1 = a¯1(0…0) = a¯1b.
+-num = (a1b)¯ + 1 = a¯0b¯ + 1 = a¯0(0…0)¯ + 1 = a¯0(1…1) + 1 = a¯1(0…0) = a¯1b.
 
 Now, we can easily isolate the last bit of num, using the bitwise operator AND (in C++, Java it is &) between num and -num:
 
