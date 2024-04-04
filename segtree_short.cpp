@@ -83,29 +83,18 @@ int query(int p) {
 
 //https://codeforces.com/blog/entry/18051?#comment-342885
 This entry explains for Assigment in range, sum in range — and it is difficult than increment operation.
-
 But, If you want increment in range, it simple than assignment.
-
 Let Theory, again; 1<=n<=N ~ 10^5. a[0], a[1], ... , a[n-1] — given array. Need apply two operations:
-
 increment a[L], a[L+1],... a[R-1] to value, i.e [L..R) range.
-
 find sum a[L] + a[L+1] + ... + a[R-1] , i.e. [L..R) range.
-
 t[0..n+n] — segment tree array. d[0..n+n] — lazy propogation.
-
 where
-
 t[i] = a[ i — n], n<=i < n+n. and
-
 t[i] = t[i*2] + t[i*2+1], for 0<=i<n.
-
 If a[i] incremented by value, so t[i+n] also incremented by value.
-
 if t[i*2] and t[i*2+1] incremented by value, they root t[i] incremented 2* value. and its applied recursive down.
 
 In general, if all leaf nodes of i-th root incremented by value, so t[i] should increment the value multiply number of leaf children of i-th root.
-
 for example: n = 8. if a[4] , a[5], a[6], a[7] increment by 5, so t[12], t[13], t[14], t[15] incremented by 1*5, t[6], and t[7] — incremented by 2*5, and t[3] incremented by 4*5. t[3] — has 4 children.
 
 Now, about lazy propogation d[] array. d[ i ] == 0, means there no increment operation i-th root. d[i] > 0, means all leaf nodes from i-th root of segment tree will increment by d[i], and applied 2.step operation recursivily.
