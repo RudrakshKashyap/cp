@@ -3,6 +3,18 @@
 //for lazy - https://www.youtube.com/watch?v=wQSnKUs93DU&list=PL2q4fbVm1Ik6v2-emg_JGcC9v2v2YTbvq&index=8
 
 
+i think 2*maxN space will also work with this implementation, not sure tho but looks like it
+[1,2,3,4,5]         -> 1
+
+2       3
+[1 2 3]  [4 5]
+
+4       5   6   7
+[1 2] [3]   [4] [5]
+
+8   9
+[1] [2]
+
 
 const int maxN = 100001;
 int st[4*maxN] , lazy[4*maxN];
