@@ -4,7 +4,7 @@ const int maxx=100005;
 int trie[maxx+1][26], finish[maxx+1];
 int nxt = 1;
 void Add (string s){
-    int node = 0;
+    int node = 0;    //root node
     for (int i = 0; s[i] != '\0'; i++) {
         if(trie[node][s[i] - 'a'] == 0) {
             node = trie[node][s[i] - 'a'] = nxt;
