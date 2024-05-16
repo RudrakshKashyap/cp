@@ -1,3 +1,6 @@
+//classic complexity is o(n log(log(n))), for o(n) complexity check out https://www.geeksforgeeks.org/sieve-eratosthenes-0n-time-complexity/
+
+
 int ar[10001];
 int maxn = 10001;
 
