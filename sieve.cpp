@@ -1,5 +1,5 @@
 //classic complexity is o(n log(log(n))), for o(n) complexity check out https://www.geeksforgeeks.org/sieve-eratosthenes-0n-time-complexity/
-
+//https://www.geeksforgeeks.org/how-is-the-time-complexity-of-sieve-of-eratosthenes-is-nloglogn/
 
 int ar[10001];
 int maxn = 10001;
