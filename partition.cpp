@@ -1,3 +1,5 @@
+//https://atcoder.jp/contests/dp/tasks/dp_n --> optimize with knuth's optimization
+
 rep(i,n)
 {
     rep(oldmask, 1<<n)
