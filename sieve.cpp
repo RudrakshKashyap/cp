@@ -40,8 +40,8 @@ void sieve()
     }
 }
 
-// Prime factorizes n in worst case O(sqrt n / log n). Requires having run `sieve` up to at least sqrt(n).
-// If we've run `sieve` up to at least n, takes O(log n) time.
+// Prime factorizes n in worst case
+// for each query O(sqrt n / log n). Requires having run `sieve` up to at least sqrt(n).
 vector<pair<ll, int>> prime_factorize(ll n)
 {
     assert(1 <= n && n <= (ll)maxn * maxn);
