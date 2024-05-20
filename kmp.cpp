@@ -1,4 +1,5 @@
 //pi function and kmp algo
+//in string p#t, if pi[i] = n, then at pos i - 2n in string t, pattern p appears
 vector<int> prefix_function(string s) {
     int n = (int)s.length();
     vector<int> pi(n);
