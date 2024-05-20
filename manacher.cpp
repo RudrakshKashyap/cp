@@ -1,3 +1,5 @@
+//https://youtu.be/nbTSfrEfo6M?si=_gaAN9hXf3ibnQGP&t=623
+
 int P[SIZE * 2];
 
 // Transform S into new string with special characters inserted.
