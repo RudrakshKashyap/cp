@@ -50,7 +50,7 @@ long long query(int l, int r)
 
 //////////////////////
 
-template<typename T, bool maximum_mode = false>
+template<typename T>
 struct RMQ {
     static int highest_bit(unsigned x) {        //it's 0th index
         return x == 0 ? -1 : 31 - __builtin_clz(x);
@@ -65,7 +65,7 @@ struct RMQ {
     }
  
     static T better(T a, T b) {
-        return maximum_mode ? max(a, b) : min(a, b);
+        return max(a,b);    //customize this
     }
  
     void build(const vector<T> &values) {
