@@ -1,4 +1,5 @@
-https://cp-algorithms.com/
-https://usaco.guide/
-https://www.cses.fi/book/book.pdf
-https://codeforces-anytime.sonoapp.page/
+- [X] useful websites
+- [ ] https://cp-algorithms.com/
+- [ ] https://usaco.guide/
+- [ ] https://www.cses.fi/book/book.pdf
+- [ ] https://codeforces-anytime.sonoapp.page/
