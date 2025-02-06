@@ -1,5 +1,14 @@
 //https://atcoder.jp/contests/dp/tasks/dp_n --> optimize with knuth's optimization
 
+3^N complexity
+
+AT -> already taken
+T -> taken now
+E -> empty/not taken
+
+AT AT AT T T E T AT E AT T T E AT E E -> 3 possible choises
+
+
 rep(i,n)
 {
     rep(oldmask, 1<<n)
