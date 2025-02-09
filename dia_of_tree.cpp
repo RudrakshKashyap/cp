@@ -77,4 +77,4 @@ void dfs(int u, int p, int d)
     dfs(far, -1, 0); //fartherst node or first end point of diam
     dfs(far, -1, 0); //2nd end point of diam
     cout << far_dist << ' ';
-    // rep(i, n) cout << dist[i] << ' ';
+    // rep(i, n) cout << dist[i] << ' '; -- i think this is the dist from i to farthest node from it, that's why we needed 3dfs
