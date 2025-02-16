@@ -17,13 +17,13 @@ void update(node* n, int start, int end, int l, int r, int val)
 //     {
 //         ll dx = n->lazy;
 //         n->lazy = 0;
-//         n->val += dx;
+//         n->val += dx * (end - start + 1);
 //         if(start != end) n->left->lazy += dx, n->right->lazy += dx;
 //     }
  
     if(l <= start and end <= r)
     {
-        n->val += val;
+        n->val += val * (end - start + 1);
 //         if(start != end) n->left->lazy += val, n->right->lazy += val;
         return;
     }
@@ -43,7 +43,7 @@ ll query(node* n, int start, int end, int l, int r)
 //     {
 //         ll dx = n->lazy;
 //         n->lazy = 0;
-//         n->val += dx;
+//         n->val += dx * (end - start + 1);
  
 //         if(start != end) n->left->lazy += dx, n->right->lazy += dx;
 //     }
