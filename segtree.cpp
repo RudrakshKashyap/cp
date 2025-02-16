@@ -3,17 +3,16 @@
 //for lazy - https://www.youtube.com/watch?v=wQSnKUs93DU&list=PL2q4fbVm1Ik6v2-emg_JGcC9v2v2YTbvq&index=8
 
 
-i think 2*maxN space will also work with this implementation, not sure tho but looks like it
-[1,2,3,4,5]         -> 1
+[1,2,3,4,5,6]         -> 1
 
 2       3
-[1 2 3]  [4 5]
+[1 2 3]  [4 5 6]
 
 4       5   6   7
-[1 2] [3]   [4] [5]
+[1 2] [3]   [4 5] [6]
 
-8   9
-[1] [2]
+8   9	   12	13
+[1] [2]	   [4]	[5]
 
 
 const int maxN = 100001;
