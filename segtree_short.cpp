@@ -10,6 +10,16 @@
 
  //https://codeforces.com/blog/entry/18051
 
+A strictly binary tree, also known as a full binary tree or proper binary tree, is a type of binary tree in which every node has either exactly two children or none (i.e., each node is either an internal node with two children or a leaf node with no children). 
+Assume that for a strictly binary tree with k leaves, the total number of nodes is 
+2k−1. Now, consider a strictly binary tree with k+1 leaves.
+
+In a strictly binary tree, every internal node has exactly two children. To increase the number of leaves from k to 
+k+1, we can select an existing leaf node and add two child nodes to it. 
+This transforms the selected leaf into an internal node with two children, effectively adding two new nodes to the tree.
+By the principle of mathematical induction, the statement is true for all 
+n≥1: a strictly binary tree with 
+n leaves always contains 2n−1 nodes.
 
 #include<bits/stdc++.h>
 using namespace std;
