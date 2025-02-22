@@ -24,6 +24,11 @@ n leaves always contains 2n−1 nodes.
 
 it takes t[2n] memory bc t[0] is useless
 
+///////////////////////////
+
+below we are just creating a binary tree with n leaves, -> number of extra nodes = n 
+
+//////////////////////////
  
 #include<bits/stdc++.h>
 using namespace std;
