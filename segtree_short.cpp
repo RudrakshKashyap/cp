@@ -21,6 +21,10 @@ By the principle of mathematical induction, the statement is true for all
 n≥1: a strictly binary tree with 
 n leaves always contains 2n−1 nodes.
 
+
+it takes t[2n] memory bc t[0] is useless
+
+ 
 #include<bits/stdc++.h>
 using namespace std;
 
