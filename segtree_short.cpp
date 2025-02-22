@@ -119,6 +119,31 @@ int query(int p) {
 }
 
 
+Non-commutative combiner functions
+For now we considered only the simplest combiner function — addition. 
+It is commutative, which means the order of operands doesn't matter, 
+ we have a + b = b + a. 
+ The same applies to min and max, so we can just change all occurrences of + to one of those functions and be fine. 
+ But don't forget to initialize query result to infinity instead of 0.
+
+However, there are cases when the combiner isn't commutative,
+ for example, in the problem 380C - Sereja and Brackets, tutorial available here http://codeforces.com/blog/entry/10363.
+Fortunately, our implementation can easily support that. We define structure S and combine function for it. In method build we just change + to this function. In modify we need to ensure the correct ordering of children, knowing that left child has even index. When answering the query, we note that nodes corresponding to the left border are processed from left to right, while the right border moves from right to left. We can express it in the code in the following way:
+
+
+
+void modify(int p, const S& value) {
+  for (t[p += n] = value; p >>= 1; ) t[p] = combine(t[p<<1], t[p<<1|1]);
+}
+
+S query(int l, int r) {
+  S resl, resr;
+  for (l += n, r += n; l < r; l >>= 1, r >>= 1) {
+    if (l&1) resl = combine(resl, t[l++]);
+    if (r&1) resr = combine(t[--r], resr);
+  }
+  return combine(resl, resr);
+}
 
 
 
@@ -126,8 +151,7 @@ int query(int p) {
 
 
 
-
-
+-----------------------------------------------------------------------------------------------------------
 
 //https://codeforces.com/blog/entry/18051?#comment-342885
 This entry explains for Assigment in range, sum in range — and it is difficult than increment operation.
