@@ -101,7 +101,7 @@ int main() {
 
 Some people begin to struggle and invent something too complex when the operations are inverted, for example:
 
-1) add a value to all elements in some interval;
+1) add a value to all elements in some interval; ofcourse everything is 0 initially dumbass
 2) compute an element at some position.
 But all we need to do in this case is to switch the code in methods modify and query as follows:
 
