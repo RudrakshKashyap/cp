@@ -28,7 +28,30 @@ it takes t[2n] memory bc t[0] is useless
 
 below we are just creating a binary tree with n leaves, -> number of extra nodes = n 
 
-//////////////////////////
+                                                      1: [0, 16) r
+
+                                2: [0, 8) l                                                  3: [8, 16) r
+
+            4: [0, 4) l                     5: [4, 8) r                          6: [8, 12) l                        7: [12, 16) r
+
+  8: [0, 2) l        9: [2, 4) r       10: [4, 6)      11: [6, 8)          12: [8, 10)      13: [10, 12)        14: [12, 14)       15: [14, 16)
+
+16: 0   17: 1   18: 2   19: 3   20: 4 l   21: 5 r      22: 6   23: 7     24: 8   25: 9      26: 10  27: 11     28: 12   29: 13     30: 14   31: 15
+
+we consider range [L, R+1)
+
+ we go in left to Right direction from node L, and right to left direction from node R+1
+
+ i.e.  L -------->...        mid      ...<------------R+1
+      type 1                               type2
+ during this process, when going from L to mid
+if we are at node type 'r'(right node), that means it is fully in range, take it and increase L++, then L/=2
+
+similarly when going from R + 1 to mid, 
+ if we are at node type 'r'(right node), that means the left node is fully in range, so we take left node, then R/=2 which is basically the same as R-1/2
+
+ 
+ //////////////////////////
  
 #include<bits/stdc++.h>
 using namespace std;
