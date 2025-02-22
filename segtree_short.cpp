@@ -50,7 +50,13 @@ if we are at node type 'r'(right node), that means it is fully in range, take it
 similarly when going from R + 1 to mid, 
  if we are at node type 'r'(right node), that means the left node is fully in range, so we take left node, then R/=2 which is basically the same as R-1/2
 
- 
+ General idea is the following. 
+ If l, the left interval border, is odd (which is equivalent to l&1) then l is the right child of its parent. 
+ Then our interval includes node l but doesn't include it's parent. 
+ So we add t[l] and move to the right of l's parent by setting l = (l + 1) / 2. 
+If l is even, it is the left child, and the interval includes its parent as well (unless the right border interferes), 
+so we just move to it by setting l = l / 2. Similar argumentation is applied to the right border. 
+We stop once borders meet.
  //////////////////////////
  
 #include<bits/stdc++.h>
