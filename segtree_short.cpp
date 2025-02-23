@@ -139,7 +139,11 @@ It is commutative, which means the order of operands doesn't matter,
 
 However, there are cases when the combiner isn't commutative,
  for example, in the problem 380C - Sereja and Brackets, tutorial available here http://codeforces.com/blog/entry/10363.
-Fortunately, our implementation can easily support that. We define structure S and combine function for it. In method build we just change + to this function. In modify we need to ensure the correct ordering of children, knowing that left child has even index. When answering the query, we note that nodes corresponding to the left border are processed from left to right, while the right border moves from right to left. We can express it in the code in the following way:
+Fortunately, our implementation can easily support that.
+ We define structure S and combine function for it. In method build we just change + to this function. 
+ In modify we need to ensure the correct ordering of children, knowing that left child has even index. 
+ When answering the query, we note that nodes corresponding to the left border are processed from left to right, 
+while the right border moves from right to left. We can express it in the code in the following way
 
 
 
@@ -157,11 +161,71 @@ S query(int l, int r) {
 }
 
 
+Lazy propagation-->------------------------------------------------------------>
+ int h = sizeof(int) * 8 - __builtin_clz(n);
+int d[N];  
+void apply(int p, int value) {
+  t[p] += value;
+  if (p < n) d[p] += value;
+}
+
+void build(int p) {
+  while (p > 1) p >>= 1, t[p] = max(t[p<<1], t[p<<1|1]) + d[p];
+}
+
+void push(int p) {
+  for (int s = h; s > 0; --s) {
+    int i = p >> s;
+    if (d[i] != 0) {
+      apply(i<<1, d[i]);
+      apply(i<<1|1, d[i]);
+      d[i] = 0;
+    }
+  }
+}
+
+void inc(int l, int r, int value) {
+  l += n, r += n;
+  int l0 = l, r0 = r;
+  for (; l < r; l >>= 1, r >>= 1) {
+    if (l&1) apply(l++, value);
+    if (r&1) apply(--r, value);
+  }
+  build(l0);
+  build(r0 - 1);
+}
+
+int query(int l, int r) {
+  l += n, r += n;
+  push(l);
+  push(r - 1);
+  int res = -2e9;
+  for (; l < r; l >>= 1, r >>= 1) {
+    if (l&1) res = max(res, t[l++]);
+    if (r&1) res = max(t[--r], res);
+  }
+  return res;
+}
+build is designed to update all the parents of a given node.
+ node 19 affects nodes 9, 4, 2 and 1, node 5 affects 2 and 1. so to fix we need build after each range increment
+
+
+NOTE NOTE NOTE NOTE NOTE NOTE
+Modification on interval [l, r) affects t[i] values only in the parents of border leaves: l+n and r+n-1 
+ (except the values that compose the interval itself — the ones accessed in for loop).
+
+ the above sentence mean, the nodes that makes sum of range [l,r] => 
+can only come from nodes that lies in the 
+ path from root to l, and path from root to r or their immediate children
+
+ so if we push(l), push(r) that means we are ready for query [l,r]
+push(x) function just fixes the children of node x
+push(l) -> we are fixing all the nodes(this includes both child getting fixed) from child of root to leaf 'l'
 
 
 
 
-
+ 
 -----------------------------------------------------------------------------------------------------------
 
 //https://codeforces.com/blog/entry/18051?#comment-342885
