@@ -137,7 +137,7 @@ It is commutative, which means the order of operands doesn't matter,
  The same applies to min and max, so we can just change all occurrences of + to one of those functions and be fine. 
  But don't forget to initialize query result to infinity instead of 0.
 
-However, there are cases when the combiner isn't commutative,
+However, there are cases when the combiner isnt commutative,
  for example, in the problem 380C - Sereja and Brackets, tutorial available here http://codeforces.com/blog/entry/10363.
 Fortunately, our implementation can easily support that.
  We define structure S and combine function for it. In method build we just change + to this function. 
