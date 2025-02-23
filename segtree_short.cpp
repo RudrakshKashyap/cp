@@ -114,7 +114,7 @@ Some people begin to struggle and invent something too complex when the operatio
 
 1) add a value to all elements in some interval; ofcourse everything is 0 initially dumbass
 2) compute an element at some position.
-But all we need to do in this case is to switch the code in methods modify and query as follows:
+But all we need to do in this case is to switch the code in methods modify and query as follows
 
 void modify(int l, int r, int value) {
   for (l += n, r += n; l < r; l >>= 1, r >>= 1) {
@@ -216,7 +216,14 @@ Modification on interval [l, r) affects t[i] values only in the parents of bor
 
  the above sentence mean, the nodes that makes sum of range [l,r] => 
 can only come from nodes that lies in the 
- path from root to l, and path from root to r or their immediate children
+ path from root to l, and path from root to r or their immediate children,
+ you can just confirm it from the picture, path from root to 19 & root to 26 includes 
+nodes [1,2,4,9,19 + 1,3,6,13,26] 
+ range[19,26] consist of node 9,5,12,26 which comes from above set of nodes or their immediate children,eg. 5 is children of 2
+ so only fixing push(19),push(26) will do our job for query l,r
+
+
+
 
  so if we push(l), push(r) that means we are ready for query [l,r]
 push(x) function just fixes the children of node x
