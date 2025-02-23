@@ -53,7 +53,7 @@ similarly when going from R + 1 to mid,
 *****************
 
  or i think we can do is go from mid ...<-------------R
- in this case code should be if(R&1 == 0)
+ in this case code should be if(R&1 == 0) res+=t[r--]
  
  ***********
 
