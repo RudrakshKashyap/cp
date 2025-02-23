@@ -45,8 +45,11 @@ queue<int>qu; print(qu);
 priority_queue<int> q; min max heap
 p/q mod m = (p*(q^m-2))%m
 ~(-1)=0
+~just flips the bit, -1 in 2's comp is 111111...11111
 
-
+x & (x - 1) == 0	True if x is a power of 2, False otherwise
+x = x & (x - 1)	Removes the rightmost set bit
+Used in	Power of 2 checks, counting set bits, optimizations
 	
 
 v = { 1, 1, 3, 3, 3, 10, 1, 3, 3, 7, 7, 8 }
