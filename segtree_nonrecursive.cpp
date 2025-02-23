@@ -54,6 +54,7 @@ similarly when going from R + 1 to mid,
 
  or i think we can do is go from mid ...<-------------R
  in this case code should be if(R&1 == 0) res+=t[r--], and loop till l<=r, this code should still work
+yes it will work i just read in comments, but other functions should be changed accordingly as well
  
  ***********
 
