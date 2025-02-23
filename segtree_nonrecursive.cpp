@@ -110,7 +110,7 @@ int main() {
 
 
 
-Some people begin to struggle and invent something too complex when the operations are inverted, for example:
+Some people begin to struggle and invent something too complex when the operations are inverted, for example
 
 1) add a value to all elements in some interval; ofcourse everything is 0 initially dumbass
 2) compute an element at some position.
