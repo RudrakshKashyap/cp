@@ -162,6 +162,8 @@ S query(int l, int r) {
 
 
 Lazy propagation-->------------------------------------------------------------>
+ Increment modifications, queries for maximum
+
  int h = sizeof(int) * 8 - __builtin_clz(n);
 int d[N];  
 void apply(int p, int value) {
@@ -230,11 +232,44 @@ push(x) function just fixes the children of node x
 push(l) -> we are fixing all the nodes(this includes both child getting fixed) from child of root to leaf 'l'
 
 
+It's easy to see that all operations above take O(log(n)) time.
+
+Again, this is the simplest case because of two reasons:
+
+order of modifications doesn't affect the result;
+when updating a node, we don't need to know the length of interval it represents.
+
+ Assignment modifications, sum queries-> just read this from the blog
+
+ Both this methods work on any interval in O(log(n) + |r - l|) time. -> O(|r-l|) because think of
+a binary tree with last row of size r-l, number of nodes will be like 2*(r-l) +-1 something something
+
+Main methods don't change much from the last example, but modify has 2 things to notice:
+
+Because the order of modifications is important, we need to make sure there are no old changes on the paths from the root to all the nodes we're going to update. This is done by calling push first as we did in query.
+We need to maintain the value of k.
+ push(l, r);
+...  // do anything we want with elements in interval [l, r)
+build(l, r);
+
+One could notice that we do 3 passed in modify over almost the same nodes: 
+1 down the tree in push, then 2 up the tree. We can eliminate the last pass and calculate new values only 
+where it's necessary, but the code gets more complicated
+--> i dont have the time nor energy to read this last section
+ 
+-----------------------------------------------------------------------------------------------------------
+ -----------------------------------------------------------------------------------------------------------
+ -----------------------------------------------------------------------------------------------------------
+ -----------------------------------------------------------------------------------------------------------
+ -----------------------------------------------------------------------------------------------------------
+ -----------------------------------------------------------------------------------------------------------
+ -----------------------------------------------------------------------------------------------------------
+ -----------------------------------------------------------------------------------------------------------
+ -----------------------------------------------------------------------------------------------------------
+from comments
 
 
  
------------------------------------------------------------------------------------------------------------
-
 //https://codeforces.com/blog/entry/18051?#comment-342885
 This entry explains for Assigment in range, sum in range — and it is difficult than increment operation.
 But, If you want increment in range, it simple than assignment.
