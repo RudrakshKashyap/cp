@@ -9,7 +9,10 @@ then for any integer a, the number a^p − a is an integer multiple of p.
 
 If a is not divisible by p, that is, 
 if a is *****COPRIME***** to p, then Fermat's little theorem is equivalent to the statement that a^(p − 1) − 1 is an integer multiple of p,
-    
+
+
+// TODO https://cp-algorithms.com/algebra/module-inverse.html -->
+// check out  Linear Diophantine equation , thingy on this page
 const int maxn = 6e5;
 ll facinv[maxn+1];
 ll inv[maxn+1];
