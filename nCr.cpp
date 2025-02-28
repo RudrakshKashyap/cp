@@ -2,6 +2,8 @@
 //proof at https://cp-algorithms.com/algebra/module-inverse.html
 
 
+//https://en.wikipedia.org/wiki/Fermat%27s_little_theorem
+
 const int maxn = 6e5;
 ll facinv[maxn+1];
 ll inv[maxn+1];
