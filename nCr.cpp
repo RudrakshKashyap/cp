@@ -1,5 +1,7 @@
 // nCr
 //proof at https://cp-algorithms.com/algebra/module-inverse.html
+
+
 const int maxn = 6e5;
 ll facinv[maxn+1];
 ll inv[maxn+1];
@@ -20,3 +22,5 @@ void compute()
 
 long long nCr(int n, int r) { return ((fac[n] * facinv[r])%mod * facinv[n-r]) % mod;}
 //lucas theom proof https://cp-algorithms.com/algebra/factorial-modulo.html
+//https://www.youtube.com/watch?v=vWV3yeBD-Gw
+//https://en.wikipedia.org/wiki/Lucas%27s_theorem
