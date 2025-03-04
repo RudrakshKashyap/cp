@@ -33,3 +33,14 @@ rep(i, n)
         sum -= a[l++];
     }
 }
+////////////////////////////////////////////////
+int l = 0, r = 0, sum = 0, min = Integer.MAX_VALUE;
+  
+  while (r < n) {
+    sum += a[r++];
+    
+    while (sum >= s) {
+      min = Math.min(min, r - l);
+      sum -= a[l++];
+    }
+  }
