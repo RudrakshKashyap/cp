@@ -14,6 +14,8 @@ Note that mark is a vector, because if we want to use array like int mark[len] t
 A lambda with empty capture clause [ ] can access only those variable which are local to it, i.e. you cant access mark[u] array in dfs or other variable which are declared in main
 [=] means capturing by value
 [a, &b] : capture a by value and b by reference
+// a is read-only (captured by value)
+// b can be modified (captured by reference)
 
 
 correct
