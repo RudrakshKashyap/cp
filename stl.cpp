@@ -175,3 +175,6 @@ int globalVar = 10; // Global variable
 // File2.cpp
 extern int globalVar; // Access globalVar from File1.cpp
 but you can't do this thing with static
+g++ File1.cpp File2.cpp main.cpp -o program //need to link the files when compiling for extern to work
+
+The inline keyword in C++ is a hint to the compiler to replace a function call with the actual code of the function at the point where the function is called. This is known as inline expansion or inlining. The purpose of inlining is to reduce the overhead of function calls, especially for small, frequently called functions, which can improve performance.
