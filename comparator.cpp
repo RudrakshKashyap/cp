@@ -68,8 +68,13 @@ output->{0, 2} {1, 2} {0, 1}
 
 
 
-
-
+struct customCompFunctor {
+    bool operator()(const string& a, const string& b) const {
+        return a.length() < b.length(); // Sort by string length in ascending order
+    }
+};
+//for a vector
+sort(words.begin(), words.end(), customCompFunctor());//it takes the instance rather than taking the type, customCompFunctor() will create an instance
 
 
 
