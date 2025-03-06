@@ -159,3 +159,11 @@ struct GpuTimer
             cudaEventDestroy(stop);
       }
 };
+
+Summary of static Keyword
+Context			Behavior
+Static Local Variable	Retains value between function calls; lifetime = program execution.
+Static Global Variable	Scope limited to the file; lifetime = program execution.
+Static Function		Scope limited to the file.
+Static Data Member	Shared across all objects of the class; must be defined outside the class.
+Static Member Function	Independent of objects; can only access static members.
