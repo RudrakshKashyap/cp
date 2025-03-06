@@ -30,29 +30,41 @@ and a struct or class with an overloaded operator() satisfies this requirement.
 
 
 //can use struct also
-class comp{
+// Custom comparator class
+class comp {
 public:
-    int* b;
-    comp(vector<int>& a)
-    {
-        b = &a[0];
+    int* b; // Pointer to the external array
+    comp(vector<int>& a) {
+        b = &a[0]; // Initialize the pointer to the first element of the array
     }
-    bool operator()(ar<int,2> o1, ar<int,2> o2)
-    {
-        return b[o1[0]]*b[o2[1]] > b[o2[0]]*b[o1[1]];
+    bool operator()(ar o1, ar o2) {
+        // Compare based on the custom rule
+        return b[o1[0]] * b[o2[1]] > b[o2[0]] * b[o1[1]];
     }
 };
 
-priority_queue<ar<int,2>, vector<ar<int,2>>, comp> pq(arr);
+int main() {
+    // External array
+    vector<int> arr = {2, 3, 5};
 
+    // Priority queue with custom comparator
+    priority_queue<ar, vector<ar>, comp> pq(arr);
 
+    // Insert pairs into the queue
+    pq.push({0, 1});
+    pq.push({1, 2});
+    pq.push({0, 2});
 
+    // Process the queue
+    while (!pq.empty()) {
+        ar top = pq.top();
+        pq.pop();
+        cout << "{" << top[0] << ", " << top[1] << "} ";
+    }
 
-
-
-
-
-
+    return 0;
+}
+output->{0, 2} {1, 2} {0, 1}
 
 
 
