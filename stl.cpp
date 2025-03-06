@@ -167,3 +167,11 @@ Static Global Variable	Scope limited to the file; lifetime = program execution.
 Static Function		Scope limited to the file.
 Static Data Member	Shared across all objects of the class; must be defined outside the class.
 Static Member Function	Independent of objects; can only access static members.
+
+By default, a global variable has external linkage, meaning it can be accessed from other files using the extern keyword.
+// File1.cpp
+int globalVar = 10; // Global variable
+
+// File2.cpp
+extern int globalVar; // Access globalVar from File1.cpp
+but you can't do this thing with static
