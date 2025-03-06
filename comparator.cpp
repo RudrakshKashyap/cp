@@ -13,6 +13,10 @@ struct My_less
 
 std::priority_queue< int, std::vector<int>, My_less > pq;
 
+My_less is defined as a struct with an overloaded operator(). 
+This makes it a function object (or functor), which is a callable object that can be used like a function. 
+The priority_queue template expects the Compare parameter to be a type that can be called like a function, 
+and a struct or class with an overloaded operator() satisfies this requirement.
 
 
 0 1 2 3 4 ----> will be arraage like(from bottom to top in priority queue)
