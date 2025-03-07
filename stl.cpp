@@ -178,3 +178,12 @@ but you can't do this thing with static
 g++ File1.cpp File2.cpp main.cpp -o program //need to link the files when compiling for extern to work
 
 The inline keyword in C++ is a hint to the compiler to replace a function call with the actual code of the function at the point where the function is called. This is known as inline expansion or inlining. The purpose of inlining is to reduce the overhead of function calls, especially for small, frequently called functions, which can improve performance.
+
+
+Key Concepts:
+Iterator Invalidation:
+When you erase an element from a std::set, the iterator pointing to that element becomes invalid. Using an invalid iterator leads to undefined behavior.
+To avoid this, you need to advance the iterator before erasing the element.
+Post-increment (it++):
+The post-increment operator (it++) returns the current value of it (before incrementing it) and then increments it to point to the next element.
+This ensures that the iterator is advanced before the element is erased.
