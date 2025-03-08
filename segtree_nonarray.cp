@@ -19,7 +19,9 @@ void update(node* n, int start, int end, int l, int r, int val)
 //         if(start != end) n->left->lazy += dx, n->right->lazy += dx;
 //     }
 
-    if(r < start or end < l) return;    //this line should be only after lazy update
+    //this line should be only after lazy update, bc lazy has to be applied to current node as well
+    //that means if child have lazy, it should be applied first before calculating current node value again
+    if(r < start or end < l) return; 
  
     if(l <= start and end <= r)
     {
@@ -37,9 +39,9 @@ void update(node* n, int start, int end, int l, int r, int val)
  
 ll query(node* n, int start, int end, int l, int r)
 {
-    
+       if(n == NULL or r < start or end < l) return 0;
  
-//     if(n != NULL && n->lazy != 0)
+//     if(n->lazy != 0)
 //     {
 //         ll dx = n->lazy;
 //         n->lazy = 0;
@@ -48,7 +50,6 @@ ll query(node* n, int start, int end, int l, int r)
 //         if(start != end) n->left->lazy += dx, n->right->lazy += dx;
 //     }
 
-    if(n == NULL or r < start or end < l) return 0;
  
     if(l <= start and end <= r) return n->val;
     int mid = (start + end)/2;
