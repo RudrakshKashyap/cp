@@ -164,6 +164,9 @@ S query(int l, int r) {
 
 Lazy propagation-->------------------------------------------------------------>
  Increment modifications, queries for maximum
+d[i] is a delayed operation to be propagated to the children of node i, 
+ means if d[p]!=0, it is already included in t[p] but not in it's children
+
 
  int h = sizeof(int) * 8 - __builtin_clz(n);
 int d[N];  
