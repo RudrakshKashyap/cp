@@ -245,16 +245,21 @@ when updating a node, we don't need to know the length of interval it represents
 
  Assignment modifications, sum queries-> just read this from the blog
 
- Both this methods work on any interval in O(log(n) + |r - l|) time. -> O(|r-l|) because think of
-a binary tree with last row of size r-l, number of nodes will be like 2*(r-l) +-1 something something
-
 Main methods don't change much from the last example, but modify has 2 things to notice:
 
 Because the order of modifications is important, we need to make sure there are no old changes on the paths from the root to all the nodes we're going to update. This is done by calling push first as we did in query.
 We need to maintain the value of k.
+
+ Both this methods work on any interval in O(log(n) + |r - l|) time. -> O(|r-l|) because think of
+a binary tree with last row of size r-l, number of nodes will be like 2*(r-l) +-1 something something
+If we want to transform some interval in the tree, we can write code like this:
+ 
  push(l, r);
-...  // do anything we want with elements in interval [l, r)
+...  // do anything we want with elements in interval [l, r) -> this includes changing a[l] to 'a' a[l+1] to 'b' ... basically changing every value
 build(l, r);
+
+if u want to just change interval with same value just push(l & r) build(l & r) -> logn complexity
+
 
 One could notice that we do 3 passed in modify over almost the same nodes: 
 1 down the tree in push, then 2 up the tree. We can eliminate the last pass and calculate new values only 
