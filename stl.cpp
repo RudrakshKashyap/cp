@@ -187,3 +187,4 @@ To avoid this, you need to advance the iterator before erasing the element.
 Post-increment (it++):
 The post-increment operator (it++) returns the current value of it (before incrementing it) and then increments it to point to the next element.
 This ensures that the iterator is advanced before the element is erased.
+s.erase(it) return the iterator to the next valid element
