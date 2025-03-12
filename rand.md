@@ -10,7 +10,7 @@ The seed can be set using the srand() function.
 
 If you don't set a seed, rand() will use a default seed (usually 1), producing the same sequence of numbers every time the program runs.
 
-```
+```cpp
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -43,7 +43,7 @@ It generates 32-bit unsigned integers (uint32_t).
  `std::uniform_int_distribution`
 Generates random integers within a specified range [a,b] Each integer in the range has an equal probability of being generated.
 
-```
+```cpp
 #include <iostream>
 #include <random>
 
