@@ -33,14 +33,14 @@ It doesn't stop there though; random_shuffle() also uses rand().
 ## Solution - Mersenne Twister:
 
 It has a very long period of 
-2^19937 −1, which means it can generate a huge number of random values before repeating the sequence.
+`2^19937 −1`, which means it can generate a huge number of random values before repeating the sequence.
 
-std::mt19937
+`std::mt19937`
 This is a specific implementation of the Mersenne Twister algorithm in C++.
 It generates 32-bit unsigned integers (uint32_t).
 
 
- std::uniform_int_distribution
+ `std::uniform_int_distribution`
 Generates random integers within a specified range [a,b] Each integer in the range has an equal probability of being generated.
 
 ```
