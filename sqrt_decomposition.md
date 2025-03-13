@@ -2,10 +2,12 @@ dont know , just copy pasted from somewhere
 looks correct to me
 
 
-/// Sqrt Decomposition Algorithm can be extended to a point update and for range query. 
-/// Here both of these are in implementation using sum range 
+Sqrt Decomposition Algorithm can be extended to a point update and for range query. 
+Here both of these are in implementation using sum range 
 
+complexity should be `O( (N-2)/B + 2*B )`, optimal block size = `sqrt( (N-2)/2 )`
 
+```cpp
 int block_size;/// the size of every block
 int block_value[1001];///sqrt size of max 
 int arr[1000001];
@@ -50,3 +52,4 @@ void update(int idx, int val)
     block_value[blockNumber] += val; /// adding value to the desired block
     arr[idx] += val; /// adding
 }
+```
