@@ -1,3 +1,5 @@
+std::priority_queue does not support iteration because it is designed to provide access only to the top element.
+
 ////custom comp for pq
 
 bool Compare(Node a, Node b);
