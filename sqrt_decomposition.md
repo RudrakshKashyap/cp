@@ -5,7 +5,7 @@ looks correct to me
 Sqrt Decomposition Algorithm can be extended to a point update and for range query. 
 Here both of these are in implementation using sum range 
 
-complexity should be `O( (N-2)/B + 2*B )`, optimal block size = `sqrt( (N-2)/2 )`
+complexity should be `O( (N-2)/B + 2*B )`, optimal block size = `sqrt( (N-2)/2 )` when (n-2)/B = 2B
 
 ```cpp
 int block_size;/// the size of every block
