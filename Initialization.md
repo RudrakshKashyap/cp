@@ -86,3 +86,9 @@
 	    tail = tail->next; // Update tail to the new node
 	}
 	```
+## Common error
+```cpp
+map<int, Node> mp;
+Node newNode(3);
+mp[3] = newNode; //map will store the copy of the newNode, modifying map[3] will not modify newNode
+```
