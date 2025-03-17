@@ -63,4 +63,26 @@
 	        tail = &head;
 	    }
 	};
-```
+  ```
+# The Problem: Dangling Pointers
+
+* When you create a local variable (like last), it is allocated on the stack. Stack memory is automatically reclaimed when the function exits, and the object is destroyed.
+* Storing a pointer to a stack-allocated object outside its scope (e.g., in a linked list or a map) is unsafe because the object will no longer exist after the function exits.
+	```cpp
+	void put(int key, int value) {
+	    Node newNode(key, value);	//Will be allocated on stack and gets deleted after function return
+	    mp[key] = *tail;
+	    tail->next = &newNode; // Link the new node to the list
+	    tail = tail->next; // Update tail to the new node
+	}
+	```
+* Correct Approach -> 
+
+	```cpp
+	void put(int key, int value) {
+	    Node* newNode = new Node(key, value); // Allocate on the heap
+	    mp[key] = *tail; // Store the previous tail in the map
+	    tail->next = newNode; // Link the new node to the list
+	    tail = tail->next; // Update tail to the new node
+	}
+	```
