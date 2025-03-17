@@ -76,7 +76,7 @@
 	    tail = tail->next; // Update tail to the new node
 	}
 	```
-* Correct Approach -> 
+* Correct Approach (this is also wrong check below for common error) -> 
 
 	```cpp
 	void put(int key, int value) {
@@ -92,3 +92,7 @@ map<int, Node> mp;
 Node newNode(3);
 mp[3] = newNode; //map will store the copy of the newNode, modifying map[3] will not modify newNode
 ```
+* If the key does not exist in the map:
+	* mp[key] inserts a new key-value pair into the map.
+	* The value is default-constructed (if non pointer type,this is why default constuction is important of struct or class).
+	* The size of the map increases by 1.
