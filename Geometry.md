@@ -221,3 +221,4 @@ Polygon<F> convexHull(Polygon<F> points)
 #### Simple Polygon
 - Polygon is simple if its boundary doesn't cross itself.
 - TODO read blog,also ray casting in above erricto video
+- Read PICKS THEORM FOR LATTICE POINTS
