@@ -174,6 +174,8 @@ F area(const Polygon<F> &poly)
 ```
 ### 2. Convex hull: O(NlogN)
 
+- use `ccw(point, hull.back(), hull[hull.size() - 2]) = 0` to include colinear points 
+
 ```cpp
 template <class F>
 Polygon<F> convexHull(Polygon<F> points)
@@ -201,3 +203,21 @@ Polygon<F> convexHull(Polygon<F> points)
     return hull;
 }
 ```
+
+### 3. Inclusion tests
+#### Convex Polygon
+- O(logn) https://www.youtube.com/watch?v=aoxOPx2BIHE, some code in other file
+- O(n)
+    ```cpp
+     bool PIP(point p)
+    {
+        int n=(int)vertices.size();
+        bool ans=true;
+        for(int i=0; i<n; i++)
+            ans&=ccw(vertices[i], vertices[(i+1)%n], p);
+        return ans;
+    }
+    ```
+#### Simple Polygon
+- Polygon is simple if its boundary doesn't cross itself.
+- TODO read blog,also ray casting in above erricto video
