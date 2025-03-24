@@ -47,7 +47,6 @@ vec.size(); vec.capacity(); vec.reserve(1000);
 
 queue<int>qu; print(qu);
 
-priority_queue<int> q; min max heap
 p/q mod m = (p*(q^m-2))%m
 ~(-1)=0
 ~just flips the bit, -1 in 2's comp is 111111...11111
@@ -122,8 +121,13 @@ class player : public Entity	//will enherit from enitity class, whatever is publ
 
 
 vector<int> res(min(v1.size(), v2.size());
-auto lst = set_intersection(all(v1), all(v2), res.begin()); // linear time
-cout << lst - res.begin();
+auto lst = set_intersection(all(v1), all(v2), res.begin()); // linear time	returns An iterator to the end of the constructed range 
+cout << lst - res.begin();	//size
+
+// you dont need to define the size of res in this case below
+std::set_intersection(v1.begin(), v1.end(),
+		  v2.begin(), v2.end(),
+		  std::back_inserter(v_intersection));
 		
 
 int &a = b; //setting a address to b address, here type of a is an integer so basically we have 2 variable names for same meomory address
