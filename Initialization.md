@@ -29,8 +29,8 @@
 * If the class does not have a default constructor, you must explicitly initialize the object:
   ```cpp
   struct MyClass {
-    int x;
-    MyClass(int val) : x(val) {} // No default constructor
+		int x;
+		MyClass(int val) : x(val) {} // No default constructor
 	};
 	
 	void foo() {
@@ -38,8 +38,9 @@
 	    MyClass obj(10); // OK: Explicit initialization
 	}
   ```
-* Non-static data members cannot be initialized directly in the class definition.
-* Use the member initializer list in the constructor to initialize non-static data members.
+* However, since C++11, you can provide default member initializers directly in the class definition.
+
+* Check this code
   ```cpp
   #include <unordered_map>
 
@@ -64,6 +65,21 @@
 	    }
 	};
   ```
+  ### Problem
+  ```cpp
+  Node head(-1, -1); // ERROR
+  ```
+	- This line tries to call a constructor directly in the class definition, which is not allowed for non-static members.
+	- Default member initialization (since C++11) only allows:
+		- = value (assignment-style)
+		- {value} (brace initialization)
+		- Not direct constructor calls with (args).
+  ### Fix 1 - Use Brace Initialization
+  ```cpp
+  Node head{-1, -1}; // Correct (uses uniform initialization)
+  ```
+  ### Fix 2 - Initialize in the Constructor's Member Initializer List
+
 # The Problem: Dangling Pointers
 
 * When you create a local variable (like last), it is allocated on the stack. Stack memory is automatically reclaimed when the function exits, and the object is destroyed.
