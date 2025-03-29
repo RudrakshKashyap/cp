@@ -38,6 +38,13 @@ while(cur)
 
 // post order
 https://stackoverflow.com/questions/36384599/can-we-use-morris-traversal-for-postorder
+/* 
+concept  -> A simpler approach would be to do the symmetrically opposite of preorder morris traversal
+and print the nodes in the reverse order. 
+Root Ltree Rtree = preorder
+Root Rtree Ltree => opp of preorder
+Ltree Rtree Root => post order = reverse of (opp of preorder)
+*/
 
 //pre order
 https://www.geeksforgeeks.org/morris-traversal-for-preorder/
