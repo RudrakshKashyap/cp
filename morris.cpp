@@ -14,21 +14,22 @@ while(cur)
 
         if (pre->right)
         {
-            cout << cur->val << '\n';
-
             pre->right = nullptr;
+            
+            //cout << cur->val << '\n'; //uncomment for inorder, before going to right we are printing
             cur = cur->right;
         }
         else
         {
             pre->right = cur;
+
+            //cout << cur->val << '\n'; //uncomment for pre order, before going to left we are printing
             cur = cur->left;
         }
     }
     else
     {
-        cout << cur->val << '\n';
-
+        cout << cur->val << '\n';    //same for both preorder and inorder
         cur = cur->right;
     }
 }
