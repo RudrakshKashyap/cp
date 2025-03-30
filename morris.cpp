@@ -48,3 +48,25 @@ Ltree Rtree Root => post order = reverse of (opp of preorder)
 
 //pre order
 https://www.geeksforgeeks.org/morris-traversal-for-preorder/
+
+
+
+//inorder dfs using stack
+class Solution {
+public:
+    void dfs(TreeNode* root, int k) {
+        stack<TreeNode*> s;
+        while (root || !s.empty()) {
+            while (root) {
+                s.push(root);
+                root = root->left;
+            }
+            
+            root = s.top();
+            s.pop();
+            
+            cout << root->val << endl;
+            root = root->right;
+        }
+    }
+};
