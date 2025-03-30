@@ -80,6 +80,23 @@ void inorderTraversal(TreeNode* root) {
     }
 }
 
+//preorder, just like above inorder code
+while (curr != nullptr || !st.empty()) {
+    // Reach the leftmost node
+    while (curr != nullptr) {
+        cout << curr->val << " "; // Process the node (print, store, etc.)
+        st.push(curr);
+        curr = curr->left;
+    }
+
+    // Current node is nullptr, pop from stack
+    curr = st.top();
+    st.pop();
+
+    // Move to the right subtree
+    curr = curr->right;
+}
+
 void preorderTraversal(TreeNode* root) {
     if (!root) return;  // Edge case: empty tree
 
