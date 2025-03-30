@@ -97,3 +97,52 @@ void preorderTraversal(TreeNode* root) {
         if (curr->left) st.push(curr->left);
     }
 }
+
+//post order method 1 -> O(N) space
+void postorderTraversal(TreeNode* root) {
+    if (!root) return;
+    
+    stack<TreeNode*> st;
+    TreeNode* curr = root;
+    TreeNode* last_visited = nullptr;
+
+    while (curr || !st.empty()) {
+        if (curr) {
+            st.push(curr);
+            curr = curr->left;
+        } else {
+            TreeNode* top_node = st.top();
+            if (top_node->right && top_node->right != last_visited) {
+                curr = top_node->right;  // Move to right child
+            } else {
+                cout << top_node->val << " ";  // Process node
+                last_visited = top_node;
+                st.pop();
+            }
+        }
+    }
+
+//post order method 2 -> O(2N) space
+//Stack1 performs a modified DFS (like preorder but pushing right before left).
+//Stack2 stores nodes in reverse postorder (Root → Right → Left), so popping it gives Left → Right → Root.
+
+void postorderTwoStacks(TreeNode* root) {
+    if (!root) return;
+    
+    stack<TreeNode*> st, ans;
+    st.push(root);
+
+    while (!st1.empty()) {
+        TreeNode* curr = st.top();
+        st.pop();
+        ans.push(curr);
+
+        if (curr->left) st.push(curr->left);
+        if (curr->right) st.push(curr->right);    //(so right is processed next)
+    }
+
+    while (!ans.empty()) {
+        cout << ans.top()->val << " ";
+        ans.pop();
+    }
+}
