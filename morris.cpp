@@ -79,3 +79,21 @@ void inorderTraversal(TreeNode* root) {
         curr = curr->right;
     }
 }
+
+void preorderTraversal(TreeNode* root) {
+    if (!root) return;  // Edge case: empty tree
+
+    stack<TreeNode*> st;
+    st.push(root);
+
+    while (!st.empty()) {
+        TreeNode* curr = st.top();
+        st.pop();
+        
+        cout << curr->val << " ";  // Process the node
+
+        // Push right first, then left (so left is processed next)
+        if (curr->right) st.push(curr->right);
+        if (curr->left) st.push(curr->left);
+    }
+}
