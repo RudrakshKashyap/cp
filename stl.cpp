@@ -1,4 +1,11 @@
 http://www.numbertheory.org/php/squareroot.html
+:: (Scope Resolution Operator)
+Used to access static members, namespaces, nested classes, or global variables.
+Works on compile-time entities (no runtime object needed).
+std::cout;           // Access `cout` from the `std` namespace
+MyClass::staticVar;  // Access a static member
+::globalVar;         // Access a global variable (avoiding name clashes)
+
 By default, C++ standard streams (like cin, cout, cerr, etc.) are synchronized with C standard I/O functions (like printf, scanf, fprintf, etc.)
 Mixing C and C++ I/O: After disabling synchronization with ios::sync_with_stdio(0);, avoid mixing C++ streams (cin, cout) with C I/O (printf, scanf), as it can lead to undefined behavior.
 Manual Flushing: If cin is untied from cout, you may need to manually flush cout (e.g., using cout << flush;) to ensure output is displayed before input.
