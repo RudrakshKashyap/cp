@@ -21,6 +21,8 @@ bool iscyclic(int cur)
         {
             if(!v[c] && iscyclic(c)) return true;
             else if(restack[c]) return true;
+
+            //if(restack[c] || iscyclic(c)) return true; //this will also work
         }
     }
     restack[cur]=false;
