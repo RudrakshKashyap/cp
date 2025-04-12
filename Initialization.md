@@ -112,3 +112,4 @@ mp[3] = newNode; //map will store the copy of the newNode, modifying map[3] will
 	* mp[key] inserts a new key-value pair into the map.
 	* The value is default-constructed (if non pointer type,this is why default constuction is important of struct or class).
 	* The size of the map increases by 1.
+   	* calling [] operator frequently will keep on increasing memory, resulting in MLE or runtime error* The size of the map increases by 1.
