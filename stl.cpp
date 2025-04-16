@@ -49,6 +49,7 @@ while(prev_permutation(s.begin(),s.end()));
 strchr(str,'a'); used for finding occurrence of a character in a string.
 str = to_string(a);
 a = stoi(str);
+stoll()
 
 vec.size(); vec.capacity(); vec.reserve(1000);
 
