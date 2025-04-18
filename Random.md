@@ -1,4 +1,4 @@
-https://codeforces.com/blog/entry/61587
+Source: [Don't use rand(): a guide to random number generators in C++](https://codeforces.com/blog/entry/61587)
 
 ## Problem with rand()
 
@@ -30,10 +30,10 @@ int main() {
 ```
 It doesn't stop there though; random_shuffle() also uses rand().
 
-## Solution - Mersenne Twister:
+## Solution - Mersenne Twister
 
 It has a very long period of 
-`2^19937 −1`, which means it can generate a huge number of random values before repeating the sequence.
+`2^19937 − 1`, which means it can generate a huge number of random values before repeating the sequence.
 
 `std::mt19937`
 This is a specific implementation of the Mersenne Twister algorithm in C++.
@@ -47,17 +47,29 @@ Generates random integers within a specified range [a,b] Each integer in the ran
 #include <iostream>
 #include <random>
 
+using namespace std;
+
+inline int64_t random_long(long long l = LLONG_MIN,long long r = LLONG_MAX){
+    uniform_int_distribution<int64_t> dist(l,r);   
+    return dist(rng);
+}
+
 int main() {
-    std::random_device rd;  // Seed generator
-    std::mt19937 gen(rd()); // Mersenne Twister engine
+    random_device rd;  // Seed generator
+    mt19937 gen(rd()); // Mersenne Twister engine
+
+    //for 64bit integer
+    //we should use a much more high-precision clock than time(0)
+    mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());   //shuffle(all(a), rng)
 
     // Define a uniform integer distribution between 1 and 100
-    std::uniform_int_distribution<> dist(1, 100);
+    uniform_int_distribution<> dist(1, 100);     //name can be anything other than dist
 
     // Generate a random number
     int random_number = dist(gen);
+    long long rand_ll = random_long();
 
-    std::cout << "Random number: " << random_number << std::endl;
+    cout << "Random number: " << random_number << endl;
 
     return 0;
 }
@@ -65,6 +77,11 @@ int main() {
 `std::uniform_int_distribution` cannot work without a random number engine. The random number engine (e.g., `std::mt19937`) is essential because it provides the source of randomness, while the distribution (e.g., `std::uniform_int_distribution`) shapes that randomness into the desired range and statistical properties.
 
 The distribution (e.g., `std::uniform_int_distribution`) does not generate random numbers on its own. Instead, it transforms the raw numbers from the engine into the desired range and distribution.
+
+```cpp
+// DON'T do this - creates same sequence every time
+std::mt19937 gen(time(nullptr));  // Only changes once per second
+```
 
 
 | Feature                     | `std::random_device`                          | `time(0)`                          |
@@ -77,6 +94,29 @@ The distribution (e.g., `std::uniform_int_distribution`) does not generate rando
 | **Performance**             | May be slower (depends on hardware)           | Very fast                          |
 
 
+## Don't want to be hacked?
 
+- [How randomized solutions can be hacked, and how to make your solution unhackable](https://codeforces.com/blog/entry/61675)
+- [Blowing up unordered_map, and how to stop getting hacked on it](https://codeforces.com/blog/entry/62393)
+- [On the mathematics behind rolling hashes and anti-hash tests](https://codeforces.com/blog/entry/60442)
 
-
+```cpp
+struct custom_hash { // Credits: https://codeforces.com/blog/entry/62393
+    static uint64_t splitmix64(uint64_t x) {
+        // http://xorshift.di.unimi.it/splitmix64.c
+        x += 0x9e3779b97f4a7c15;
+        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+        return x ^ (x >> 31);
+    }
+    size_t operator()(uint64_t x) const {
+        static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+        return splitmix64(x + FIXED_RANDOM);
+    }
+    template<typename L, typename R>
+    size_t operator()(pair<L,R> const& Y) const{
+        static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+        return splitmix64(Y.first * 31ull + Y.second + FIXED_RANDOM);
+    }
+};
+```
