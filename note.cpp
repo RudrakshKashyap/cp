@@ -293,3 +293,6 @@ Attempting to negate it (via two's complement negation rules) gives the same bit
 Original: 10000000 00000000 00000000 00000000
 Invert:   01111111 11111111 11111111 11111111
 Add 1:    10000000 00000000 00000000 00000000 (same as original)
+
+INT_MIN * -1 results in INT_MIN (due to overflow)
+abs(INT_MIN) typically returns INT_MIN (undefined behavior)
