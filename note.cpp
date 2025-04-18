@@ -25,6 +25,12 @@ vec.capacity(); vec.reserve(1000);
 
 queue<int>qu; print(qu);
 
+x * (1 << bit) same as (x << bit) unless overflow, edge case
+// Compiler might warn about this
+int a = 1 << 31;  // Potential undefined behavior warning
+// While this is safe
+int b = 1 * (1 << 31);  // Well-defined, both output INT_MIN: -2147483648
+
 
 ~(-1)=0
 lower_bound(arr,arr+n,35)-arr;
