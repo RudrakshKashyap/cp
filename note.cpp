@@ -282,3 +282,14 @@ every prime of the form (4k+3) occurs an even number of times.
         }
         return c % 4 != 3;
     }
+
+
+
+
+he range for 32-bit signed integers is -2,147,483,648 to 2,147,483,647
+This number (-2³¹) is special because:
+Its positive equivalent (+2³¹) cannot be represented in 32-bit signed integers
+Attempting to negate it (via two's complement negation rules) gives the same bit pattern
+Original: 10000000 00000000 00000000 00000000
+Invert:   01111111 11111111 11111111 11111111
+Add 1:    10000000 00000000 00000000 00000000 (same as original)
