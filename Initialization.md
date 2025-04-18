@@ -55,7 +55,7 @@
 	    int sz, n;
 	    std::unordered_map<int, Node*> mp; // key, prevNode
 	    Node head(-1, -1); // ERROR
-	    Node head; // Member 'head' of type Node	-- no default constructor, so you have to explicit initiazlit it later
+	    Node head; // Member 'head' of type Node	-- no default constructor, OMPILATION ERROR
 	    Node *tail;
 	
 	public:
@@ -63,6 +63,7 @@
 	    LRUCache(int capacity) : sz(0), n(capacity), head(-1, -1) {
 	        tail = &head;
 	    }
+  		~LRUCache() { delete head; }  // destructor used to clean up memory on heap(malloc, or new keyword)
 	};
   ```
   ### Problem
@@ -79,6 +80,20 @@
   Node head{-1, -1}; // Correct (uses uniform initialization)
   ```
   ### Fix 2 - Initialize in the Constructor's Member Initializer List
+
+## NOTE
+```cpp
+class LRUCache {
+	int sz;
+	sz = 8;  // INVALID: Assignment statement in class definition
+
+	int sz = 8;	// VALID: In-class member initializer (C++11+), NOT an assignment statement
+	Node head;
+	head.key = -1, head.val = -1;	//This is not valid C++ syntax - you cannot assign to members in the class definition
+}
+```
+Before C++11, you couldn't even do `int sz = 8;` in class definitions - all initialization had to be in constructors. The `in-class initialization` feature was added to simplify common cases while maintaining clear syntax rules.
+
 
 # The Problem: Dangling Pointers
 
@@ -102,7 +117,7 @@
 	    tail = tail->next; // Update tail to the new node
 	}
 	```
-## Common error
+## CAUTION when using Map
 ```cpp
 map<int, Node> mp;
 Node newNode(3);
