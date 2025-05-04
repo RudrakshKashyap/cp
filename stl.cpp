@@ -67,7 +67,9 @@ Used in	Power of 2 checks, counting set bits, optimizations
 v = { 1, 1, 3, 3, 3, 10, 1, 3, 3, 7, 7, 8 }
 vec.resize(unique(all(vec)) - vec.begin());
 1 3 10 1 3 7 8 //3 apper twice thats why sort before resizing
-
+a.erase(std::unique(a.begin(), a.end()), a.end());
+n = a.size();
+	
 // Using copy_n() to copy contents
     copy_n(ar, 6, ar1);
 
