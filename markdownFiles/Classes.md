@@ -68,7 +68,7 @@ Object-oriented programming aims to implement real-world entities like inheritan
 	- Same interface with different underlying implementations (you can basically override functions)
 	- Example: A `draw()` method that behaves differently for Circle vs Square objects
 	```cpp
-	 class Shape {
+	class Shape {
 	public:
 	    virtual void draw() {  // Virtual function enables polymorphism
 	        cout << "Drawing a shape\n";

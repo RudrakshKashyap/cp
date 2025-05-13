@@ -63,7 +63,7 @@
 	    LRUCache(int capacity) : sz(0), n(capacity), head(-1, -1) {
 	        tail = &head;
 	    }
-  		~LRUCache() { delete head; }  // destructor used to clean up memory on heap(malloc, or new keyword)
+  		~LRUCache() { delete head; }  //line only for reference, destructor used to clean up memory on heap(malloc, or new keyword)
 	};
   ```
   ### Problem
@@ -93,4 +93,3 @@ class LRUCache {
 }
 ```
 Before C++11, you couldn't even do `int sz = 8;` in class definitions - all initialization had to be in constructors. The `in-class initialization` feature was added to simplify common cases while maintaining clear syntax rules.
-
