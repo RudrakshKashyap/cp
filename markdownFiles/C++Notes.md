@@ -121,8 +121,8 @@ auto dfs = [&](int u) -> int {  // Explicit return type
 ### Capture Clauses Explained
 
 1. `[]` - Empty capture: can only access local lambda variables
-2. `[&]` - Capture by reference: can modify variables from outer scope
-3. `[=]` - Capture by value: read-only access to outer variables
+2. `[&]` - Capture all variables by reference: can modify variables from outer scope
+3. `[=]` - Capture all variables by value(makes a copy at the moment lambda is defined): read-only access to outer variables
 4. `[a, &b]` - Mixed capture: `a` by value, `b` by reference
 5. `[this]` in the capture refers to the lambda's *own closure object*.
 
@@ -209,9 +209,65 @@ dfs(start_node);
 ```
 
 - `this` in capture enables recursive calls
-- Cleanest syntax but requires C++23
 
 
 ## References
 
 - [N3424: Documenting the self-recursive lambda idiom](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3424.pdf)
+---
+
+<br /> 
+<br /> 
+<br /> 
+
+# `constexpr` vs `const` vs `consteval` in C++
+
+#### **`const` (Constant)**  
+- **Purpose**: Makes a variable read-only (cannot be modified after initialization).  
+- **Initialization**: Can be set at **runtime or compile-time**.  
+- **Key Points**:  
+  - Ensures immutability.  
+  - Cannot be used where compile-time values are required (e.g., array sizes in standard C++).  
+
+---
+
+#### **`constexpr` (Constant Expression)**  
+- **Purpose**: Ensures a value is computed **at compile-time**.  
+- **Initialization**: Must be set with **compile-time known values**.  
+- **Usage**:  
+  ```cpp
+  constexpr int x = 5;           // OK  
+  constexpr int y = sqrt(9);     // OK if `sqrt` is constexpr  
+  constexpr int z = rand();      // Error: Not computable at compile-time  
+  ```  
+- **Key Points**:   
+  - Required in contexts needing compile-time values (e.g., array sizes, template args).  
+  - Functions marked `constexpr` must be evaluable at compile-time.  
+
+
+- **"Maybe" compile-time**: Can run at either compile-time or runtime
+- **Flexible**: Functions can be called in both contexts
+- **Example**:
+  ```cpp
+  constexpr int square(int x) { return x * x; }
+  
+  int main() {
+      constexpr int a = square(5);  // Compile-time
+      int b = square(get_input());  // Runtime
+  }
+  ```
+---
+
+#### `consteval` (C++20)
+- Can only be applied to functions, not variables.  
+- **"Always" compile-time**: Must run at compile-time
+- **Strict**: Functions can only be called in constant expressions
+- **Example**:
+  ```cpp
+  consteval int cube(int x) { return x * x * x; }
+  
+  int main() {
+      constexpr int c = cube(3);  // OK
+      int d = cube(get_input());  // Error! Must be compile-time
+  }
+  ```

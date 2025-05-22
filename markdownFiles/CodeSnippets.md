@@ -25,3 +25,13 @@
         return true;
     }
     ```
+
+* directions -> down, right, up, left
+    ```cpp
+    constexpr int dx[] = {1, 0, -1, 0};
+    constexpr int dy[] = {0, 1, 0, -1};
+    /*
+    d = (d + 1) % 4;
+    ni = i + dx[d];
+    nj = j + dy[d]; */
+    ```
