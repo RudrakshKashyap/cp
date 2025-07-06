@@ -1,5 +1,9 @@
 https://stackoverflow.com/questions/8786183/how-to-append-content-to-stringstream-type-object
 
+//istringstream iss(str) //can only read data from it, cant do iss << "something"
+//iss >> s1 >> i >> s2 >> d; // Extracting data 
+
+
 stringstream ss("abcdef");
 if we do ss << "xxx" after initializing ss, then it will overwrite the initialization
 print(ss.str()) will give "xxxdef"
