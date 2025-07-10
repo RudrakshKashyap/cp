@@ -53,15 +53,18 @@ $$
 
 
 **Homogeneous linear Diophantine equation :**
+
 $$
 ax + by = 0
 $$
 where $a, b$ are integers, not both zero. Its solutions can be fully characterized using number theory.
 
 It has **infinitely many integer solutions** $(x, y)$ given by:
+
 $$
 x = \frac{b}{\gcd(a, b)} \cdot k, \quad y = -\frac{a}{\gcd(a, b)} \cdot k, \quad \text{where } k \in \mathbb{Z}.
 $$
+
 #### **Explanation**:
 1. **Divide by $\gcd(a, b)$**:  
    Let $g = \gcd(a, b)$. Then $a = g.a'$ and $b = g.b'$, where $\gcd(a', b') = 1$.  
