@@ -2,6 +2,7 @@
 The **modular inverse** of an integer $a$ modulo $m$ is an integer $x$ such that:
 
 $$ a \cdot x \equiv 1 \pmod{m} $$
+
 This means $x$ is the multiplicative inverse of $a$ in the ring of integers modulo $m$.
 
 A modular inverse $x$ exists **if and only if** $a$ and $m$ are **coprime** (i.e., $\gcd(a, m) = 1$).
@@ -19,6 +20,7 @@ $$ a x + m y = 1 \quad (\text{where } y = -k) $$
 For integer solutions $(x, y)$, the **GCD** of $a$ and $m$ must divide both LHS & RHS =  $1$. But only $1$ divides $1$, so:
 
 $$ \gcd(a, m) = 1 $$
+
 **Thus, $a$ and $m$ must be coprime for an inverse to exist.**
 
 
@@ -55,9 +57,11 @@ $$ a \cdot x + b \cdot y = c $$
 **Homogeneous linear Diophantine equation :**
 
 $$ ax + by = 0 $$
+
 where $a, b$ are integers, not both zero. Its solutions can be fully characterized using number theory.
 
 It has **infinitely many integer solutions** $(x, y)$ given by:
+
 $$ x = \frac{b}{\gcd(a, b)} \cdot k, \quad y = -\frac{a}{\gcd(a, b)} \cdot k, \quad \text{where } k \in \mathbb{Z}. $$
 
 #### **Explanation**:
@@ -71,6 +75,7 @@ $$ x = \frac{b}{\gcd(a, b)} \cdot k, \quad y = -\frac{a}{\gcd(a, b)} \cdot k, \q
    Since $\gcd(a', b') = 1$, we can write:
 
    $$ a' x = -b' y. $$
+   
    This implies $b' \mid a' x$, but since $\gcd(a', b') = 1$, we must have $b' \mid x$.  
    Let $x = b' k$ for some $k \in \mathbb{Z}$. Then:
 
@@ -88,7 +93,8 @@ The solutions $(x, y)$ lie on a straight line passing through the origin in $\ma
 
 The direction vector of the line is  
 
-$$ \left( \frac{b}{\gcd(a, b)}, -\frac{a}{\gcd(a, b)} \right), $$  
+$$ \left( \frac{b}{\gcd(a, b)}, -\frac{a}{\gcd(a, b)} \right), $$ 
+
 which is the **smallest integer direction** in which all solutions align.
 
 ---
