@@ -242,7 +242,7 @@ dfs(start_node);
   ```  
 - **Key Points**:   
   - Required in contexts needing compile-time values (e.g., array sizes, template args).  
-  - Functions marked `constexpr` must be evaluable at compile-time.  
+  - Functions marked `constexpr` must be evaluable at compile-time, _if given_ `constexpr` arguments, but they can also be used at runtime with _non-constexpr_ arguments.
 
 
 - **"Maybe" compile-time**: Can run at either compile-time or runtime
@@ -271,3 +271,40 @@ dfs(start_node);
       int d = cube(get_input());  // Error! Must be compile-time
   }
   ```
+<br/>
+<br/>
+<br/>
+
+# Containers in C++
+
+Containers in C++ are data structures provided by the Standard Template Library (STL) that store collections of objects (elements). They manage the storage space for their elements and provide member functions to access and manipulate them.
+
+### 1. Sequence Containers (maintain element order)
+- `vector`: Dynamic array (fast random access, efficient insertion at end)
+- `array`: Fixed-size array (stack-allocated, size known at compile time)
+- `deque`: Double-ended queue (fast insertion at both ends)
+- `list`: Doubly-linked list (efficient insertion/removal anywhere)
+- `forward_list`: Singly-linked list (memory-efficient for one-way traversal)
+
+### 2. Associative Containers (sorted by key)
+- `set`: Collection of unique keys, sorted
+- `multiset`: Collection of keys (duplicates allowed), sorted
+- `map`: Key-value pairs with unique keys, sorted by key
+- `multimap`: Key-value pairs (duplicate keys allowed), sorted by key
+
+### 3. Unordered Associative Containers (hash-based)
+- `unordered_set`: Hash table implementation of set
+- `unordered_multiset`: Hash table implementation of multiset
+- `unordered_map`: Hash table implementation of map
+- `unordered_multimap`: Hash table implementation of multimap
+
+### 4. Container Adapters (special interfaces)
+- **You can't iterate over them.**
+- `stack`: LIFO (Last-In First-Out) structure
+- `queue`: FIFO (First-In First-Out) structure
+- `priority_queue`: Elements with highest priority come out first
+
+### 5. Special Containers
+- `bitset`: Fixed-size sequence of bits
+- `valarray`: Optimized for numeric operations
+- `string`: Specialized for character sequences
