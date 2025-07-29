@@ -1,3 +1,14 @@
+# STL
+```cpp
+
+  //for set/multisets
+  // set.erase(set.rbegin()); ERROR --> erase expect fwd iterator
+  if(!s.emtpy()) s.erase(prev(s.end()));  //correct
+```
+
+
+
+
 ### **Lvalues (Locator Values)**
 - **Definition:** Objects with a **name** and **memory address** (persistent).
 - **Characteristics:**  

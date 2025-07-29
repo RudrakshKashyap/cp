@@ -62,12 +62,16 @@ int main() {
 
     //for 64bit integer
     //we should use a much more high-precision clock than time(0)
-    mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());   //shuffle(all(a), rng)
+    mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());   
+    
+    //shuffle(all(a), rng)
 
     // Define a uniform integer distribution between 1 and 100
-    uniform_int_distribution<> dist(1, 100);     //name can be anything other than dist
+    uniform_int_distribution<int> dist(1, 100);     //name can be anything other than dist
 
     // Generate a random number
+    uint32_t raw_random = gen();   //raw output, should be uniform
+
     int random_number = dist(gen);
     long long rand_ll = random_long();
 
@@ -76,9 +80,16 @@ int main() {
     return 0;
 }
 ```
-`std::uniform_int_distribution` cannot work without a random number engine. The random number engine (e.g., `std::mt19937`) is essential because it provides the source of randomness, while the distribution (e.g., `std::uniform_int_distribution`) shapes that randomness into the desired range and statistical properties.
 
-The distribution (e.g., `std::uniform_int_distribution`) does not generate random numbers on its own. Instead, it transforms the raw numbers from the engine into the desired range and distribution.
+- `uniform_int_distribution` cannot work without a random number engine. The random number engine (e.g., `mt19937`) is essential because it provides the source of randomness, while the distribution (e.g., `uniform_int_distribution`) shapes that randomness into the desired range and statistical properties.
+
+- You could technically use `% mod` but it will add **modulo bias** and does not guarantee uniformity unless `rng` range is perfectly divisible by `mod`.
+
+- The distribution (e.g., `uniform_int_distribution`) does not generate random numbers on its own. Instead, it transforms the raw numbers from the engine into the desired range and distribution.
+
+- If you want to generated Uniform Random Numbers in range `[0, UINT_MAX]`
+You could technically use the raw output of `std::mt19937` (a 32-bit generator) since its range is also the same. While `mt19937` is designed to be uniform, `uniform_int_distribution` adds an extra layer of correctness.
+
 
 ```cpp
 // DON'T do this - creates same sequence every time
