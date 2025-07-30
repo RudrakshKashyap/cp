@@ -36,3 +36,40 @@
     ni = i + dx[d];
     nj = j + dy[d]; */
     ```
+
+* Finding medain of a input stream
+    ```cpp
+    multiset<int> lo, hi;
+    auto push = [&](int x, bool add) {
+        if(add) {
+            lo.insert(x);
+
+            //necessary for case lo = {1, 2}  hi = {3, 4} & when you are inserting 5
+            x = *lo.rbegin();
+            lo.erase(prev(lo.end()));
+            hi.insert(x);
+        }
+        else {
+            if(*lo.rbegin() >= x) lo.erase(lo.find(x));
+            else hi.erase(hi.find(x));
+        }
+        
+        if(lo.size() < hi.size()) {
+            x = *hi.begin();
+            lo.insert(x);
+            hi.erase(hi.begin());
+        }
+        else if(hi.size() + 1 < lo.size()) {
+            x = *lo.rbegin();
+            lo.erase(prev(lo.end()));
+            hi.insert(x);
+        }
+        
+        int median;
+        ll tot = lo.size() + hi.size();
+        if(tot % 2 == 0) median = *hi.begin();
+        else median = *lo.rbegin();
+        
+        return median; // only returning the larger median
+    };
+    ```
