@@ -37,6 +37,19 @@
     nj = j + dy[d]; */
     ```
 
+* Longest Increasing Subsequence / LIS
+    ```cpp
+    rep(i, n) {
+        int a;
+        cin >> a;
+        // use upperbound for longest non decreasing subseq
+        int p = lower_bound(v.begin(), v.end(), a) - v.begin(); //pos of a in vector  
+        if(p < SZ(v)) v[p] = a;
+        else v.pb(a);
+    }
+    ```
+
+
 * Finding medain of a input stream
     ```cpp
     multiset<int> lo, hi;

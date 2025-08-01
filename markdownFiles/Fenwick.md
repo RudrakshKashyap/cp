@@ -12,7 +12,7 @@
 fen[idx] will store the sum of values from ( a[idx - LSB(idx)], a[idx] ]
 cumulative freq from 0-10 => tree[1010](10 & 9) + tree[1000](8 to 0)
 */
-int read(vector<int>& fen, int idx) 
+int prefix(vector<int>& fen, int idx) 
 {
     int sum = 0;
     while (idx > 0) 
@@ -75,5 +75,31 @@ int readSingle(vector<int>& fen, int idx)
         }
     }
     return sum;
+}
+```
+
+### Lower & Upper bounds
+
+```cpp
+// only for non -ve freq 
+// (that means cumulative frequencies for greater indices are not smaller)
+
+// Find smallest index such that prefix_sum >= target
+// Returns N+1 if not found
+int lower_bound(int target) {
+    //remove below line for upper_bound (prefix_sum > target)
+    if (target <= 0) return 1;  // All indices satisfy if target <= 0
+    
+    int idx = 0;    // Max idx where prefix_sum < target
+    int sum = 0;    // Cumulative sum
+
+    for (int bit = 1 << (int)log2(N); bit; bit >>= 1) {
+        //change condition to <= for upper_bound
+        if (idx + bit <= N && sum + fen[idx + bit] < target) {
+            sum += fen[idx + bit];
+            idx += bit;
+        }
+    }
+    return idx + 1;
 }
 ```
