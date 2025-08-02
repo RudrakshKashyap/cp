@@ -27,15 +27,14 @@
 
 - **Using a Functor (Struct with `operator()`):**
   ```cpp
-  struct My_less {
+  struct comp {
     //Q: Can we place element b at the top
-    //A: yes if it is big in case of Max-pq
       bool operator()(int const a, int const b) const {
           return a < b;  // Max-heap behavior
       }
   };
 
-  std::priority_queue<int, std::vector<int>, My_less> pq;
+  std::priority_queue<int, std::vector<int>, comp> pq;
   ```
   - **Why Functor?**  
     The `priority_queue` expects the `Compare` parameter to be a **callable type** (like a function object). A struct with `operator()` satisfies this.
