@@ -22,15 +22,63 @@
 	}
 	```
 # CAUTION when using Map
+- **Most STL containers (`vector`, `set`, `map`, `queue`, etc.) store copies** of objects by default.  
+- **If you want reference semantics**, you must explicitly use pointers (`std::shared_ptr<T>`, `std::unique_ptr<T>`) or `std::reference_wrapper<T>`.  
+- **Container adapters (`stack`, `queue`, `priority_queue`) also store copies**.  
 ```cpp
 map<int, Node> mp;
 Node newNode(3);
 mp[3] = newNode; //map will store the copy of the newNode, modifying map[3] will not modify newNode
 ```
-* If the key does not exist in the map:
-	* `mp[key]` inserts a new key-value pair into the map.
-	* The value is default-constructed (if non pointer type, this is why default constuction is important of struct or class).
-   	* The map manages its own memory, so it needs to store its own copies of objects to ensure they remain valid even if the original object is modified or destroyed.
-	* The size of the map increases by 1.
-   	* calling `[] operator` frequently will keep on increasing memory, resulting in MLE or runtime error
-   	* The find method does not modify the map. It returns an iterator to the element if the key is found, otherwise it returns `end()`.
+If the key does not exist in the map:
+* `mp[key]` inserts a new key-value pair into the map.
+* The value is default-constructed (if non pointer type, this is why default constuction is important of struct or class).
+* The map manages its own memory, so it needs to store its own copies of objects to ensure they remain valid even if the original object is modified or destroyed.
+* The size of the map increases by 1.
+* calling `[] operator` frequently will keep on increasing memory, resulting in MLE or runtime error
+* The find method does not modify the map. It returns an iterator to the element if the key is found, otherwise it returns `end()`.
+
+# CAUTION when making CustomComparators
+```cpp
+/*
+	buggy comparator eg -> 
+	For elements (1,1) and (2,2):
+	Compare((1,1), (2,2))   1>2? false → 1<2? true → true
+	Compare((2,2), (1,1))   2>1? true → true
+*/
+bool Compare(const pair<int, int>& p, const pair<int, int>& q) {
+    if (p.first > q.first) return true;
+    return p.second < q.second;
+}
+
+//FIXED
+bool Compare(const pair<int, int>& p, const pair<int, int>& q) {
+    if (p.first != q.first) 
+        return p.first > q.first;
+    else 
+        return p.second < q.second;
+}
+```
+
+# STL errors
+```cpp
+//for set/multisets
+set.erase(set.rbegin()); // ERROR --> erase expect fwd iterator
+if(!s.emtpy()) s.erase(prev(s.end()));  //correct
+```
+---
+```cpp
+vec.emplace_back({1, 2}); // ERROR --> if you're trying to createa a pair
+/*
+1. A braced initializer list (like {1, 2}) is typeless by itself.
+2. It can be converted to many types (e.g., pair<int,int>, array<int,2>, initializer_list<int>), but the compiler cannot deduce which one you want without context.
+*/
+```
+---
+```cpp
+/*
+set provides bidirectional iterators (can do ++/--), but not random-access iterators (cannot do iterator + offset in O(1)).
+*/
+lower_bound(set.begin(), set.end(), x); //O(n) n/2 + n/4 + n/8.. for set(sorted)
+set.lower_bound(x); // O(log n)
+```

@@ -42,7 +42,6 @@
 
 * Check this code
   ```cpp
-  #include <unordered_map>
 
 	struct Node {
 	    int key, val;
@@ -50,17 +49,27 @@
 	    Node(int k, int v) : key(k), val(v), next(nullptr) {} // Constructor 1
 	    Node(int k, int v, Node *next) : key(k), val(v), next(next) {} // Constructor 2
 	};
+
+	bool Compare(Node* p, Node* q)  { 
+        return p->val > q->val;
+    }
 	
 	class LRUCache {
 	    int sz, n;
-	    std::unordered_map<int, Node*> mp; // key, prevNode
+	    unordered_map<int, Node*> mp; // key, prevNode
 	    Node head(-1, -1); // ERROR
 	    Node head; // Member 'head' of type Node	-- no default constructor, OMPILATION ERROR
 	    Node *tail;
-	
+
+		// decltype(&Compare) resolves to bool (*)(Node*, Node*)
+		// (a function pointer type).
+		// you can also create a func pointer and use it
+		bool (*comp_func_ptr)(Node*, Node*) = &Compare;
+		set<Node*, decltype(&Compare)> s;
+
 	public:
 	    // Initialize 'head' in the member initializer list
-	    LRUCache(int capacity) : sz(0), n(capacity), head(-1, -1) {
+	    LRUCache(int capacity) : sz(0), n(capacity), head(-1, -1), s(Compare) {
 	        tail = &head;
 	    }
   		~LRUCache() { delete head; }  //line only for reference, destructor used to clean up memory on heap(malloc, or new keyword)
@@ -78,6 +87,7 @@
   ### Fix 1 - Use Brace Initialization
   ```cpp
   Node head{-1, -1}; // Correct (uses uniform initialization)
+  set<Node*, decltype(&Compare)> s{Compare};
   ```
   ### Fix 2 - Initialize in the Constructor's Member Initializer List
 

@@ -2,4 +2,5 @@
 - [ ] https://cp-algorithms.com/
 - [ ] https://usaco.guide/
 - [ ] https://www.cses.fi/book/book.pdf
-- [ ] https://codeforces-anytime.sonoapp.page/
+- [ ] [Codeforces virtual contests](https://codeforces-anytime.sonoapp.page/)
+- [ ] [Library Checker](https://judge.yosupo.jp/)

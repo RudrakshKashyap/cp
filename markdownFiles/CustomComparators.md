@@ -17,13 +17,18 @@
 
 - **Syntax for Comparator Function:**
   ```cpp
-  bool Compare(Node a, Node b);  // Custom comparison function
+  bool Compare(Node* a, Node* b);  // Custom comparison function
   ```
 - **Declaring `priority_queue` with Custom Comparator:**
   ```cpp
   // Passing the type (decltype) and the actual function
-  std::priority_queue<Node, std::vector<Node>, decltype(&Compare)> openSet(Compare);
+  // bool (*comp_func_ptr)(Node*, Node*) = &Compare;
+  priority_queue<Node, std::vector<Node>, decltype(&Compare)> pq(Compare);
+  set<Node*, decltype(&Compare)> my_set(Compare);
+  set<Node*, comp_func_ptr> my_set(Compare);
   ```
+
+  **NOTE**: STL containers expect a free function, functor or a lambda. If `Compare` is a non-static member function of some Class, it will have a hidden this parameter, so you must make it static.
 
 - **Using a Functor (Struct with `operator()`):**
   ```cpp
@@ -83,7 +88,7 @@
   // Usage in sort:
   sort(words.begin(), words.end(), customCompFunctor());
   ```
-  - **Note:** `customCompFunctor()` creates a temporary instance for comparison. <br />
+  - **Note:** `customCompFunctor()` creates a temporary instance for comparison which is callabe with `()` operator. <br />
   To access the actual function you can do `bool x = customCompFunctor()("a", "b");`
 
 ---
