@@ -25,8 +25,13 @@ void build(int pos)
     }
 }
 
-//we call build after push, if there are any lazy present, that's only bc of the recent changes
-//should work as well
+/*
+we call build after push, 
+if there are any lazy present that's only bc of the last change
+and this node is already containing updated value
+if lazy not present that means this node's children could have updated and 
+this node can contain stale value, so we need to recalculate it
+*/
 void build(int pos)
 {
     while (pos > 1) {
@@ -44,7 +49,7 @@ private:
     int tree_size;          // Number of elements in the array
     int h;                  // Height of the tree
     vector<T> tree;         // Main tree storage
-    vector<T> lazy;         // Lazy propagation values
+    vector<T> lazy;         // Lazy propagation values (lazy is already applied to cur node, it is only for children)
     vector<int> len;        // Length of each node's segment
     MergeOp merge;          // Merge operation for queries
     ApplyOp apply;          // Apply operation for updates
@@ -72,18 +77,13 @@ private:
         }
     }
 
+    //choose safe version from above
     void build(int pos)
     {
         while (pos > 1) {
             pos >>= 1;  // Move to parent
-
-            // Push lazy values to children before merging
-            if (lazy[pos] != lazy_neutral) {
-                applyNode(pos << 1, lazy[pos]);
-                applyNode((pos << 1) + 1, lazy[pos]);
-                lazy[pos] = lazy_neutral;
-            }
-            tree[pos] = merge(tree[pos << 1], tree[(pos << 1) + 1]);
+    
+            if (lazy[pos] == lazy_neutral) tree[pos] = merge(tree[pos << 1], tree[(pos << 1) + 1]);
         }
     }
 
