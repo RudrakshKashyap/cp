@@ -146,13 +146,11 @@ public:
     Trienode *root;
 
 
-    /** Initialize your data structure here. */
     Trie() {
         root = new Trienode();
         root -> freq = 1;
     }
 
-    /** Inserts a word into the trie. */
     void insert(string s, int d) {
         Trienode* p = root;
         for(int i = 0; i < s.size(); i++)

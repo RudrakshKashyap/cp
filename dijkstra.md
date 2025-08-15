@@ -1,5 +1,6 @@
 //https://www.youtube.com/watch?v=09_LlHjoEiY --. all graph algos
 
+```
 	4			5 			6	  		7
 	 
 	 	2(dist = '2')		3(dist = '1')
@@ -17,8 +18,9 @@
 	we notice that we now have useless copy of {'101', 4}... in our queue, and when we pop it we will again itreate over neighbours of 4
 	to dilute them, which are already diluted by {'3', 4}
 
+```
 
-
+```cpp
 const int maxn = 5e5;
 vector<PI> g[maxn]; // vertex weight
 ll d[maxn];
@@ -65,7 +67,9 @@ int main()
     else
     {
         VI path;
+        
         path.eb(t);
+
         int x = t;	//below we have to print d[t]
         while(p[x] != s)
 		{
@@ -73,10 +77,12 @@ int main()
             x = p[x];
         }
         path.eb(s);
+
         reverse(all(path));
-        cout << d[t] << ' ' << SZ(path)-1<<'\n';
+        cout << d[t] << ' ' << SZ(path) - 1<< '\n';
         rep(i, SZ(path)-1) print(path[i], path[i+1]);
     }
 
     return 0;
 }
+```

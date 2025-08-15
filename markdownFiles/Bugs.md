@@ -61,12 +61,28 @@ bool Compare(const pair<int, int>& p, const pair<int, int>& q) {
 ```
 
 # STL errors
+
+**Floating-Point Representation (IEEE 754)**
+A double has 53 bits of precision (~15-17 decimal digits).<br/>
+For numbers as large as `1e18`, the smallest representable difference between two values is __128__ (not `1`).
+
+```cpp
+double x = 1e18, y = 1e18;
+x += 64, y += 65;
+print((ll) x, (ll) y);	// prints 1e18, 1e18 + 128
+
+ll a = 1e18 + 1; // WRONG
+ll a = (ll)1e18 + 1; // CORRECT
+```
+---
+
 ```cpp
 //for set/multisets
 set.erase(set.rbegin()); // ERROR --> erase expect fwd iterator
 if(!s.emtpy()) s.erase(prev(s.end()));  //correct
 ```
 ---
+
 ```cpp
 vec.emplace_back({1, 2}); // ERROR --> if you're trying to createa a pair
 /*
@@ -75,6 +91,7 @@ vec.emplace_back({1, 2}); // ERROR --> if you're trying to createa a pair
 */
 ```
 ---
+
 ```cpp
 /*
 set provides bidirectional iterators (can do ++/--), but not random-access iterators (cannot do iterator + offset in O(1)).

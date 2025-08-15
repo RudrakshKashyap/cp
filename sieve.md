@@ -1,23 +1,12 @@
-//classic complexity is o(n log(log(n))), for o(n) complexity check out https://www.geeksforgeeks.org/sieve-eratosthenes-0n-time-complexity/
-//https://www.geeksforgeeks.org/how-is-the-time-complexity-of-sieve-of-eratosthenes-is-nloglogn/
 
-int ar[10001];
-int maxn = 10001;
+- classic complexity is o(n log(log(n))), 
+- for o(n) complexity check out https://www.geeksforgeeks.org/sieve-eratosthenes-0n-time-complexity/
+- https://www.geeksforgeeks.org/how-is-the-time-complexity-of-sieve-of-eratosthenes-is-nloglogn/
 
-void sieve()
-{
-    repa(i,1,maxn+1) ar[i]= -1;
 
-    repa(i,2,maxn+1)
-        if(ar[i]==-1)
-            for(int j=i;j<=maxn; j+=i)
-                if(ar[j]==-1)
-                    ar[j]=i;
-}
-
-/////////////////////////////
+```cpp
 const int maxn = 1e6;
-int se[maxn+1];
+int se[maxn + 1];
 vector<int> primes;
 
 void sieve()
@@ -41,13 +30,15 @@ void sieve()
 }
 
 // Prime factorizes n in worst case
-// for each query O(sqrt n / log n). Requires having run `sieve` up to at least sqrt(n).
+// for each query O(sqrt n / log n). 
+// Requires having run `sieve` up to at least maxn = sqrt(n).
 vector<pair<ll, int>> prime_factorize(ll n)
 {
     assert(1 <= n && n <= (ll)maxn * maxn);
 
     vector<pair<ll,int>> result;
 
+    //worst case -> O(log_n) if n is power of 2
     if (n <= maxn)
     {
         while (n != 1)
@@ -66,6 +57,8 @@ vector<pair<ll, int>> prime_factorize(ll n)
         return result;
     }
 
+    //eg -> n = 2 * 104,729
+    //O(sqrt_n)[when n = sqrt_n*sqrt_n] or O(log_n)[n = 2^p]
     for (ll p : primes)
     {
         if (p * p > n) break;
@@ -83,8 +76,10 @@ vector<pair<ll, int>> prime_factorize(ll n)
         }
     }
 
+    //n = 104,729 after above loop ends
     if (n > 1)
         result.emplace_back(n, 1);
 
     return result;
 }
+```
