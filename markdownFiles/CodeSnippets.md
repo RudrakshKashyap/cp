@@ -1,13 +1,13 @@
 # Table of contents
-- [Basics](#basics)
-- [Code for creating array of group size from string](#code-for-creating-array-of-group-size-from-string)
-- [Efficient code for checking prime](#efficient-code-for-checking-prime)
-- [Directions -> `down`, `right`, `up`, `left`](#directions---down-right-up-left)
-- [Longest Increasing Subsequence / LIS](#longest-increasing-subsequence--lis)
-- [Coordinate Compression](#coordinate-compression)
-- [DSU](#dsu)
-- [Sparse Table](#sparse-table)
-- [Finding median of a input stream](#finding-median-of-a-input-stream)
+- [Basics](#basics-)
+- [Code for creating array of group size from string](#code-for-creating-array-of-group-size-from-string-)
+- [Efficient code for checking prime](#efficient-code-for-checking-prime-)
+- [Directions -> `down`, `right`, `up`, `left`](#directions---down-right-up-left-)
+- [Longest Increasing Subsequence / LIS](#longest-increasing-subsequence--lis-)
+- [Coordinate Compression](#coordinate-compression-)
+- [DSU](#dsu-)
+- [Sparse Table](#sparse-table-)
+- [Finding median of a input stream](#finding-median-of-a-input-stream-)
 - [Sweep Line](#sweep-line-)
 
 
