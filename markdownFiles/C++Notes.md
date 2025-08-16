@@ -411,3 +411,27 @@ Containers in C++ are data structures provided by the Standard Template Library 
 - `bitset`: Fixed-size sequence of bits (stores bits)
 - `valarray`: Optimized for numeric operations
 - `string`: Specialized for character sequences (stores chars)
+---
+
+  <br/>
+  <br/>
+  <br/>
+
+# `std::tie` in C++
+
+`std::make_tuple` creates a tuple of values but <br/>
+`std::tie` is a utility function from the <tuple> header that creates a tuple of lvalue references, e.g.
+
+```cpp
+int a = 1, b = 2, c = 3;
+    
+// Creates a tuple of references to a, b, c
+auto t = std::tie(a, b, c);  
+
+// Modifying through the tuple modifies the original variables
+get<0>(t) = 10;
+cout << a;  // Outputs 10
+
+//comparing tuples in comparator
+tie(x, type) < tie(other.x, other.type) 
+```

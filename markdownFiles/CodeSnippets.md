@@ -1,4 +1,19 @@
-# Basics
+# Table of contents
+- [Basics](#basics)
+- [Code for creating array of group size from string](#code-for-creating-array-of-group-size-from-string)
+- [Efficient code for checking prime](#efficient-code-for-checking-prime)
+- [Directions -> `down`, `right`, `up`, `left`](#directions---down-right-up-left)
+- [Longest Increasing Subsequence / LIS](#longest-increasing-subsequence--lis)
+- [Coordinate Compression](#coordinate-compression)
+- [DSU](#dsu)
+- [Sparse Table](#sparse-table)
+- [Finding median of a input stream](#finding-median-of-a-input-stream)
+- [Sweep Line](#sweep-line-)
+
+
+
+
+# Basics [#](#table-of-contents)
 
 ```cpp
 //prevents floating point errors in ceil((double)a / b) -> a = (ll)1e18 + 1
@@ -19,7 +34,7 @@ ll power(ll a, ll b)
 }
 ```
 
-# Code for creating array of group size from string
+# Code for creating array of group size from string [#](#table-of-contents)
 
 ```cpp
 vector <int> groups;
@@ -34,7 +49,7 @@ for (int i = 0; i < n; i++){
 }
 ```
 
-# Efficient code for checking prime
+# Efficient code for checking prime [#](#table-of-contents)
 
 ```cpp
 bool isPrime(long long n) {
@@ -49,7 +64,7 @@ bool isPrime(long long n) {
 }
 ```
 
-# Directions -> `down`, `right`, `up`, `left`
+# Directions -> `down`, `right`, `up`, `left` [#](#table-of-contents)
 
 ```cpp
 constexpr int dx[] = {1, 0, -1, 0};
@@ -60,7 +75,7 @@ ni = i + dx[d];
 nj = j + dy[d]; */
 ```
 
-# Longest Increasing Subsequence / LIS
+# Longest Increasing Subsequence / LIS [#](#table-of-contents)
 
 ```cpp
 rep(i, n) {
@@ -73,7 +88,7 @@ rep(i, n) {
 }
 ```
 
-# Coordinate Compression
+# Coordinate Compression [#](#table-of-contents)
 
 ```cpp
 int n = a.size();
@@ -93,7 +108,7 @@ for(int i = 0; i < n; ++i)
 }
 ```
 
-# DSU
+# DSU [#](#table-of-contents)
 
 ```cpp
 int dsu[maxn]; //initialize with -1
@@ -126,7 +141,7 @@ bool join(int x, int y)
 }
 ```
 
-# Sparse Table
+# Sparse Table [#](#table-of-contents)
 ```
 for n = 8, 1000 -> log2 = 3
 for n = 7, 111 -> log2 = 2
@@ -140,7 +155,7 @@ table[0]  1 2 3 4
 ```cpp
 template<typename T>
 struct RMQ {
-    //log2 of x
+    //log2 of x, use precomputed logs for speedup queries
     static int highest_bit(unsigned x) {        //it's 0th index
         return x == 0 ? -1 : 31 - __builtin_clz(x);
     }
@@ -196,7 +211,7 @@ struct RMQ {
 };
 ```
 
-# Finding medain of a input stream
+# Finding median of a input stream [#](#table-of-contents)
 
 ```cpp
 multiset<int> lo, hi;
@@ -236,4 +251,50 @@ auto push = [&](int x, bool add) {
 
     return median; // only returning the larger median
 };
+```
+---
+
+# Sweep Line [#](#table-of-contents)
+
+```cpp
+const int START = 1;
+const int END = 2;
+
+struct Event {
+    ll x;           // Event position
+    int type;       // Event type (START or END)
+    int id;         // Interval ID
+    
+    bool operator<(const Event& other) const {
+        // START events before END events at same position
+        return tie(x, type) < tie(other.x, other.type);
+    }
+};
+
+int main() {
+    int n;
+    cin >> n;
+    
+    vector<Event> events;
+    
+    for (int i = 0; i < n; i++) {
+        ll l, r;
+        cin >> l >> r;
+        
+        events.push_back({l, START, i});
+        events.push_back({r, END, i});
+    }
+    
+    sort(events.begin(), events.end());
+    
+    set<int> active;
+
+    for (const auto& e : events) {
+        if (e.type == START) active.insert(e.id);
+        else active.erase(e.id);
+        
+    }
+    
+    return 0;
+}
 ```
