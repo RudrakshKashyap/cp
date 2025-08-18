@@ -99,7 +99,7 @@ values.erase(unique(values.begin(), values.end()), values.end());
 unordered_map<int,int> idx;
 for(int i = 0; i < (int)values.size(); i++) idx[values[i]] = i;
 
-// this one is shit
+/* this one is shit
 int n = a.size();
 vector<pair<int, int>> pairs(n);
 for(int i = 0; i < n; ++i) pairs[i] = {a[i], i};
@@ -114,7 +114,7 @@ for(int i = 0; i < n; ++i)
 
     //pairs[modified value].second = original value
     pairs[idx].second = pairs[i].first;
-}
+} */
 ```
 
 # DSU [#](#table-of-contents)
