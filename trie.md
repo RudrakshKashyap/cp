@@ -39,6 +39,23 @@ void Delete(string s) {
     }
     finish[node]--;
 }
+
+array<int, 2> query_min(int x) {
+    int node = 0, res_xor = 0, val = 0;
+    for (int bit = 30; bit >= 0; bit--) {
+        int b = (x >> bit) & 1; //bit we need
+        if (trie[node][b] == -1 || freq[trie[node][b]] == 0) {
+            val += (1^b) << bit;
+            res_xor += 1 << bit;
+            node = trie[node][1^b];
+        }
+        else {
+            val += b << bit;
+            node = trie[node][b];
+        }
+    }
+    return {res_xor, val};
+}
 ```
 
 ---
