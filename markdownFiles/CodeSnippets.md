@@ -125,9 +125,9 @@ int components = n;
 
 // When dsu[x] < 0, x is a root and -dsu[x] is its tree size.
 // When dsu[x] >= 0, dsu[x] is x's parent.
-int find(int x) return dsu[x] < 0 ? x : dsu[x] = find(dsu[x]);
+int find(int x) { return dsu[x] < 0 ? x : dsu[x] = find(dsu[x]); }
 
-int get_size(int x) return -dsu[find(x)];
+int get_size(int x) { return -dsu[find(x)]; }
 
 bool join(int x, int y)
 {
