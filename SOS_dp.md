@@ -1,6 +1,28 @@
 https://atcoder.jp/contests/dp/tasks/dp_n --> optimize with knuth's optimization
 
 - [SOS Dynamic Programming [Tutorial]](https://codeforces.com/blog/entry/45223)
+```cpp
+/*
+https://codeforces.com/blog/entry/45223
+at iteration 'i'
+	dp[mask] => bits(N....i+1) of mask = fixed / all subset of mask from bits(i.....0)
+*/
+
+int N = static_cast<int>(floor(log2(max_val))) + 1;
+for(int i = 0; i < (1 << N); i++)
+	dp[i] = A[i];
+
+for(int i = 0; i < N; i++) {
+	for(int mask = 0; mask < (1 << N); mask++)
+		if(mask & (1 << i))
+			dp[mask] += dp[mask ^ (1 << i)];
+}
+
+```
+
+
+
+
 - [Some SOS DP Insights](https://codeforces.com/blog/entry/105247)
   
 ```
