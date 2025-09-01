@@ -1,6 +1,16 @@
-https://atcoder.jp/contests/dp/tasks/dp_n --> optimize with knuth's optimization
+https://atcoder.jp/contests/dp/tasks/dp_n --> optimize with knuth's optimization TODO
 
+## All subset of a given mask
 - [SOS Dynamic Programming [Tutorial]](https://codeforces.com/blog/entry/45223)
+<img src="./images/sos1.jpg" width="40%" />
+
+or you can even do `if((mask & (1 << i)) == 0) // this is the only line that's changed! `
+
+- [Some SOS DP Insights](https://codeforces.com/blog/entry/105247) - (idk what is he yapping about prefix sums)
+  
+You can't change the order of the loop like - <br />
+<img src="./images/sos2.jpg" width="40%" />
+
 ```cpp
 /*
 https://codeforces.com/blog/entry/45223
@@ -23,8 +33,9 @@ for(int i = 0; i < N; i++) {
 
 
 
-- [Some SOS DP Insights](https://codeforces.com/blog/entry/105247)
-  
+
+## Suboptimal
+
 ```
 3^N complexity
 
