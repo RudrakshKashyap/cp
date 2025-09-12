@@ -1,7 +1,7 @@
 https://codeforces.com/blog/entry/55782?#comment-395139
 
 ```cpp
-const int maxx = 100005;
+const int maxx = 100005;    // (# of strings * len of strings)
 int trie[maxx+1][26], finish[maxx+1], freq[maxx+1];
 int nxt = 1;
 void Add (string s) {

@@ -12,7 +12,7 @@
 1) Given $n$ pair of points $(x_0, y_0)$,$(x_1, y_1)$,…,$(x_{n-1}, y_{n-1})$
  where all the $n$ pairs are distinct, there is exactly one polynomial $P$
  with degree up to $n−1$
- such that $P(x_i$) = $y_i$ for each i.
+ such that $P(x_i$) = $y_i$ for each i. [proof](https://youtu.be/h7apO7q16V0?si=TMaRvNXz9VFMx5MP&t=285)
 2) $$
    \text{DFT}\Big(\text{DFT}(c_0, c_1, \dots, c_{n-1})\Big) = \text{DFT}\big(C(\omega_0), \dots, C(\omega_{n-1})\big) = (n c_0, n c_{n-1}, n c_{n-2}, \dots, n c_1)
    $$
