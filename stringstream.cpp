@@ -20,8 +20,13 @@ while(getline(t, s))
     cout << s << endl;
 }
 
+stringstream ss("4jkla");
+char firstChar = ss.get(); // Get first character
+cout << firstChar;         // Output: '4'
 
-
+stringstream ss("4jkla");
+char firstChar = ss.peek(); // Look at first character without removing it
+cout << firstChar;          // Output: '4'
 
 getline takes input "till" new line, -- not including new line
 if it's written "untill" instead of "till" i.e. -- including new line
