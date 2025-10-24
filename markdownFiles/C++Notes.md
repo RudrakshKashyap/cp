@@ -151,7 +151,6 @@ vec.emplace_back(2, 5); //will call constructor and add a Node(2, 5)
 | **Passing constructor args** (`1, "foo"`)       | ❌ Not possible                        | ✅ Constructs in-place (no copy/move) |
 | **Performance** (when constructing new objects) | May involve extra copy/move            | More efficient (constructs directly)  |
 
----
 
 ---
 
@@ -435,3 +434,57 @@ cout << a;  // Outputs 10
 //comparing tuples in comparator
 tie(x, type) < tie(other.x, other.type) 
 ```
+---
+<br />
+<br />
+
+# `typedef` vs `using` vs `#define`
+
+
+- **Use `using`** for all type aliasing needs (modern, readable, powerful)
+- **Avoid `typedef`** for new code (legacy compatibility only)
+- **Minimize `#define`** for type aliases (use only for simple constants or conditional compilation)
+
+| Feature | `using` | `typedef` | `#define` |
+|---------|---------|-----------|-----------|
+| Type safety | ✅ | ✅ | ❌ |
+| Scope awareness | ✅ | ✅ | ❌ |
+| Template support | ✅ | ❌ (needs workaround) | ❌ |
+| Namespace support | ✅ | ✅ | ❌ |
+| Readability | ✅ | ⚠️ | ❌ |
+| Debugging | ✅ | ✅ | ❌ |
+
+
+### Scope and Namespace Awareness
+```cpp
+namespace MyNamespace {
+    typedef int Integer;
+    using Float = float;
+}
+
+// #define INTEGER int  // Global, cannot be namespaced
+
+MyNamespace::Integer x;  // Works
+MyNamespace::Float y;    // Works
+// INTEGER z;           // Global pollution
+```
+
+### `#define` (Preprocessor Macro)
+
+**Syntax:**
+```cpp
+#define ALIAS_NAME replacement_text
+```
+**Major Disadvantages:**
+- Text substitution (no type safety)
+- Scope issues (global unless `#undef`)
+- Debugging difficulties
+- No namespace awareness
+
+---
+<br />
+<br />
+
+## `int64_t`
+- **int64_t**: This is a standard C++ type defined in the <cstdint> header (or <stdint.h> in C). It guarantees a signed integer type of exactly 64 bits in size. This fixed width ensures consistent behavior and data representation across various systems and compilers that adhere to the C++ standard. This makes `int64_t` highly portable and reliable for situations where a precise 64-bit integer is required.
+- **int64**: This is not a standard C++ type. Before `int64_t` was introduced in the C++ standard, many compilers and projects implemented their own custom 64-bit integer types, often named `int64`, `__int64`, or using `long long`. The behavior and actual size of `int64` could vary depending on the specific compiler and platform. While it might represent a 64-bit integer on many modern systems, there's no guarantee of this across all environments or older compilers.

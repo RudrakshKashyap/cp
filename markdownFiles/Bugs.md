@@ -84,11 +84,18 @@ if(!s.emtpy()) s.erase(prev(s.end()));  //correct
 ---
 
 ```cpp
+vector<pair<int, int>> ans;
 vec.emplace_back({1, 2}); // ERROR --> if you're trying to createa a pair
 /*
+The issue is that emplace_back() uses perfect forwarding and template argument deduction.
+emplace_back is a template function that needs to deduce the arguments for pair's constructor
+
+When you pass {1, 2}, the compiler doesn't have enough context to deduce that this should be a pair<int, int> because:
 1. A braced initializer list (like {1, 2}) is typeless by itself.
 2. It can be converted to many types (e.g., pair<int,int>, array<int,2>, initializer_list<int>), but the compiler cannot deduce which one you want without context.
 */
+vector<vector<int>> ans;
+ans.emplace_back({1, 2});  // works
 ```
 ---
 
@@ -98,4 +105,16 @@ set provides bidirectional iterators (can do ++/--), but not random-access itera
 */
 lower_bound(set.begin(), set.end(), x); //O(n) n/2 + n/4 + n/8.. for set(sorted)
 set.lower_bound(x); // O(log n)
+```
+---
+**Avoid `#define` for type aliases**
+```cpp
+// ❌ Dangerous
+#define INT_PTR int*
+
+INT_PTR a, b;  // Becomes int* a, b; (b is int, not int*!)
+
+// ✅ Safe
+using IntPtr = int*;
+IntPtr a, b;  // Both are int*
 ```
