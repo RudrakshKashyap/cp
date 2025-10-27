@@ -81,6 +81,7 @@ void inorderTraversal(TreeNode* root) {
 }
 
 //preorder, just like above inorder code
+//first pop, then move to the right subtree
 while (curr != nullptr || !st.empty()) {
     // Reach the leftmost node
     while (curr != nullptr) {
@@ -116,6 +117,7 @@ void preorderTraversal(TreeNode* root) {
 }
 
 //post order method 1 -> O(N) space
+//first move to the right subtree, then pop
 void postorderTraversal(TreeNode* root) {
     if (!root) return;
     
