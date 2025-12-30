@@ -1,3 +1,7 @@
+# TODO - https://codeforces.com/contest/2167/submission/346242047
+
+check out Neal lca template
+
 # [LCA and RMQ](https://www.topcoder.com/community/data-science/data-science-tutorials/range-minimum-query-and-lowest-common-ancestor/)
 
 ```

@@ -9,7 +9,7 @@
 - [Sparse Table](#sparse-table-)
 - [Finding median of a input stream](#finding-median-of-a-input-stream-)
 - [Sweep Line](#sweep-line-)
-
+- [Merge Sort](#merge-sort-)
 
 
 
@@ -306,4 +306,32 @@ int main() {
     
     return 0;
 }
+```
+
+# Merge Sort [#](#table-of-contents)
+
+```cpp
+void merge(vector<int>& arr, int l, int m, int h) {
+    int i = l, j = m + 1;
+    vector<int> tmp;
+    
+    while (i <= m && j <= h) {
+        if (arr[i] < arr[j]) tmp.push_back(arr[i++]);
+        else tmp.push_back(arr[j++]);
+    }
+    while (i <= m) tmp.push_back(arr[i++]);
+    while (j <= h) tmp.push_back(arr[j++]);
+    for (int k = 0; k < tmp.size(); ++k) arr[l + k] = tmp[k];
+}
+
+void mergeSort(vector<int>& arr, int l, int h) {
+    if (l < h) {
+        int mid = l + (h - l) / 2;
+        mergeSort(arr, l, mid);
+        mergeSort(arr, mid + 1, h);
+        merge(arr, l, mid, h);
+    }
+}
+
+mergeSort(arr, 0, n - 1);
 ```

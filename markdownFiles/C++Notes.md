@@ -445,16 +445,6 @@ tie(x, type) < tie(other.x, other.type)
 - **Avoid `typedef`** for new code (legacy compatibility only)
 - **Minimize `#define`** for type aliases (use only for simple constants or conditional compilation)
 
-| Feature | `using` | `typedef` | `#define` |
-|---------|---------|-----------|-----------|
-| Type safety | ✅ | ✅ | ❌ |
-| Scope awareness | ✅ | ✅ | ❌ |
-| Template support | ✅ | ❌ (needs workaround) | ❌ |
-| Namespace support | ✅ | ✅ | ❌ |
-| Readability | ✅ | ⚠️ | ❌ |
-| Debugging | ✅ | ✅ | ❌ |
-
-
 ### Scope and Namespace Awareness
 ```cpp
 namespace MyNamespace {
@@ -475,6 +465,10 @@ MyNamespace::Float y;    // Works
 ```cpp
 #define ALIAS_NAME replacement_text
 ```
+- #define tells the preprocessor to literally replace `all(v) with (v).begin(), (v).end()` before compilation.
+
+- using works after preprocessing — it can’t handle this kind of replacement.
+
 **Major Disadvantages:**
 - Text substitution (no type safety)
 - Scope issues (global unless `#undef`)
